@@ -13,8 +13,8 @@ func _physics_process(delta):
 	
 	#This smooths out movements when player is moving in two directions at once.
 	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector.x = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
+	input_vector.y = Input.get_action_strength("Move_Down") - Input.get_action_strength("Move_Up")
 	input_vector = input_vector.normalized()
 	
 	#Gain speed as we move
