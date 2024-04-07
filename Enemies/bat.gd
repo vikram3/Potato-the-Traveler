@@ -7,6 +7,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @export var FRICTION = 200
 @onready var hurtbox = $Hurtbox
 @onready var softCollision = $SoftCollision
+@onready var animationPlayer = $AnimationPlayer
 
 @export var WANDER_TARGET_RANGE = 4
 
@@ -74,6 +75,7 @@ func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
 	velocity = area.knockback_vector * 150
 	hurtbox.create_hit_effect()
+	hurtbox.start_invincibility(0.4)
 	
 func _on_stats_no_health():
 	queue_free()
@@ -82,3 +84,9 @@ func _on_stats_no_health():
 	var enemyDeathEffect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position
+
+func _on_hurtbox_invincibility_started():
+	animationPlayer.play("Start")
+
+func _on_hurtbox_invincibility_ended():
+	animationPlayer.play("Stop")
