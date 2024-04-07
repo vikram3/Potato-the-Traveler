@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-const ACCELERATION = 500
-const MAX_SPEED = 80
-const ROLL_SPEED = 125
-const Friction = 500
+@export var ACCELERATION = 500
+@export var MAX_SPEED = 100
+@export var ROLL_SPEED = 125
+@export var Friction = 500
 
 enum {
 	MOVE,
@@ -12,15 +12,17 @@ enum {
 }
 
 var state = MOVE
-var roll_vector = Vector2.ZERO
+var roll_vector = Vector2.DOWN
 
 #Initializes and grabs the animation player and tree
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
+@onready var swordHitbox = $HitboxPivot/SwordHitbox
 
 func _ready():
 	animationTree.active = true
+	swordHitbox.knockback_vector = roll_vector
 
 func _physics_process(delta):
 	match state:
@@ -42,6 +44,7 @@ func move_state(delta):
 	if input_vector != Vector2.ZERO:
 		#Switches to the proper animations based on our position with blend trees.
 		roll_vector = input_vector
+		swordHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
@@ -50,9 +53,11 @@ func move_state(delta):
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 		
 		move()
-		#Lets player attack whilst moving.
+		#Can activate these states while moving
 		if Input.is_action_just_pressed("attack"):
-			state = ATTACK
+			state = ATTACK	
+		elif Input.is_action_just_pressed("roll"):
+			state = ROLL
 	else:
 		animationState.travel("Idle")
 		#Slow us down when we are stopping movement.
@@ -67,7 +72,7 @@ func move_state(delta):
 		if Input.is_action_just_pressed("attack"):
 			state = ATTACK
 	
-func roll_state(delta):
+func roll_state(_delta):
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")
 	move()

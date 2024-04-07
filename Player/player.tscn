@@ -1,8 +1,9 @@
-[gd_scene load_steps=51 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=52 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://dnottno0mt7qj" path="res://Player/Player.png" id="2_sbjlq"]
 [ext_resource type="PackedScene" uid="uid://bbh4m23t6e35d" path="res://Overlap/hitbox.tscn" id="3_nnp8n"]
+[ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4_ghg0u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
 radius = 4.0
@@ -646,7 +647,9 @@ height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+platform_floor_layers = 4294967264
 script = ExtResource("1_fjjot")
+MAX_SPEED = 85
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
@@ -669,10 +672,10 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_jnc71")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Attack/blend_position = Vector2(0, 0)
-parameters/Idle/blend_position = Vector2(0, 0)
-parameters/Roll/blend_position = Vector2(0, 0)
-parameters/Run/blend_position = Vector2(0, 0)
+parameters/Attack/blend_position = Vector2(0, 1)
+parameters/Idle/blend_position = Vector2(0, 1)
+parameters/Roll/blend_position = Vector2(0, 1)
+parameters/Run/blend_position = Vector2(0, 1)
 
 [node name="HitboxPivot" type="Marker2D" parent="."]
 position = Vector2(0, -4)
@@ -681,6 +684,7 @@ rotation = 1.5708
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(15, 0)
 collision_layer = 8
+script = ExtResource("4_ghg0u")
 
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 position = Vector2(1, 2)
