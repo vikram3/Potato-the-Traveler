@@ -31,12 +31,9 @@ func _physics_process(delta):
 			var player = playerDetectionZone.player
 			if player != null:
 				var direction = global_position.direction_to(player.global_position)
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION)
-				print("IM CHASIN")
+				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 			else:
 				state = IDLE
-				#velocity = velocity.move_toward(startPosition * MAX_SPEED, ACCELERATION)
-				print("DONE CHASIN")
 			sprite.flip_h = velocity.x < 0		
 	
 	move_and_slide()
@@ -44,7 +41,6 @@ func _physics_process(delta):
 func seek_player():
 	if playerDetectionZone.can_see_player():
 		state = CHASE
-		print("I SEE YOU")
 			
 func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
