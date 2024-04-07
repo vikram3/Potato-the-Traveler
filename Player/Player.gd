@@ -23,6 +23,7 @@ var stats = PlayerStats
 @onready var hurtbox = $Hurtbox
 
 func _ready():
+	randomize() # Generates a new seed for every time the game is opened.
 	self.stats.connect("no_health", queue_free)
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
