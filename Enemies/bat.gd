@@ -5,6 +5,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @export var ACCELERATION = 300
 @export var MAX_SPEED = 50
 @export var FRICTION = 200
+@onready var hurtbox = $Hurtbox
 
 enum {
 	IDLE,
@@ -44,7 +45,8 @@ func seek_player():
 			
 func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
-	velocity = area.knockback_vector * 120
+	velocity = area.knockback_vector * 150
+	hurtbox.create_hit_effect()
 	
 func _on_stats_no_health():
 	queue_free()

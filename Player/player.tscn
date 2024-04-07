@@ -1,6 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=55 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
+[ext_resource type="Texture2D" uid="uid://bx0iloy0iuw4x" path="res://Shadows/MediumShadow.png" id="2_ag711"]
 [ext_resource type="Texture2D" uid="uid://dnottno0mt7qj" path="res://Player/Player.png" id="2_sbjlq"]
 [ext_resource type="PackedScene" uid="uid://bbh4m23t6e35d" path="res://Overlap/hitbox.tscn" id="3_nnp8n"]
 [ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4_ghg0u"]
@@ -647,14 +648,17 @@ radius = 12.0
 height = 28.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ulq5"]
-radius = 4.0
-height = 14.0
+radius = 7.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-platform_floor_layers = 4294967264
 script = ExtResource("1_fjjot")
 MAX_SPEED = 85
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_ag711")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
@@ -697,8 +701,8 @@ shape = SubResource("CapsuleShape2D_o01y3")
 disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_bhnfg")]
-collision_layer = 4
 collision_mask = 4
+collision_priority = 0.0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(0, -6)

@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dux3q2gv1s8g4"]
+
+[ext_resource type="Script" path="res://UI/HealthUI.gd" id="1_rel7j"]
+[ext_resource type="Texture2D" uid="uid://b20ygjsllulrp" path="res://UI/HeartUIEmpty.png" id="2_gchp3"]
+[ext_resource type="Texture2D" uid="uid://f6ajg7la37ce" path="res://UI/HeartUIFull.png" id="3_q38js"]
+
+[node name="HealthUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rel7j")
+
+[node name="HeartUIEmpty" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 11.0
+texture = ExtResource("2_gchp3")
+stretch_mode = 1
+
+[node name="HeartUIFull" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 11.0
+texture = ExtResource("3_q38js")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 49.0
+offset_bottom = 23.0
+text = "HP = 4"
