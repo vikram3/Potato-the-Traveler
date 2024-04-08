@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bkf2a5dlqworv" path="res://Overlap/soft_collision.tscn" id="8_avnhu"]
 [ext_resource type="PackedScene" uid="uid://bhv1fd4uvlhpd" path="res://Enemies/wander_controller.tscn" id="9_kr26k"]
 [ext_resource type="Texture2D" uid="uid://dn534ny7ke3eg" path="res://UI/LifeBarMiniUnder.png" id="11_ni6vm"]
-[ext_resource type="Texture2D" uid="uid://d04o7ssvsonov" path="res://UI/LifeBarMiniProgress.png" id="12_yaf2e"]
+[ext_resource type="Texture2D" uid="uid://c55wsyq2xdjm6" path="res://UI/HPBar.png" id="12_1n2vl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gugca"]
 resource_local_to_scene = true
@@ -150,6 +150,7 @@ offset = Vector2(0, -12)
 texture = ExtResource("2_nfx6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_6bqgl")
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_n2qg0")]
@@ -160,7 +161,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_neeqi")
 
 [node name="Stats" parent="." instance=ExtResource("5_n75ol")]
-max_health = 2
+max_health = 4
 
 [node name="PlayerDetection" parent="." instance=ExtResource("6_gpued")]
 collision_layer = 0
@@ -191,13 +192,14 @@ libraries = {
 }
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+modulate = Color(0, 0.984314, 0, 1)
 offset_left = -9.0
 offset_top = -27.0
 offset_right = 10.0
 offset_bottom = -23.0
 value = 100.0
 texture_under = ExtResource("11_ni6vm")
-texture_progress = ExtResource("12_yaf2e")
+texture_progress = ExtResource("12_1n2vl")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

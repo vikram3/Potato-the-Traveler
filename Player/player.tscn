@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
 [ext_resource type="Texture2D" uid="uid://dn534ny7ke3eg" path="res://UI/LifeBarMiniUnder.png" id="10_q5vcn"]
-[ext_resource type="Texture2D" uid="uid://c55wsyq2xdjm6" path="res://Enemies/HPBar.png" id="11_vfmyc"]
+[ext_resource type="Texture2D" uid="uid://c55wsyq2xdjm6" path="res://UI/HPBar.png" id="11_b6ng5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mrb7p"]
 shader = ExtResource("3_4p0go")
@@ -838,7 +838,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fjjot")
-MAX_SPEED = 85
+ROLL_SPEED = 200
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
@@ -909,7 +909,7 @@ offset_right = 10.0
 offset_bottom = -23.0
 value = 100.0
 texture_under = ExtResource("10_q5vcn")
-texture_progress = ExtResource("11_vfmyc")
+texture_progress = ExtResource("11_b6ng5")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

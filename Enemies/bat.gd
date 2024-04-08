@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 
+
 @export var ACCELERATION = 300
 @export var MAX_SPEED = 50
 @export var FRICTION = 200
+
 @onready var hurtbox = $Hurtbox
 @onready var softCollision = $SoftCollision
 @onready var animationPlayer = $AnimationPlayer
@@ -94,6 +96,9 @@ func _on_hurtbox_invincibility_ended():
 	
 func update_healthbar():
 	var healthbar = $HealthBar
+	var LOW_HEALTH = stats.max_health * 0.3
+	var HALF_HEALTH = stats.max_health * 0.5
+	
 	healthbar.max_value = stats.max_health
 	healthbar.value = stats.health
 	
@@ -101,3 +106,10 @@ func update_healthbar():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+		
+	if stats.health <= HALF_HEALTH and stats.health > LOW_HEALTH:
+		#Much hp has been lost turn yellow
+		healthbar.modulate = Color(1,1,0)
+	elif stats.health <= LOW_HEALTH:
+		#Health is critical, turn red
+		healthbar.modulate = Color(1, 0, 0)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d04o7ssvsonov"
-path="res://.godot/imported/LifeBarMiniProgress.png-ba5af61402ab57e83a04aebd51f3d2f4.ctex"
+uid="uid://c55wsyq2xdjm6"
+path="res://.godot/imported/HPBar.png-2efce1d573fae92b688330d14c6d20c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/LifeBarMiniProgress.png"
-dest_files=["res://.godot/imported/LifeBarMiniProgress.png-ba5af61402ab57e83a04aebd51f3d2f4.ctex"]
+source_file="res://UI/HPBar.png"
+dest_files=["res://.godot/imported/HPBar.png-2efce1d573fae92b688330d14c6d20c9.ctex"]
 
 [params]
 
