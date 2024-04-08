@@ -31,6 +31,7 @@ func _ready():
 	swordHitbox.knockback_vector = roll_vector
 
 func _physics_process(delta):
+	update_healthbar()
 	match state:
 		MOVE:
 			move_state(delta)
@@ -110,3 +111,12 @@ func _on_hurtbox_invincibility_started():
 
 func _on_hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
+	
+func update_healthbar():
+	var healthbar = $HealthBar
+	healthbar.value = PlayerStats.health * 10
+	
+	if PlayerStats.health >= PlayerStats.max_health:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true

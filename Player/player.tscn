@@ -906,7 +906,7 @@ offset_top = -24.0
 offset_right = 90.0
 offset_bottom = 3.0
 scale = Vector2(0.1, 0.1)
-show_percentage = false
+value = 100.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

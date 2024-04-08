@@ -12,6 +12,7 @@ offset_bottom = 40.0
 script = ExtResource("1_rel7j")
 
 [node name="HeartUIEmpty" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 11.0
@@ -19,6 +20,7 @@ texture = ExtResource("2_gchp3")
 stretch_mode = 1
 
 [node name="HeartUIFull" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 11.0
