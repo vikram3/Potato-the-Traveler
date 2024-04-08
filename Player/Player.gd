@@ -6,6 +6,7 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export var ROLL_SPEED = 125
 @export var Friction = 500
 
+
 enum {
 	MOVE,
 	ROLL,
@@ -16,13 +17,14 @@ var state = MOVE
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
 
-#Initializes and grabs the animation player and tree
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
 @onready var swordHitbox = $HitboxPivot/SwordHitbox
 @onready var hurtbox = $Hurtbox
 @onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+@onready var LOW_HEALTH = PlayerStats.max_health * 0.25
+@onready var HALF_HEALTH = PlayerStats.max_health * 0.5
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
@@ -114,9 +116,17 @@ func _on_hurtbox_invincibility_ended():
 	
 func update_healthbar():
 	var healthbar = $HealthBar
-	healthbar.value = PlayerStats.health * 10
+	healthbar.max_value = PlayerStats.max_health
+	healthbar.value = PlayerStats.health
 	
 	if PlayerStats.health >= PlayerStats.max_health:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+	
+	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
+		#Much hp has been lost turn yellow
+		healthbar.modulate = Color(1,1,0)
+	elif PlayerStats.health <= LOW_HEALTH:
+		#Health is critical, turn red
+		healthbar.modulate = Color(1, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=65 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://bx0iloy0iuw4x" path="res://Shadows/MediumShadow.png" id="2_ag711"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4_ghg0u"]
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
+[ext_resource type="Texture2D" uid="uid://dn534ny7ke3eg" path="res://UI/LifeBarMiniUnder.png" id="10_q5vcn"]
+[ext_resource type="Texture2D" uid="uid://c55wsyq2xdjm6" path="res://Enemies/HPBar.png" id="11_vfmyc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mrb7p"]
 shader = ExtResource("3_4p0go")
@@ -899,14 +901,15 @@ libraries = {
 "": SubResource("AnimationLibrary_67yjy")
 }
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(0.054902, 0.858824, 0.0235294, 1)
-offset_left = -5.0
-offset_top = -24.0
-offset_right = 90.0
-offset_bottom = 3.0
-scale = Vector2(0.1, 0.1)
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+modulate = Color(0, 0.984314, 0, 1)
+offset_left = -9.0
+offset_top = -27.0
+offset_right = 10.0
+offset_bottom = -23.0
 value = 100.0
+texture_under = ExtResource("10_q5vcn")
+texture_progress = ExtResource("11_vfmyc")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

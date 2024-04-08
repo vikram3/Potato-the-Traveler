@@ -28,6 +28,7 @@ func _ready():
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
+	update_healthbar()
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
 	match state:
@@ -90,3 +91,13 @@ func _on_hurtbox_invincibility_started():
 
 func _on_hurtbox_invincibility_ended():
 	animationPlayer.play("Stop")
+	
+func update_healthbar():
+	var healthbar = $HealthBar
+	healthbar.max_value = stats.max_health
+	healthbar.value = stats.health
+	
+	if stats.health >= stats.max_health:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
