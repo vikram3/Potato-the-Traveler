@@ -134,7 +134,7 @@ func update_healthbar():
 	#TODO make healthbar dissapear after X seconds.
 	if healthbar.visible = true:
 		pass
-		#dissapear
+		#Consider using timeout node. 3 seconds after combat
 	
 	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		healthbar.modulate = Color(1,1,0)
