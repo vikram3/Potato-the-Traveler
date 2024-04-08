@@ -3,7 +3,7 @@
 ## What is it?
 A project I made to learn and understand the Godot Engine.
 
-The foundation of this game was created via this tutorial https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a, but has been upgraded from Godot 3.7 > Godot 4.2.3. I have repaired all the code to make it compatible with this newer version of Godot and as a result it's able to access and utilize Godot Engine's newer features and bug fixes.
+The foundation of this game was created via this tutorial https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a, but has been upgraded from Godot 3.7 > Godot 4.2.1. I have repaired all the code to make it compatible with this newer version of Godot and as a result it's able to access and utilize Godot Engine's newer features and bug fixes.
 
 ### What's New?
 - New main character: Potato
