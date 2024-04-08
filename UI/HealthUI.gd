@@ -18,7 +18,7 @@ func update_healthbar():
 	var healthbar = $HealthBar
 	healthbar.max_value = PlayerStats.max_health
 	healthbar.value = PlayerStats.health
-	healthbar.visible = true
+	#healthbar.visible = true
 	
 	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		#Much hp has been lost turn yellow
@@ -32,7 +32,7 @@ func set_hearts(value):
 	if heartUIFull != null:
 		heartUIFull.size.x = hearts * 15
 	if label != null:
-		label.text = "HP: " + str(hearts)
+		label.text = "HP: " + str(PlayerStats.health)
 	
 func set_max_hearts(value):
 	max_hearts = max(value, 1)

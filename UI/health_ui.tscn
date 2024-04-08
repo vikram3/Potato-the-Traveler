@@ -30,15 +30,10 @@ texture = ExtResource("3_q38js")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 49.0
-offset_bottom = 23.0
-text = "HP = 4"
-
 [node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
 modulate = Color(0, 0.984314, 0, 1)
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 26.0
@@ -47,3 +42,14 @@ scale = Vector2(2.88, 1.45837)
 value = 100.0
 texture_under = ExtResource("4_m5q6o")
 texture_progress = ExtResource("5_14los")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 31.0
+scale = Vector2(2.336, 1)
+theme_override_font_sizes/font_size = 0
+text = "HP = 4"
