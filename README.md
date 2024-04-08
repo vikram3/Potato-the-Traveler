@@ -1,4 +1,4 @@
-# Potato the Traveler
+# Potato the Traveler | 2D Action RPG Game
 
 ## What is it?
 A project I made to learn and understand the Godot Engine.
