@@ -838,7 +838,6 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fjjot")
-ROLL_SPEED = 200
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, 1)
