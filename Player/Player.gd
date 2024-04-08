@@ -82,6 +82,10 @@ func move_state(delta):
 			state = ATTACK
 	
 func roll_state():
+	#Prevents player from rolling after getting attack and getting iframe animation.
+	blinkAnimationPlayer.play("Stop")
+	
+	#Roll Iframe Length
 	hurtbox.start_invincibility(.6)
 	velocity = roll_vector * ROLL_SPEED
 	animationState.travel("Roll")
