@@ -6,7 +6,11 @@ const GrassEffect = preload("res://Effects/grass_effect.tscn")
 func create_grass_effect():
 	#Instance the Scene
 	var grassEffect = GrassEffect.instantiate()
+
+	#Adds the effect
 	get_parent().add_child(grassEffect)
+
+	#Puts the effect in the same position as the instance we made.
 	grassEffect.global_position = global_position
 	
 	queue_free()

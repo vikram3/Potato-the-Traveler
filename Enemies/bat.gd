@@ -6,25 +6,24 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @export var ACCELERATION = 300
 @export var MAX_SPEED = 50
 @export var FRICTION = 200
+@export var WANDER_TARGET_RANGE = 4
 
 @onready var hurtbox = $Hurtbox
 @onready var softCollision = $SoftCollision
 @onready var animationPlayer = $AnimationPlayer
-
-@export var WANDER_TARGET_RANGE = 4
+@onready var sprite = $AnimatedSprite
+@onready var stats = $Stats
+@onready var playerDetectionZone = $PlayerDetection
+@onready var startPosition = get_global_transform().origin
+@onready var wanderController = $WanderController
 
 enum {
 	IDLE,
 	WANDER,
 	CHASE
 }
-var state = CHASE
 
-@onready var sprite = $AnimatedSprite
-@onready var stats = $Stats
-@onready var playerDetectionZone = $PlayerDetection
-@onready var startPosition = get_global_transform().origin
-@onready var wanderController = $WanderController
+var state = CHASE
 
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
@@ -82,8 +81,7 @@ func _on_hurtbox_area_entered(area):
 	
 func _on_stats_no_health():
 	queue_free()
-	
-	#checks the enemy and gets their position
+	#Puts the death effect where the enemy died.
 	var enemyDeathEffect = EnemyDeathEffect.instantiate()
 	get_parent().add_child(enemyDeathEffect)
 	enemyDeathEffect.global_position = global_position

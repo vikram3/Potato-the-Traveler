@@ -33,7 +33,7 @@ func _ready():
 	swordHitbox.knockback_vector = roll_vector
 
 func _physics_process(delta):
-	update_healthbar()
+	update_healthbar() 
 	match state:
 		MOVE:
 			move_state(delta)
@@ -52,42 +52,41 @@ func move_state(delta):
 	#Gain speed as we move
 	if input_vector != Vector2.ZERO:
 		#Switches to the proper animations based on our position with blend trees.
-		roll_vector = input_vector
-		swordHitbox.knockback_vector = input_vector
+		roll_vector = input_vector # Roll direction is in the direction I am facing.
+		swordHitbox.knockback_vector = input_vector # Sword hitbox is in the direction we are facing
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationTree.set("parameters/Roll/blend_position", input_vector)
 		animationState.travel("Run")
-		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
-		
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
+
 		move()
-		#Can activate these states while moving
-		if Input.is_action_just_pressed("attack"):
-			state = ATTACK	
-		elif Input.is_action_just_pressed("roll"):
-			state = ROLL
+		update_state_after_input()
 	else:
 		animationState.travel("Idle")
 		#Slow us down when we are stopping movement.
 		velocity = velocity.move_toward(Vector2.ZERO, Friction * delta)
 		
 		move()
+		update_state_after_input()
+
+func update_state_after_input() # Updates the state machine with the proper state after detecting input.
+	if Input.is_action_just_pressed("attack"):
+		state = ATTACK	
+	elif Input.is_action_just_pressed("roll"):
+		state = ROLL
 	
-		if Input.is_action_just_pressed("roll"):
-			state = ROLL
-			
-		#Lets player attack during idle.
-		if Input.is_action_just_pressed("attack"):
-			state = ATTACK
-	
-func roll_state():
+func roll_state(): #
 	#Prevents player from rolling after getting attack and getting iframe animation.
 	blinkAnimationPlayer.play("Stop")
 	
 	#Roll Iframe Length
 	hurtbox.start_invincibility(.6)
+
+	#Set the velocity to include our roll speed.
 	velocity = roll_vector * ROLL_SPEED
+	
 	animationState.travel("Roll")
 	move()
 
@@ -106,15 +105,17 @@ func attack_animation_finished():
 	state = MOVE
 
 func _on_hurtbox_area_entered(area):
-	print("Player has taken damage")
+	#Reduce the player's health after hurtbox is entered.
 	stats.health -= area.damage
 	hurtbox.start_invincibility(.6)
 	hurtbox.create_hit_effect()
+
+	#Hurtbox Sound
 	var playerHurtSound = PlayerHurtSound.instantiate()
 	get_tree().current_scene.add_child(playerHurtSound)
 
 func _on_hurtbox_invincibility_started():
-	if state != ROLL:
+	if state != ROLL: #IF check because I don't want blink animations on my iframe.
 		blinkAnimationPlayer.play("Start")
 
 func _on_hurtbox_invincibility_ended():
@@ -129,9 +130,13 @@ func update_healthbar():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+
+	#TODO make healthbar dissapear after X seconds.
+	if healthbar.visible = true:
+		pass
+		#dissapear
 	
 	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
-		#Much hp has been lost turn yellow
 		healthbar.modulate = Color(1,1,0)
 	elif PlayerStats.health <= LOW_HEALTH:
 		#Health is critical, turn red
