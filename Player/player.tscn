@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://bx0iloy0iuw4x" path="res://Shadows/MediumShadow.png" id="2_ag711"]
-[ext_resource type="Texture2D" uid="uid://dnottno0mt7qj" path="res://Player/Player.png" id="2_sbjlq"]
 [ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="3_4p0go"]
 [ext_resource type="PackedScene" uid="uid://bbh4m23t6e35d" path="res://Overlap/hitbox.tscn" id="3_nnp8n"]
 [ext_resource type="AudioStream" uid="uid://doug012gquv2c" path="res://Music and Sounds/Swipe.wav" id="4_4fl1o"]
+[ext_resource type="Texture2D" uid="uid://c7hrq4qfg5yrb" path="res://Player/potato.png" id="4_8f8ps"]
 [ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4_ghg0u"]
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
@@ -778,6 +778,21 @@ height = 28.0
 radius = 7.0
 height = 24.0
 
+[sub_resource type="Animation" id="Animation_dqrtk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_87lbj"]
 resource_name = "Start"
 length = 0.2
@@ -811,21 +826,6 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_dqrtk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67yjy"]
 _data = {
 "RESET": SubResource("Animation_dqrtk"),
@@ -845,7 +845,7 @@ texture = ExtResource("2_ag711")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mrb7p")
 position = Vector2(0, -9)
-texture = ExtResource("2_sbjlq")
+texture = ExtResource("4_8f8ps")
 hframes = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -898,6 +898,15 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_67yjy")
 }
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.054902, 0.858824, 0.0235294, 1)
+offset_left = -5.0
+offset_top = -24.0
+offset_right = 90.0
+offset_bottom = 3.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
