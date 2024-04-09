@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcsres4leeu2c"
-path="res://.godot/imported/spr_campfire_burning.png-f09414147258f70d1dc4a60d27b3f973.ctex"
+uid="uid://vlts6frfvwfi"
+path="res://.godot/imported/spr_right_corner_wave_animated.png-01ba91d8617e4c307a885fd0b8c345c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/spr_campfire_burning.png"
-dest_files=["res://.godot/imported/spr_campfire_burning.png-f09414147258f70d1dc4a60d27b3f973.ctex"]
+source_file="res://World/Environment/spr_right_corner_wave_animated.png"
+dest_files=["res://.godot/imported/spr_right_corner_wave_animated.png-01ba91d8617e4c307a885fd0b8c345c0.ctex"]
 
 [params]
 

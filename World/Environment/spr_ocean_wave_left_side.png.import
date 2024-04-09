@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b32co8m2im570"
-path="res://.godot/imported/spr_tree1.png-0aaf1df24a7d49f94de7b68fa686f8bb.ctex"
+uid="uid://we3tgeyoj4e0"
+path="res://.godot/imported/spr_ocean_wave_left_side.png-c4c574f2bb90586793ff995f2343c5e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/spr_tree1.png"
-dest_files=["res://.godot/imported/spr_tree1.png-0aaf1df24a7d49f94de7b68fa686f8bb.ctex"]
+source_file="res://World/Environment/spr_ocean_wave_left_side.png"
+dest_files=["res://.godot/imported/spr_ocean_wave_left_side.png-c4c574f2bb90586793ff995f2343c5e0.ctex"]
 
 [params]
 

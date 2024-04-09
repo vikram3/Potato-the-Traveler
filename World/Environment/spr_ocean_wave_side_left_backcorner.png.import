@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvjvp3xrjgysk"
-path="res://.godot/imported/CliffTileset.png-beb1369a7815e4e7ee0afe974b2636cf.ctex"
+uid="uid://dsoxgndnmc0yn"
+path="res://.godot/imported/spr_ocean_wave_side_left_backcorner.png-942d487c2bfd5161d73da3957cfcacaa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/CliffTileset.png"
-dest_files=["res://.godot/imported/CliffTileset.png-beb1369a7815e4e7ee0afe974b2636cf.ctex"]
+source_file="res://World/Environment/spr_ocean_wave_side_left_backcorner.png"
+dest_files=["res://.godot/imported/spr_ocean_wave_side_left_backcorner.png-942d487c2bfd5161d73da3957cfcacaa.ctex"]
 
 [params]
 

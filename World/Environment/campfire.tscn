@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://yengxncxsbjj"]
 
-[ext_resource type="Texture2D" uid="uid://dcsres4leeu2c" path="res://World/spr_campfire_burning.png" id="1_p7x4a"]
+[ext_resource type="Texture2D" uid="uid://dcsres4leeu2c" path="res://World/Environment/spr_campfire_burning.png" id="1_p7x4a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjudl"]
 atlas = ExtResource("1_p7x4a")
@@ -74,6 +74,7 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_gaudy")
 animation = &"Burning"
 autoplay = "Burning"
+frame_progress = 0.97728
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

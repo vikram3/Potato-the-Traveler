@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kvfijawfst2f"
-path="res://.godot/imported/spr_grass_tileset.png-88246c2a98aeec0b9204415b1e8ea357.ctex"
+uid="uid://uucui7vwc6ph"
+path="res://.godot/imported/spr_ocean_wave_front.png-944b669f255de47980e136e4bdaeec70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/spr_grass_tileset.png"
-dest_files=["res://.godot/imported/spr_grass_tileset.png-88246c2a98aeec0b9204415b1e8ea357.ctex"]
+source_file="res://World/Environment/spr_ocean_wave_front.png"
+dest_files=["res://.godot/imported/spr_ocean_wave_front.png-944b669f255de47980e136e4bdaeec70.ctex"]
 
 [params]
 
