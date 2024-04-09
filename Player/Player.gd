@@ -6,7 +6,6 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export var ROLL_SPEED = 125
 @export var Friction = 500
 
-
 enum {
 	MOVE,
 	ROLL,
@@ -25,8 +24,11 @@ var stats = PlayerStats
 @onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 @onready var LOW_HEALTH = PlayerStats.max_health * 0.25
 @onready var HALF_HEALTH = PlayerStats.max_health * 0.5
+@onready var timer = $Timer
+@onready var healthbar = $HealthBar
 
 func _ready():
+	timer = $Timer
 	randomize() # Generates a new seed for every time the game is opened.
 	self.stats.connect("no_health", queue_free)
 	animationTree.active = true
@@ -71,7 +73,7 @@ func move_state(delta):
 		move()
 		update_state_after_input()
 
-func update_state_after_input() # Updates the state machine with the proper state after detecting input.
+func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK	
 	elif Input.is_action_just_pressed("roll"):
@@ -122,7 +124,6 @@ func _on_hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 	
 func update_healthbar():
-	var healthbar = $HealthBar
 	healthbar.max_value = PlayerStats.max_health
 	healthbar.value = PlayerStats.health
 	
@@ -130,14 +131,17 @@ func update_healthbar():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-
-	#TODO make healthbar dissapear after X seconds.
-	if healthbar.visible = true:
-		pass
-		#Consider using timeout node. 3 seconds after combat
-	
+			
 	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		healthbar.modulate = Color(1,1,0)
 	elif PlayerStats.health <= LOW_HEALTH:
 		#Health is critical, turn red
 		healthbar.modulate = Color(1, 0, 0)
+		
+	if timer.is_stopped() == true:
+		timer.start()
+
+func _on_timer_timeout():
+	print("making invis")
+	PlayerStats.health += 1 # Regen HP
+	healthbar.visible = false

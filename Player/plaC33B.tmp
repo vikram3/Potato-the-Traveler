@@ -1270,6 +1270,10 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fjjot")
+ACCELERATION = null
+MAX_SPEED = null
+ROLL_SPEED = null
+Friction = null
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
@@ -1332,9 +1336,9 @@ libraries = {
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 modulate = Color(0, 0.984314, 0, 1)
 offset_left = -9.0
-offset_top = -22.0
+offset_top = -27.0
 offset_right = 10.0
-offset_bottom = -18.0
+offset_bottom = -23.0
 value = 100.0
 texture_under = ExtResource("10_q5vcn")
 texture_progress = ExtResource("11_b6ng5")
@@ -1345,15 +1349,9 @@ sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"evade"
 frame = 1
 
-[node name="Timer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 5.0
-one_shot = true
-
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="Hurtbox"]
