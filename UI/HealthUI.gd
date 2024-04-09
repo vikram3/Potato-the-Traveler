@@ -13,8 +13,9 @@ func update_healthbar(): # This controls the Healthbar UI that is on the canvas.
 	healthbar.value = PlayerStats.health
 	healthbar.visible = true
 	
-	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
-		#Much hp has been lost turn yellow
+	if PlayerStats.health > HALF_HEALTH:
+		healthbar.modulate = Color(0, 1, 0) #Green		
+	elif PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		healthbar.modulate = Color(1,1,0)
 	elif PlayerStats.health <= LOW_HEALTH:
 		#Health is critical, turn red
@@ -22,7 +23,5 @@ func update_healthbar(): # This controls the Healthbar UI that is on the canvas.
 		
 	if label != null:
 		label.text = "HP: " + str(PlayerStats.health)
-
-		
 	
 

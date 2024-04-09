@@ -131,8 +131,10 @@ func update_healthbar():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-			
-	if PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
+	
+	if PlayerStats.health > HALF_HEALTH:
+		healthbar.modulate = Color(0, 1, 0) #Green		
+	elif PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		healthbar.modulate = Color(1,1,0)
 	elif PlayerStats.health <= LOW_HEALTH:
 		#Health is critical, turn red
@@ -143,5 +145,6 @@ func update_healthbar():
 
 func _on_timer_timeout():
 	print("making invis")
-	PlayerStats.health += 1 # Regen HP
+	if PlayerStats.health != PlayerStats.max_health:
+		PlayerStats.health += 1 # Regen HP
 	healthbar.visible = false
