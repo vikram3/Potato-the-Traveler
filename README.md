@@ -12,6 +12,7 @@ https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 - New landscape / tilemap
 - Healthbars in combat and Canvas UI
 - Invincibility Frames on evasion
+- Natural HP Regen utilzing timers
 
 ### Core Features
 - Player Movement
@@ -27,6 +28,9 @@ https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 
 #### Combat Showcase
 ![NVIDIA_Share_0sdWy0jFsK](https://github.com/Erebonia/Potato-the-Traveler/assets/52137104/10cb3bd1-8acc-430f-8932-417925b0687b)
+
+#### HP Regeneration
+![Godot_v4 2 1-stable_win64_iYmyUyO9wm](https://github.com/Erebonia/Potato-the-Traveler/assets/52137104/c0ad177d-c202-4729-84f8-ea76f0e2fc38)
 
 #### Hitpoints State Update
 ![Godot_v4 2 1-stable_win64_Laaz22QrXM](https://github.com/Erebonia/Potato-the-Traveler/assets/52137104/db0eec25-9820-47e9-bf0f-498ffa6e012f)
