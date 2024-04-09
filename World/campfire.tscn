@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://yengxncxsbjj"]
+
+[ext_resource type="Texture2D" uid="uid://dcsres4leeu2c" path="res://World/spr_campfire_burning.png" id="1_p7x4a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjudl"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py874"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e06br"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx2ku"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kjy5"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y43y3"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ma0w"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4o61"]
+atlas = ExtResource("1_p7x4a")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaudy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjudl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py874")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e06br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx2ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kjy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y43y3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ma0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4o61")
+}],
+"loop": true,
+"name": &"Burning",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vby4k"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gaudy")
+animation = &"Burning"
+autoplay = "Burning"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_vby4k")

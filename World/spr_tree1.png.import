@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4wkoejv6w8n7"
-path="res://.godot/imported/TX Tileset Wall.png-912cd01b1eb417191ac4bd81ff1dfe6c.ctex"
+uid="uid://b32co8m2im570"
+path="res://.godot/imported/spr_tree1.png-0aaf1df24a7d49f94de7b68fa686f8bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/TX Tileset Wall.png"
-dest_files=["res://.godot/imported/TX Tileset Wall.png-912cd01b1eb417191ac4bd81ff1dfe6c.ctex"]
+source_file="res://World/spr_tree1.png"
+dest_files=["res://.godot/imported/spr_tree1.png-0aaf1df24a7d49f94de7b68fa686f8bb.ctex"]
 
 [params]
 

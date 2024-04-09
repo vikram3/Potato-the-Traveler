@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c02m10p01a6mj"
-path="res://.godot/imported/TX Props.png-315a7c6a306a2b877edecda53bb3382d.ctex"
+uid="uid://kvfijawfst2f"
+path="res://.godot/imported/spr_grass_tileset.png-88246c2a98aeec0b9204415b1e8ea357.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/TX Props.png"
-dest_files=["res://.godot/imported/TX Props.png-315a7c6a306a2b877edecda53bb3382d.ctex"]
+source_file="res://World/spr_grass_tileset.png"
+dest_files=["res://.godot/imported/spr_grass_tileset.png-88246c2a98aeec0b9204415b1e8ea357.ctex"]
 
 [params]
 
