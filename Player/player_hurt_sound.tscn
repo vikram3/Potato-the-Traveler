@@ -5,5 +5,6 @@
 
 [node name="PlayerHurtSound" type="AudioStreamPlayer"]
 stream = ExtResource("1_fyc8l")
+volume_db = -15.0
 autoplay = true
 script = ExtResource("2_sng3d")

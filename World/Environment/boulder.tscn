@@ -17,6 +17,5 @@ texture = ExtResource("1_h8osg")
 texture = ExtResource("2_7a6aj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_nv8tj")

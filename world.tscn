@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
 [ext_resource type="PackedScene" uid="uid://b1lifm57p7pvt" path="res://Player/player.tscn" id="2_7prvd"]
 [ext_resource type="Texture2D" uid="uid://dvjvp3xrjgysk" path="res://World/Environment/CliffTileset.png" id="2_76j2e"]
-[ext_resource type="PackedScene" uid="uid://dr31cgvo6r8ds" path="res://World/Environment/bush.tscn" id="2_qhdct"]
+[ext_resource type="PackedScene" uid="uid://dr31cgvo6r8ds" path="res://World/Environment/boulder.tscn" id="2_qhdct"]
 [ext_resource type="TileSet" uid="uid://bsycxc8a7b1aa" path="res://World/Potatown.tres" id="3_uw35v"]
 [ext_resource type="PackedScene" uid="uid://dyr164gbvcxrf" path="res://World/Environment/tree.tscn" id="5_k7lfl"]
 [ext_resource type="PackedScene" uid="uid://wgf5hgrk43ew" path="res://World/Environment/grass.tscn" id="6_dcagb"]

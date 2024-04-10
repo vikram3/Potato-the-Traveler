@@ -136,6 +136,7 @@ _data = {
 collision_layer = 16
 script = ExtResource("1_wlirj")
 MAX_SPEED = 25
+WANDER_TARGET_RANGE = 16
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gugca")
@@ -162,7 +163,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_neeqi")
 
 [node name="Stats" parent="." instance=ExtResource("5_n75ol")]
-max_health = 4
+max_health = 3
 
 [node name="PlayerDetection" parent="." instance=ExtResource("6_gpued")]
 visible = false

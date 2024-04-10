@@ -1325,7 +1325,7 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_2ulq5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -7.0
+volume_db = -12.0
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
