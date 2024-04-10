@@ -69,7 +69,7 @@ radius = 8.0
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gh5m0"]
-radius = 32.9848
+radius = 80.399
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgony"]
 radius = 5.0
@@ -136,7 +136,7 @@ _data = {
 collision_layer = 16
 script = ExtResource("1_wlirj")
 MAX_SPEED = 25
-WANDER_TARGET_RANGE = 16
+KNOCKOUT_RANGE = 80
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gugca")
@@ -163,10 +163,9 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_neeqi")
 
 [node name="Stats" parent="." instance=ExtResource("5_n75ol")]
-max_health = 3
+max_health = 10
 
 [node name="PlayerDetection" parent="." instance=ExtResource("6_gpued")]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
