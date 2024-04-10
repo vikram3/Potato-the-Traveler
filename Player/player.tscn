@@ -1305,6 +1305,7 @@ position = Vector2(0, -4)
 rotation = 1.5708
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_nnp8n")]
+visible = false
 position = Vector2(15, 0)
 collision_layer = 8
 script = ExtResource("4_ghg0u")

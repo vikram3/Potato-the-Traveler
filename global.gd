@@ -14,7 +14,8 @@ var game_first_loadin = true
 func finish_changescenes():
 	if transition_scene == true:
 		transition_scene = false
-		if current_scene == "world":
-			current_scene = "boss_room"
-		else:
-			current_scene = "world"
+		
+	if current_scene == "world":
+		current_scene = "boss_room"
+	else:
+		current_scene = "world"
