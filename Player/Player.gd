@@ -144,7 +144,6 @@ func update_healthbar():
 		timer.start()
 
 func _on_timer_timeout():
-	print("making invis")
 	if PlayerStats.health != PlayerStats.max_health:
 		PlayerStats.health += 1 # Regen HP
 	healthbar.visible = false

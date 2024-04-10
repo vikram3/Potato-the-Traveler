@@ -11,7 +11,7 @@ func update_healthbar(): # This controls the Healthbar UI that is on the canvas.
 	var healthbar = $HealthBar
 	healthbar.max_value = PlayerStats.max_health
 	healthbar.value = PlayerStats.health
-	healthbar.visible = true
+	#healthbar.visible = true
 	
 	if PlayerStats.health > HALF_HEALTH:
 		healthbar.modulate = Color(0, 1, 0) #Green		
