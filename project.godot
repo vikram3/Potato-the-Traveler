@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 [autoload]
 
+global="*res://global.gd"
 PlayerStats="*res://Player/player_stats.tscn"
 
 [display]

@@ -147,3 +147,6 @@ func _on_timer_timeout():
 	if PlayerStats.health != PlayerStats.max_health:
 		PlayerStats.health += 1 # Regen HP
 	healthbar.visible = false
+	
+func player():
+	pass
