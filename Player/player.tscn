@@ -1325,6 +1325,7 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_2ulq5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -7.0
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -1345,7 +1346,7 @@ texture_progress = ExtResource("11_b6ng5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"idle"
+animation = &"attack"
 frame = 1
 
 [node name="Timer" type="Timer" parent="."]

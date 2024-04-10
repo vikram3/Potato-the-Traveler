@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3o6yaosckeh8"]
+[gd_scene load_steps=17 format=3 uid="uid://d3o6yaosckeh8"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_26jxo"]
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cdo7umox44b64" path="res://Enemies/bat.tscn" id="7_r8ryl"]
 [ext_resource type="PackedScene" uid="uid://dux3q2gv1s8g4" path="res://UI/health_ui.tscn" id="8_khgbn"]
 [ext_resource type="PackedScene" uid="uid://yengxncxsbjj" path="res://World/Environment/campfire.tscn" id="11_8mfi8"]
+[ext_resource type="AudioStream" uid="uid://lgr7fwqk321e" path="res://Music and Sounds/Whispering_Woods.mp3" id="12_llom8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iovvw"]
 size = Vector2(88, 60)
@@ -625,6 +626,10 @@ offset_bottom = 45.0
 
 [node name="Collison Draw" type="CollisionPolygon2D" parent="Collision Layer"]
 polygon = PackedVector2Array(-79, -63, 92, -62, 91, -115, 188, -117, 193, -62, 366, -62, 369, 106, 397, 139, 369, 145, 366, 268, -76, 273, -77, 265, -81, -60, -137, 368, 294, 361, 521, 310, 466, -46, 360, -203, 75, -200, -80, -63, -79, -61, -81, -60)
+
+[node name="BGM - Whispering Woods" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_llom8")
+autoplay = true
 
 [connection signal="body_entered" from="Boss Transition" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Boss Transition" to="." method="_on_boss_transition_body_exited"]

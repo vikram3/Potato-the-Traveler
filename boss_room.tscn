@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwaturk2bjfds"]
+[gd_scene load_steps=5 format=3 uid="uid://cwaturk2bjfds"]
 
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="2_bdtix"]
 [ext_resource type="TileSet" uid="uid://bsycxc8a7b1aa" path="res://World/Potatown.tres" id="2_d4f5v"]
 [ext_resource type="PackedScene" uid="uid://b1lifm57p7pvt" path="res://Player/player.tscn" id="3_i62hg"]
+[ext_resource type="AudioStream" uid="uid://b30d2271k7t4u" path="res://Music and Sounds/The_Forest_Foxs_Quest2.mp3" id="4_ffm5m"]
 
 [node name="Boss Room" type="Node2D"]
 
@@ -41,6 +42,10 @@ visible = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")
+
+[node name="Boss_Theme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ffm5m")
+autoplay = true
 
 [editable path="World_Camera"]
 [editable path="Player"]
