@@ -13,6 +13,9 @@ https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 - Healthbars in combat and Canvas UI
 - Invincibility Frames on evasion
 - Natural HP Regen utilzing timers
+- Switching between different ingame maps
+- Boss Battle
+- Username on the player character
 
 ### Core Features
 - Player Movement
@@ -28,6 +31,12 @@ https://youtu.be/mAbG8Oi-SvQ?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a
 
 #### Combat Showcase
 ![NVIDIA_Share_0sdWy0jFsK](https://github.com/Erebonia/Potato-the-Traveler/assets/52137104/10cb3bd1-8acc-430f-8932-417925b0687b)
+
+#### Scene Switching
+TODO
+
+#### Boss NPC with finite state machine
+TODO
 
 #### HP Regeneration
 ![Godot_v4 2 1-stable_win64_iYmyUyO9wm](https://github.com/Erebonia/Potato-the-Traveler/assets/52137104/c0ad177d-c202-4729-84f8-ea76f0e2fc38)
