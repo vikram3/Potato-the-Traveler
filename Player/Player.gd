@@ -107,8 +107,13 @@ func attack_animation_finished():
 	state = MOVE
 
 func _on_hurtbox_area_entered(area):
-	#Reduce the player's health after hurtbox is entered.
-	stats.health -= area.damage
+	
+	takeDamage(area)
+	
+	if area.has_method("projectile"):
+		area.queue_free()
+	
+	#Invincibility and hit effect	
 	hurtbox.start_invincibility(.6)
 	hurtbox.create_hit_effect()
 
@@ -150,3 +155,6 @@ func _on_timer_timeout():
 	
 func player():
 	pass
+
+func takeDamage(area):
+	stats.health -= area.damage

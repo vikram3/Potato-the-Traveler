@@ -58,9 +58,9 @@ size = Vector2(37.75, 14)
 
 [node name="bullet" type="Area2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("1_kvo3x")
-damage = 25
+damage = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_whlsm")
@@ -71,5 +71,3 @@ frame_progress = 0.452701
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(27.125, -13)
 shape = SubResource("RectangleShape2D_0uybj")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
