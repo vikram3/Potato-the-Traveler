@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3o6yaosckeh8"]
+[gd_scene load_steps=19 format=3 uid="uid://d3o6yaosckeh8"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_26jxo"]
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://yengxncxsbjj" path="res://World/Environment/campfire.tscn" id="11_8mfi8"]
 [ext_resource type="AudioStream" uid="uid://lgr7fwqk321e" path="res://Music and Sounds/Whispering_Woods.mp3" id="12_llom8"]
 [ext_resource type="PackedScene" uid="uid://dvbvyl1rsoiu6" path="res://Enemies/boss_golem.tscn" id="13_s14mq"]
+[ext_resource type="Texture2D" uid="uid://bkkl6qi4h8nwh" path="res://World/Environment/Rainbow_Cake.png" id="14_5qeg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iovvw"]
 size = Vector2(88, 60)
@@ -616,6 +617,11 @@ position = Vector2(130, 32)
 
 [node name="Campfire" parent="Environment" instance=ExtResource("11_8mfi8")]
 position = Vector2(169, 42)
+
+[node name="RainbowCake" type="Sprite2D" parent="Environment"]
+position = Vector2(208, 141)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_5qeg5")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 visible = false

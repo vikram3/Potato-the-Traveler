@@ -24,7 +24,8 @@ func _ready():
 	set_physics_process(false)
  
 func _process(_delta):
-	direction = player.position - position
+	if player != null:
+		direction = player.position - position
  
 	if direction.x < 0:
 		sprite.flip_h = true
@@ -36,14 +37,13 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
  
 func take_damage():
-	print("hp depleting")
-	health -= 10 - DEF
+	health -= 30 - DEF
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
 
 func _on_hurtbox_area_entered(area):
-	print("detected")
-	take_damage()
+	if health > 0:
+		take_damage()
 	
 func _on_hurtbox_invincibility_started():
 	animationPlayer.play("Start")

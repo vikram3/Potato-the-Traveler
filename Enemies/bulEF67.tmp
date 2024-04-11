@@ -57,8 +57,8 @@ animations = [{
 size = Vector2(37.75, 14)
 
 [node name="bullet" type="Area2D"]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_kvo3x")
 damage = 25
 
