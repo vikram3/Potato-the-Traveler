@@ -136,7 +136,7 @@ _data = {
 collision_layer = 16
 script = ExtResource("1_wlirj")
 MAX_SPEED = 25
-KNOCKOUT_RANGE = 80
+KNOCKOUT_RANGE = 120
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gugca")
