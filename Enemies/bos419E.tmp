@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=36 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/boss_golem.gd" id="1_qu5hb"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Enemies/ArmorBuff.gd" id="10_nko3b"]
 [ext_resource type="Script" path="res://Enemies/Death.gd" id="12_fmiep"]
 [ext_resource type="Script" path="res://Overlap/hurtbox.gd" id="16_6uqi4"]
+[ext_resource type="PackedScene" uid="uid://dk7ckqq8mq2nr" path="res://Stats.tscn" id="18_7uvj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eygyy"]
 size = Vector2(256.5, 16)
@@ -432,6 +433,7 @@ height = 52.0
 size = Vector2(38, 44)
 
 [node name="Boss_Golem" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_qu5hb")
@@ -599,7 +601,11 @@ value = 100.0
 texture_under = ExtResource("4_w5hgn")
 texture_progress = ExtResource("5_s0sfc")
 
+[node name="Stats" parent="." instance=ExtResource("18_7uvj4")]
+max_health = 50
+
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Hurtbox/Timer" to="." method="_on_timer_timeout"]
+[connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]

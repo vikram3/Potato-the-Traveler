@@ -514,7 +514,6 @@ position = Vector2(296, 130)
 
 [node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
 position = Vector2(143, -25)
-scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.8, 0.8)
 limit_smoothed = true
 rotation_smoothing_enabled = true
