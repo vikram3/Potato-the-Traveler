@@ -14,4 +14,8 @@ func transition():
 		get_parent().change_state("Follow")
  
 func _on_player_detection_body_entered(body):
-	player_entered = true
+	if body.has_method("player"):
+		print("player in detection zone")
+		player_entered = true
+
+

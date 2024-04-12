@@ -1,7 +1,7 @@
 extends State
  
 var can_transition: bool = false
-@export var DASH_SPEED = 0.4
+@export var DASH_SPEED = 0.8
  
 func enter():
 	super.enter()

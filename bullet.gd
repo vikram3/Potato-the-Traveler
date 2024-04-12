@@ -21,10 +21,8 @@ func _physics_process(delta):
 		position += velocity * delta
 		
 		if direction.x < 0:
-			print("left")
 			sprite.flip_h = true
 		else:
-			print("right")
 			sprite.flip_h = false
 	 
 func projectile():

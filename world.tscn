@@ -512,18 +512,6 @@ metadata/_edit_lock_ = true
 [node name="Boss_Golem" parent="." instance=ExtResource("13_s14mq")]
 position = Vector2(296, 130)
 
-[node name="CollisionShape2D" parent="Boss_Golem/pivot/LaserAOE" index="0"]
-disabled = true
-
-[node name="BossName" parent="Boss_Golem/UI/BossHPBar" index="0"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 77.0
-offset_bottom = 23.0
-
-[node name="CollisionShape2D" parent="Boss_Golem/FiniteStateMachine/MeleeAttack/MeleeAOE" index="0"]
-disabled = true
-
 [node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
 position = Vector2(143, -25)
 scale = Vector2(1.5, 1.5)
@@ -648,5 +636,4 @@ stream = ExtResource("12_llom8")
 [connection signal="body_entered" from="Boss Transition" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Boss Transition" to="." method="_on_boss_transition_body_exited"]
 
-[editable path="Boss_Golem"]
 [editable path="World_Camera"]

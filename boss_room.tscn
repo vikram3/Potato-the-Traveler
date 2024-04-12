@@ -19,7 +19,6 @@ script = ExtResource("1_tclx6")
 
 [node name="World_Camera" parent="." instance=ExtResource("2_bdtix")]
 position = Vector2(138, 177)
-scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.8, 0.8)
 limit_smoothed = true
 rotation_smoothing_enabled = true

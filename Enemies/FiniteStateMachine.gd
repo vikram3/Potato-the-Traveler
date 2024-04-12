@@ -2,6 +2,8 @@ extends Node2D
  
 var current_state: State
 var previous_state: State
+@onready var start_position = global_position
+@onready var target_position = global_position
  
 func _ready():
 	current_state = get_child(0) as State
@@ -14,3 +16,4 @@ func change_state(state):
  
 	previous_state.exit()
 	previous_state = current_state
+
