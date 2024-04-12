@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3o6yaosckeh8"]
+[gd_scene load_steps=18 format=3 uid="uid://d3o6yaosckeh8"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_26jxo"]
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
@@ -8,7 +8,6 @@
 [ext_resource type="TileSet" uid="uid://bsycxc8a7b1aa" path="res://World/Potatown.tres" id="3_uw35v"]
 [ext_resource type="PackedScene" uid="uid://dyr164gbvcxrf" path="res://World/Environment/tree.tscn" id="5_k7lfl"]
 [ext_resource type="PackedScene" uid="uid://wgf5hgrk43ew" path="res://World/Environment/grass.tscn" id="6_dcagb"]
-[ext_resource type="PackedScene" uid="uid://cdo7umox44b64" path="res://Enemies/bat.tscn" id="7_r8ryl"]
 [ext_resource type="PackedScene" uid="uid://dux3q2gv1s8g4" path="res://UI/health_ui.tscn" id="8_khgbn"]
 [ext_resource type="PackedScene" uid="uid://yengxncxsbjj" path="res://World/Environment/campfire.tscn" id="11_8mfi8"]
 [ext_resource type="AudioStream" uid="uid://lgr7fwqk321e" path="res://Music and Sounds/Whispering_Woods.mp3" id="12_llom8"]
@@ -510,6 +509,21 @@ y_sort_enabled = true
 script = ExtResource("1_26jxo")
 metadata/_edit_lock_ = true
 
+[node name="Boss_Golem" parent="." instance=ExtResource("13_s14mq")]
+position = Vector2(296, 130)
+
+[node name="CollisionShape2D" parent="Boss_Golem/pivot/LaserAOE" index="0"]
+disabled = true
+
+[node name="BossName" parent="Boss_Golem/UI/BossHPBar" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 77.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" parent="Boss_Golem/FiniteStateMachine/MeleeAttack/MeleeAOE" index="0"]
+disabled = true
+
 [node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
 position = Vector2(143, -25)
 scale = Vector2(1.5, 1.5)
@@ -533,9 +547,6 @@ ROLL_SPEED = 200
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")
-
-[node name="Boss_Golem" parent="." instance=ExtResource("13_s14mq")]
-position = Vector2(223, 196)
 
 [node name="Boss Transition" type="Area2D" parent="."]
 position = Vector2(142, 36)
@@ -589,31 +600,25 @@ y_sort_enabled = true
 position = Vector2(4, 27)
 
 [node name="Grass2" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
-position = Vector2(0, 17)
+position = Vector2(-49, 17)
 
 [node name="Grass3" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
-position = Vector2(127, 164)
+position = Vector2(-64, 188)
 
 [node name="Grass4" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
 position = Vector2(285, 165)
 
 [node name="Grass6" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
-position = Vector2(79, 26)
+position = Vector2(4, 15)
 
 [node name="Grass7" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
 position = Vector2(287, 18)
 
 [node name="Grass10" parent="Environment/Grass" instance=ExtResource("6_dcagb")]
-position = Vector2(316, 129)
+position = Vector2(196, 203)
 
 [node name="Enemies" type="Node2D" parent="Environment"]
 position = Vector2(6, 29)
-
-[node name="Bat" parent="Environment/Enemies" instance=ExtResource("7_r8ryl")]
-position = Vector2(23, 49)
-
-[node name="Bat2" parent="Environment/Enemies" instance=ExtResource("7_r8ryl")]
-position = Vector2(130, 32)
 
 [node name="Campfire" parent="Environment" instance=ExtResource("11_8mfi8")]
 position = Vector2(169, 42)
@@ -643,4 +648,5 @@ stream = ExtResource("12_llom8")
 [connection signal="body_entered" from="Boss Transition" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Boss Transition" to="." method="_on_boss_transition_body_exited"]
 
+[editable path="Boss_Golem"]
 [editable path="World_Camera"]

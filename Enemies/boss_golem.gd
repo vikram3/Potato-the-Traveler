@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var KNOCKOUT_RANGE = 100
 @export var bossHP = 50
 
+@onready var meleeAttackDir = $FiniteStateMachine/MeleeAttack/MeleeAOE
+
 var direction : Vector2
 var DEF = 0
  
@@ -32,8 +34,10 @@ func _process(_delta):
  
 	if direction.x < 0:
 		sprite.flip_h = true
+		meleeAttackDir.position.x = -31
 	else:
 		sprite.flip_h = false
+		meleeAttackDir.position.x = 17
  
 func _physics_process(delta):
 	velocity = direction.normalized() * 40

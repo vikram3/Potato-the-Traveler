@@ -1,6 +1,7 @@
 extends State
  
 var can_transition: bool = false
+@export var DASH_SPEED = 0.4
  
 func enter():
 	super.enter()
@@ -11,7 +12,7 @@ func enter():
 func dash():
 	var tween = create_tween()
 	if player != null:
-		tween.tween_property(owner, "position", player.position, 0.8)
+		tween.tween_property(owner, "position", player.position, DASH_SPEED)
 	await tween.finished
  
 func transition():
