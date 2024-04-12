@@ -13,13 +13,13 @@ func _physics_process(delta):
 	if player != null:
 		playerLastLoc = player.position
 		acceleration = (playerLastLoc - position).normalized() * 700
- 
-	velocity += acceleration * delta
-	rotation = velocity.angle()
- 
-	velocity = velocity.limit_length(150)
- 
-	position += velocity * delta
+		velocity += acceleration * delta
+		rotation = velocity.angle()
+		velocity = velocity.limit_length(150)
+		position += velocity * delta
 	 
 func projectile():
 	pass
+
+func _on_timer_timeout():
+	queue_free()
