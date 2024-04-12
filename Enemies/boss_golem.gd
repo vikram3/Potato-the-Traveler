@@ -65,7 +65,7 @@ func _process(_delta):
 		meleeAttackDir.position.x = 17
  
 func _physics_process(delta):
-	velocity = direction.normalized() * 40
+	velocity = direction.normalized() * 55
 	move_and_collide(velocity * delta)
  
 func take_damage(area):

@@ -14,10 +14,13 @@ func transition():
 	if distance < 30:
 		get_parent().change_state("MeleeAttack")
 	elif distance > 130:
-		#randomize the attacks
-		var chance = randi() % 2
-		match chance:
-			0:
-				get_parent().change_state("HomingMissile")
-			1:
-				get_parent().change_state("LaserBeam")
+		attackPlayerRanged()
+
+func attackPlayerRanged():
+	#randomize the attacks
+	var chance = randi() % 2
+	match chance:
+		0:
+			get_parent().change_state("HomingMissile")
+		1:
+			get_parent().change_state("LaserBeam")

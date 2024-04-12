@@ -5,8 +5,10 @@ var can_transition: bool = false
  
 func enter():
 	super.enter()
+	animation_player.speed_scale = 1.5
 	await play_animation("laser_cast")
 	await play_animation("laser")
+	animation_player.speed_scale = 1
 	can_transition = true
  
 func play_animation(anim_name):

@@ -4,6 +4,8 @@ extends Area2D
 @onready var player = get_parent().find_child("Player")
 @onready var playerLastLoc = null
 @onready var sprite = $AnimatedSprite2D
+@onready var animationPlayer = $AnimationPlayer
+@onready var hurtbox = $Hurtbox
 
 @export var damage = 1
  
@@ -28,5 +30,20 @@ func _physics_process(delta):
 func projectile():
 	pass
 
+func _on_hurtbox_area_entered(area):
+	if area.has_method("playerWeapon"):
+		print("Projectile has been slashed by the player.")
+		queue_free()
+		hurtbox.create_hit_effect()
+		hurtbox.start_invincibility(0.4)
+		
+func _on_hurtbox_invincibility_started():
+	animationPlayer.play("Start")
+
+func _on_hurtbox_invincibility_ended():
+	animationPlayer.play("Stop")
+	
+
+
 func _on_timer_timeout():
-	queue_free()
+	pass # Replace with function body.

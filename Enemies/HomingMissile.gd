@@ -5,8 +5,10 @@ var can_transition: bool = false
  
 func enter():
 	super.enter()
+	animation_player.speed_scale = 0.75
 	animation_player.play("ranged_attack")
 	await animation_player.animation_finished
+	animation_player.speed_scale = 1
 	shoot()
 	can_transition = true
  
