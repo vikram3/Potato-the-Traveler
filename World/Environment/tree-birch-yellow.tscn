@@ -10,7 +10,7 @@ height = 16.0
 [node name="Tree" type="StaticBody2D"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 16)
 texture = ExtResource("1_83jv7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
