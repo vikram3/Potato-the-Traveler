@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7xb0raqot3km"]
+[gd_scene load_steps=3 format=3 uid="uid://c7xb0raqot3km"]
 
-[ext_resource type="Texture2D" uid="uid://dog6lttt22v0v" path="res://Shadows/LargeShadow.png" id="1_6tekg"]
 [ext_resource type="Texture2D" uid="uid://c3ux4koq4jcxc" path="res://World/Environment/Asset Pack - Pixivan/tree-mother.png" id="2_xxh7a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8nxa"]
@@ -8,10 +7,6 @@ radius = 14.0
 height = 28.0
 
 [node name="Tree" type="StaticBody2D"]
-
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 46)
-texture = ExtResource("1_6tekg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
