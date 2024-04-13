@@ -97,6 +97,4 @@ shape = SubResource("RectangleShape2D_ns5v3")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 [connection signal="timeout" from="Hurtbox/Timer" to="." method="_on_timer_timeout"]

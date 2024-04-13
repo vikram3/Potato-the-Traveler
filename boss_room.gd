@@ -11,7 +11,6 @@ func change_scene():
 			get_tree().change_scene_to_file("res://world.tscn")
 			global.finish_changescenes()
 
-
 func _on_exit_to_world_body_entered(body):
 	if body.has_method("player"):
 		global.transition_scene = true

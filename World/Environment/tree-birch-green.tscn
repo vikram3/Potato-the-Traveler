@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://0hxcd2qn0qv8"]
+
+[ext_resource type="Texture2D" uid="uid://dog6lttt22v0v" path="res://Shadows/LargeShadow.png" id="1_d151i"]
+[ext_resource type="Texture2D" uid="uid://txgxnaxa0yg6" path="res://World/Environment/Asset Pack - Pixivan/Tree-birch-green.png" id="2_2ysui"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8nxa"]
+radius = 8.0
+height = 16.0
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("1_d151i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_2ysui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d8nxa")

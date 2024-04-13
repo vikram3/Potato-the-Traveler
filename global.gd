@@ -7,7 +7,7 @@ var player_exit_boss_posx = 143
 var player_exit_boss_posy = -25
 
 var player_start_posx = 153
-var player_start_posy = 107
+var player_start_posy = 200
 
 var game_first_loadin = true
 

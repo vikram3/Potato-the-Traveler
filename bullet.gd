@@ -35,15 +35,6 @@ func _on_hurtbox_area_entered(area):
 		print("Projectile has been slashed by the player.")
 		queue_free()
 		hurtbox.create_hit_effect()
-		hurtbox.start_invincibility(0.4)
-		
-func _on_hurtbox_invincibility_started():
-	animationPlayer.play("Start")
-
-func _on_hurtbox_invincibility_ended():
-	animationPlayer.play("Stop")
-	
-
 
 func _on_timer_timeout():
 	pass # Replace with function body.
