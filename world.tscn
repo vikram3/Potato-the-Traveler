@@ -28,8 +28,16 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-207, -124)
 
+[node name="WeatherUI" parent="day_and_night" index="3"]
+layer = 2
+
+[node name="Sun" parent="day_and_night/WeatherUI" index="0"]
+position = Vector2(308, 12)
+
+[node name="Moon" parent="day_and_night/WeatherUI" index="1"]
+position = Vector2(309, 11)
+
 [node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
-visible = false
 position = Vector2(153, 200)
 zoom = Vector2(0.75, 0.75)
 limit_smoothed = true
@@ -38,10 +46,10 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="TopLeft" parent="World_Camera/Limits" index="0"]
-position = Vector2(-79, -62)
+position = Vector2(-80, -64)
 
 [node name="BottomRight" parent="World_Camera/Limits" index="1"]
-position = Vector2(366, 268)
+position = Vector2(368, 272)
 
 [node name="Player" parent="." instance=ExtResource("2_7prvd")]
 y_sort_enabled = true
@@ -52,13 +60,22 @@ collision_layer = 3
 remote_path = NodePath("../../World_Camera")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HealthUI" parent="PlayerUI" instance=ExtResource("8_khgbn")]
-visible = false
 z_index = 1
 offset_top = 5.0
 offset_bottom = 45.0
+
+[node name="Username" type="Label" parent="PlayerUI"]
+visible = false
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 8
+text = "Label"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartingMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -190,4 +207,5 @@ position = Vector2(546, 28)
 [connection signal="body_entered" from="Transition Map" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Transition Map" to="." method="_on_boss_transition_body_exited"]
 
+[editable path="day_and_night"]
 [editable path="World_Camera"]

@@ -12,7 +12,8 @@ offset_bottom = 40.0
 script = ExtResource("1_rel7j")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-modulate = Color(0, 0.984314, 0, 1)
+visible = false
+modulate = Color(0, 0.470588, 0, 1)
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
