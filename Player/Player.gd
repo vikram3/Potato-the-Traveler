@@ -58,7 +58,7 @@ func move_state(delta):
 		swordHitbox.knockback_vector = input_vector # Sword hitbox is in the direction we are facing
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Attack/blend_position", input_vector)
+		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Roll/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
@@ -93,8 +93,7 @@ func roll_state(): #
 	move()
 
 func attack_state():
-	#Stops the player from sliding cause they were moving.
-	velocity = Vector2.ZERO
+	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.
 	animationState.travel("Attack")
 
 func move():
