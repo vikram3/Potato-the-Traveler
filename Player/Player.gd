@@ -5,6 +5,7 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export var MAX_SPEED = 100
 @export var ROLL_SPEED = 125
 @export var Friction = 500
+@export var AtkNumber: int = 3
 
 enum {
 	MOVE,
@@ -15,6 +16,7 @@ enum {
 var state = MOVE
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
+var isAttacking = false
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
@@ -26,6 +28,7 @@ var stats = PlayerStats
 @onready var HALF_HEALTH = PlayerStats.max_health * 0.5
 @onready var timer = $Timer
 @onready var healthbar = $HealthBar
+@onready var AtkTimer = $AttackTimer
 
 func _ready():
 	timer = $Timer
@@ -42,7 +45,7 @@ func _physics_process(delta):
 		ROLL:
 			roll_state()
 		ATTACK:
-			attack_state()
+			attack_combo()
 
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
@@ -59,11 +62,13 @@ func move_state(delta):
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Roll/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
-
 		move()
+		attack_combo()
 		update_state_after_input()
 	else:
 		animationState.travel("Idle")
@@ -72,12 +77,31 @@ func move_state(delta):
 		
 		move()
 		update_state_after_input()
+		
+func attack_combo():
+	if Input.is_action_just_pressed("attack") and AtkNumber == 3:
+		stayInPlace()
+		startAttacking("Attack")
+	elif Input.is_action_just_pressed("attack") and AtkNumber == 2:
+		stayInPlace()
+		startAttacking("Attack_Combo")
+	elif Input.is_action_just_pressed("attack") and AtkNumber == 1:
+		stayInPlace()
+		startAttacking("Attack_Combo2")
+
+func startAttacking(animationName):
+	isAttacking = true
+	AtkTimer.start()
+	animationState.travel(animationName)
 
 func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK	
 	elif Input.is_action_just_pressed("roll"):
 		state = ROLL
+	
+func remove_atknumb():
+	AtkNumber -= 1
 	
 func roll_state(): #
 	#Prevents player from rolling after getting attack and getting iframe animation.
@@ -93,8 +117,9 @@ func roll_state(): #
 	move()
 
 func attack_state():
-	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.
-	animationState.travel("Attack")
+	#velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.
+	#animationState.travel("Attack")
+	pass
 
 func move():
 	move_and_slide()
@@ -103,8 +128,9 @@ func roll_animation_finished():
 	state = MOVE
 	
 func attack_animation_finished():
+	isAttacking = false
 	state = MOVE
-
+	
 func _on_hurtbox_area_entered(area):
 	
 	takeDamage(area)
@@ -157,3 +183,11 @@ func player():
 
 func takeDamage(area):
 	stats.health -= area.damage
+
+func _on_attack_timer_timeout():
+	AtkNumber = 3
+	isAttacking = false
+	
+func stayInPlace():
+	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.	
+
