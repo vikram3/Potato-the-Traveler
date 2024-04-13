@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://0hxcd2qn0qv8"]
 
-[ext_resource type="Texture2D" uid="uid://dog6lttt22v0v" path="res://Shadows/LargeShadow.png" id="1_d151i"]
+[ext_resource type="Texture2D" uid="uid://bx0iloy0iuw4x" path="res://Shadows/MediumShadow.png" id="1_dgjfn"]
 [ext_resource type="Texture2D" uid="uid://txgxnaxa0yg6" path="res://World/Environment/Asset Pack - Pixivan/Tree-birch-green.png" id="2_2ysui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d8nxa"]
@@ -10,8 +10,8 @@ height = 16.0
 [node name="Tree" type="StaticBody2D"]
 
 [node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
-texture = ExtResource("1_d151i")
+position = Vector2(0, 19)
+texture = ExtResource("1_dgjfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
