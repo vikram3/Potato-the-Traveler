@@ -101,7 +101,7 @@ func move_state(delta):
 		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", input_vector)
-		animationTree.set("parameters/Roll/blend_position", input_vector)
+		animationTree.set("parameters/Roll/Blendspace2D/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
 		move_and_slide()
