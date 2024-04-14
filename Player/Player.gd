@@ -17,7 +17,8 @@ enum {
 var state = MOVE
 var roll_vector = Vector2.DOWN
 var stats = PlayerStats
-var atkCount = 0
+
+var baseDMG = 0
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
@@ -32,29 +33,40 @@ var atkCount = 0
 @onready var attackTimer = $AttackTimer
 @onready var debug = $debug
 
+
 func _ready():
 	timer = $HealthBarTimer
 	randomize() # Generates a new seed for every time the game is opened.
 	self.stats.connect("no_health", queue_free)
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
+	baseDMG += swordHitbox.damage
 
 func _physics_process(delta):
 	update_healthbar() 
 	
-	debug.text = enum_to_string(state) + ' | Timer: ' + str(attackTimer.time_left)
+	debug.text = enum_to_string(state) + ' DMG: ' + str(swordHitbox.damage) + ' | Timer: ' + str(attackTimer.time_left)
 	
 	match state:
 		MOVE:
+			calculateDmg(baseDMG)
 			move_state(delta)
 		ROLL:
 			roll_state()
 		ATTACK:
+			calculateDmg(baseDMG)
 			attack_state()
 		ATTACK_COMBO:
+			var comboDMG = 4
+			calculateDmg(baseDMG + comboDMG)
 			attack_combo()
 		ATTACK_COMBO2:
+			var comboDMG2 = 10
+			calculateDmg(baseDMG + comboDMG2)
 			attack_combo2()
+
+func calculateDmg(dmgBoostStat):
+	swordHitbox.damage = dmgBoostStat
 			
 func attack_combo():
 	if attackTimer.is_stopped(): 
