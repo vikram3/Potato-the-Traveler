@@ -64,7 +64,7 @@ func attack_combo():
 		attackTimer.stop()
 		stayInPlace()
 		animationState.travel("Attack_Combo")
-		attackTimer.start
+		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = MOVE
