@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var state = "night"
+var state = "day"
 var change_state = false
 
 @onready var weatherUI = $WeatherUI
@@ -12,7 +12,10 @@ func _ready():
 	if state == "day":
 		weatherUI.get_child(0).visible = true
 		weatherUI.get_child(1).visible = false
+		$AnimationPlayer.speed_scale = 100
 		$AnimationPlayer.play("Transition to Day")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.speed_scale = 1
 	elif state == "night":
 		#$AnimationPlayer.play("Transition to Night")
 		#light.energy = 0.7
