@@ -42,7 +42,7 @@ func _ready():
 func _physics_process(delta):
 	update_healthbar() 
 	
-	debug.text = enum_to_string(state) + '| Timer: ' + str(attackTimer.time_left)
+	debug.text = enum_to_string(state) + ' | Timer: ' + str(attackTimer.time_left)
 	
 	match state:
 		MOVE:

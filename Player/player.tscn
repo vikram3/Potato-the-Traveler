@@ -2909,11 +2909,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_jnc71")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 1)
-parameters/Attack/TimeScale/scale = 2.0
+parameters/Attack/TimeScale/scale = 1.2
 parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 1)
 parameters/Attack_Combo/TimeScale/scale = 2.0
 parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 1)
-parameters/Attack_Combo2/TimeScale/scale = 1.5
+parameters/Attack_Combo2/TimeScale/scale = 1.0
 parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Roll/blend_position = Vector2(-1, 0)
 parameters/Run/blend_position = Vector2(0, 1)
@@ -2983,17 +2983,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="debug" type="Label" parent="."]
 z_index = 1
-offset_left = -7.0
-offset_top = -43.0
-offset_right = 9.0
-offset_bottom = -34.0
-theme_override_font_sizes/font_size = 5
-text = "Debug"
+offset_left = -24.0
+offset_top = -46.0
+offset_right = 28.0
+offset_bottom = -35.0
+theme_override_font_sizes/font_size = 7
+text = "MOVE | Timer: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
