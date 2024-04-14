@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4uh7mr2tjfch"
-path="res://.godot/imported/sword_slash.png-3552d84da6c901c09a0181e1597d1355.ctex"
+uid="uid://bq6bs2h3vq4h6"
+path="res://.godot/imported/BackSIde Movement.png-eea33db2ed001828f7fd0b58f33b998b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Pixivan MC/sword_slash.png"
-dest_files=["res://.godot/imported/sword_slash.png-3552d84da6c901c09a0181e1597d1355.ctex"]
+source_file="res://Player/Pixivan MC/BackSIde Movement.png"
+dest_files=["res://.godot/imported/BackSIde Movement.png-eea33db2ed001828f7fd0b58f33b998b.ctex"]
 
 [params]
 
