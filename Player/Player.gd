@@ -81,6 +81,7 @@ func attack_combo2():
 func attack_state():
 	stayInPlace()
 	animationState.travel("Attack")
+	await animationTree.animation_finished
 	
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
