@@ -1,9 +1,10 @@
 extends StaticBody2D
 
 var state = "night"
-
 var change_state = false
+
 @onready var weatherUI = $WeatherUI
+@onready var light = $DirectionalLight2D
 
 #Length of the day is based on the current timer's length
 # 5 minutes a day (300 seconds)
@@ -14,6 +15,7 @@ func _ready():
 		$AnimationPlayer.play("Transition to Day")
 	elif state == "night":
 		#$AnimationPlayer.play("Transition to Night")
+		#light.energy = 0.7
 		weatherUI.get_child(0).visible = false
 		weatherUI.get_child(1).visible = true
 

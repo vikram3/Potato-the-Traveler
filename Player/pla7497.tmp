@@ -1,4 +1,4 @@
-[gd_scene load_steps=212 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=213 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -1947,7 +1947,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hs7kw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dseom"]
-graph_offset = Vector2(-1091.74, 29.8881)
+graph_offset = Vector2(-1088.01, 41.0769)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_1vy4e")
 nodes/BlendSpace2D/position = Vector2(-449.388, 118.701)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_hs7kw")
@@ -1982,7 +1982,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pnyry"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jx3ug"]
-graph_offset = Vector2(-727.672, 209.417)
+graph_offset = Vector2(-900.433, 61.9177)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_adn10")
 nodes/BlendSpace2D/position = Vector2(-168.714, 154.78)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_pnyry")
@@ -2018,7 +2018,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_fghdk"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_yi3v2"]
-graph_offset = Vector2(-616.717, 139.869)
+graph_offset = Vector2(-988.04, 105.33)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_daf7u")
 nodes/BlendSpace2D/position = Vector2(-67.04, 168.33)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_fghdk")
@@ -2116,6 +2116,8 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1twrr"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0hqac"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jnc71"]
 states/Attack/node = SubResource("AnimationNodeBlendTree_dseom")
 states/Attack/position = Vector2(342, 193)
@@ -2130,8 +2132,8 @@ states/Roll/position = Vector2(342, 45)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_5vaak")
 states/Run/position = Vector2(466, 108)
 states/Start/position = Vector2(222, 108)
-transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_1h787"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_tbsi3"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr")]
-graph_offset = Vector2(-272, 148)
+transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_1h787"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_tbsi3"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr"), "Run", "Attack", SubResource("AnimationNodeStateMachineTransition_0hqac")]
+graph_offset = Vector2(-666, 160)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
 
@@ -3053,6 +3055,11 @@ animations = [{
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_fjjot")
+ACCELERATION = null
+MAX_SPEED = null
+ROLL_SPEED = null
+Friction = null
+AtkNumber = null
 
 [node name="ShadowSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
@@ -3075,12 +3082,12 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_jnc71")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 1)
-parameters/Attack/TimeScale/scale = 1.0
-parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 1)
-parameters/Attack_Combo/TimeScale/scale = 1.0
-parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 1)
-parameters/Attack_Combo2/TimeScale/scale = 1.0
+parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/Attack/TimeScale/scale = 1.2
+parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/Attack_Combo/TimeScale/scale = 2.0
+parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/Attack_Combo2/TimeScale/scale = 2.0
 parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Roll/blend_position = Vector2(-1, 0)
 parameters/Run/blend_position = Vector2(0, 1)
@@ -3091,7 +3098,7 @@ one_shot = true
 
 [node name="HitboxPivot" type="Marker2D" parent="."]
 position = Vector2(0, -4)
-rotation = 4.71239
+rotation = 3.14159
 
 [node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -3102,7 +3109,6 @@ damage = 3
 [node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
-disabled = true
 
 [node name="Hurtbox" parent="." instance=ExtResource("5_bhnfg")]
 collision_mask = 4

@@ -45,13 +45,14 @@ func _physics_process(delta):
 		ROLL:
 			roll_state()
 		ATTACK:
-			attack_combo()
+			attack_state()
 
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
 	input_vector.y = Input.get_action_strength("Move_Down") - Input.get_action_strength("Move_Up")
+	
 	input_vector = input_vector.normalized()
 	
 	#Gain speed as we move
@@ -68,27 +69,28 @@ func move_state(delta):
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
 		move()
-		attack_combo()
 		update_state_after_input()
 	else:
 		animationState.travel("Idle")
 		#Slow us down when we are stopping movement.
 		velocity = velocity.move_toward(Vector2.ZERO, Friction * delta)
-		
 		move()
 		update_state_after_input()
 		
-func attack_combo():
-	if Input.is_action_just_pressed("attack") and AtkNumber == 3:
+func attack_state():
+	if  AtkNumber == 3:
 		stayInPlace()
 		startAttacking("Attack")
+		print("Attack 1")
 	elif Input.is_action_just_pressed("attack") and AtkNumber == 2:
 		stayInPlace()
 		startAttacking("Attack_Combo")
+		print("Attack 2")
 	elif Input.is_action_just_pressed("attack") and AtkNumber == 1:
 		stayInPlace()
 		startAttacking("Attack_Combo2")
-
+		print("Attack 3")
+		
 func startAttacking(animationName):
 	isAttacking = true
 	AtkTimer.start()
@@ -116,11 +118,6 @@ func roll_state(): #
 	animationState.travel("Roll")
 	move()
 
-func attack_state():
-	#velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.
-	#animationState.travel("Attack")
-	pass
-
 func move():
 	move_and_slide()
 	
@@ -132,7 +129,6 @@ func attack_animation_finished():
 	state = MOVE
 	
 func _on_hurtbox_area_entered(area):
-	
 	takeDamage(area)
 	
 	if area.has_method("projectile"):
