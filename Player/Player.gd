@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
+
+#Speed
 @export var ACCELERATION = 500
 @export var MAX_SPEED = 100
 @export var ROLL_SPEED = 125
@@ -30,23 +32,32 @@ var bow_equipped = true
 var bow_cooldown = true
 var arrow = preload("res://Player/arrow.tscn")
 var mouse_loc_from_player = null
+@onready var arrowProjectile = $ArrowProjectile
 
+#Stat Multipliers
 var baseDMG = 0
 
+#General
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
+
+#Melee Attack
 @onready var swordHitbox = $HitboxPivot/SwordHitbox
+@onready var attackTimer = $AttackTimer
+
+#Hurtbox
 @onready var hurtbox = $Hurtbox
 @onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+
+#HealthUI
 @onready var LOW_HEALTH = PlayerStats.max_health * 0.25
 @onready var HALF_HEALTH = PlayerStats.max_health * 0.5
 @onready var timer = $HealthBarTimer
 @onready var healthbar = $HealthBar
-@onready var attackTimer = $AttackTimer
-@onready var debug = $debug
-@onready var arrowProjectile = $ArrowProjectile
 
+#Debugging
+@onready var debug = $debug
 
 func _ready():
 	timer = $HealthBarTimer
@@ -94,7 +105,7 @@ func _physics_process(delta):
 				arrow_instance.rotation = arrowProjectile.rotation
 				arrow_instance.global_position = arrowProjectile.global_position
 				add_child(arrow_instance)
-				await get_tree().create_timer(0.7).timeout
+				await get_tree().create_timer(0.4).timeout
 				bow_cooldown = true
 				
 func syncArrowToPointer():
@@ -149,6 +160,9 @@ func move_state(delta):
 		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Bow_Ready/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Bow_Fire/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Roll/Blendspace2D/blend_position", input_vector)
 		animationState.travel("Run")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) # This will be the direction we move to
