@@ -87,7 +87,7 @@ func _physics_process(delta):
 			animationState.travel("Bow_Aim")
 		BOW_FIRE:
 			syncArrowToPointer()
-			if bow_equipped and bow_cooldown and Input.is_action_pressed("bow_attack"):
+			if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
 				animationState.travel("Bow_Fire")
 				bow_cooldown = false
 				var arrow_instance = arrow.instantiate()
