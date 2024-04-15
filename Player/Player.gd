@@ -11,12 +11,25 @@ enum {
 	ROLL,
 	ATTACK,
 	ATTACK_COMBO,
-	ATTACK_COMBO2
+	ATTACK_COMBO2,
+	BOW_READY,
+	BOW_AIM,
+	BOW_FIRE
 }
 
+#Starting State
 var state = MOVE
+
+#Base state for rolling
 var roll_vector = Vector2.DOWN
+
 var stats = PlayerStats
+
+#Bow
+var bow_equipped = true
+var bow_cooldown = true
+var arrow = preload("res://Player/arrow.tscn")
+var mouse_loc_from_player = null
 
 var baseDMG = 0
 
@@ -32,6 +45,7 @@ var baseDMG = 0
 @onready var healthbar = $HealthBar
 @onready var attackTimer = $AttackTimer
 @onready var debug = $debug
+@onready var arrowProjectile = $ArrowProjectile
 
 
 func _ready():
@@ -45,6 +59,7 @@ func _ready():
 func _physics_process(delta):
 	update_healthbar() 
 	
+	mouse_loc_from_player = get_global_mouse_position() - self.position
 	debug.text = enum_to_string(state) + ' DMG: ' + str(swordHitbox.damage) + ' | Timer: ' + str(attackTimer.time_left)
 	
 	match state:
@@ -64,6 +79,27 @@ func _physics_process(delta):
 			var comboDMG2 = 10
 			calculateDmg(baseDMG + comboDMG2)
 			attack_combo2()
+		BOW_READY:
+			syncArrowToPointer()
+			animationState.travel("Bow_Ready")
+		BOW_AIM:
+			syncArrowToPointer()
+			animationState.travel("Bow_Aim")
+		BOW_FIRE:
+			syncArrowToPointer()
+			if bow_equipped and bow_cooldown and Input.is_action_pressed("bow_attack"):
+				animationState.travel("Bow_Fire")
+				bow_cooldown = false
+				var arrow_instance = arrow.instantiate()
+				arrow_instance.rotation = arrowProjectile.rotation
+				arrow_instance.global_position = arrowProjectile.global_position
+				add_child(arrow_instance)
+				await get_tree().create_timer(0.7).timeout
+				bow_cooldown = true
+				
+func syncArrowToPointer():
+	var mouse_pos = get_global_mouse_position()
+	arrowProjectile.look_at(mouse_pos)
 
 func calculateDmg(dmgBoostStat):
 	swordHitbox.damage = dmgBoostStat
@@ -130,6 +166,8 @@ func update_state_after_input(): # Updates the state machine with the proper sta
 		state = ATTACK	
 	elif Input.is_action_just_pressed("roll"):
 		state = ROLL
+	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
+		state = BOW_READY
 	
 func roll_state(): #
 	#Prevents player from rolling after getting attack and getting iframe animation.
@@ -152,6 +190,15 @@ func attack_animation_finished():
 	
 func attack_combo_animation_finished():
 	state = ATTACK_COMBO2
+	
+func bow_ready_finished():
+	state = BOW_AIM
+
+func bow_aim_finished():
+	state = BOW_FIRE
+	
+func bow_fire_finished():
+	state = MOVE
 	
 func attack_combo2_animation_finished():
 	state = MOVE
@@ -226,5 +273,11 @@ func enum_to_string(value):
 			return "ATTACK_COMBO"
 		ATTACK_COMBO2:
 			return "ATTACK_COMBO2"
+		BOW_READY:
+			return "BOW_READY"
+		BOW_AIM:
+			return "BOW_AIM"
+		BOW_FIRE:
+			return "BOW_FIRE"
 		_:
 			return "Unknown"
