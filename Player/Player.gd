@@ -32,6 +32,7 @@ var bow_equipped = true
 var bow_cooldown = true
 var arrow = preload("res://Player/arrow.tscn")
 var mouse_loc_from_player = null
+@onready var aimIndicator = $AimIndicator
 @onready var arrowProjectile = $ArrowProjectile
 
 #Stat Multipliers
@@ -66,11 +67,13 @@ func _ready():
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
+	aimIndicator.visible = false
 
 func _physics_process(delta):
 	update_healthbar() 
 	
 	mouse_loc_from_player = get_global_mouse_position() - self.position
+	
 	debug.text = enum_to_string(state) + ' DMG: ' + str(swordHitbox.damage) + ' | Timer: ' + str(attackTimer.time_left)
 	
 	match state:
@@ -98,6 +101,15 @@ func _physics_process(delta):
 			animationState.travel("Bow_Aim")
 		BOW_FIRE:
 			syncArrowToPointer()
+			aimIndicator.global_position = get_global_mouse_position()
+			aimIndicator.position = mouse_loc_from_player
+			aimIndicator.visible = true
+			var input_vector = Vector2.ZERO
+			input_vector.x = aimIndicator.global_position.x - mouse_loc_from_player.x
+			input_vector.y = aimIndicator.global_position.y - mouse_loc_from_player.y
+			
+			print(input_vector)
+			
 			if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
 				animationState.travel("Bow_Fire")
 				bow_cooldown = false
@@ -107,6 +119,11 @@ func _physics_process(delta):
 				add_child(arrow_instance)
 				await get_tree().create_timer(0.4).timeout
 				bow_cooldown = true
+				aimIndicator.visible = false
+			elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
+				aimIndicator.visible = false
+				state = MOVE
+				
 				
 func syncArrowToPointer():
 	var mouse_pos = get_global_mouse_position()
@@ -136,7 +153,7 @@ func attack_combo2():
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = MOVE
-	
+
 func attack_state():
 	stayInPlace()
 	animationState.travel("Attack")
