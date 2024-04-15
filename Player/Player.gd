@@ -101,14 +101,9 @@ func _physics_process(delta):
 			animationState.travel("Bow_Aim")
 		BOW_FIRE:
 			syncArrowToPointer()
-			aimIndicator.global_position = get_global_mouse_position()
-			aimIndicator.position = mouse_loc_from_player
-			aimIndicator.visible = true
-			var input_vector = Vector2.ZERO
-			input_vector.x = aimIndicator.global_position.x - mouse_loc_from_player.x
-			input_vector.y = aimIndicator.global_position.y - mouse_loc_from_player.y
-			
-			print(input_vector)
+			activateCrosshair()
+			var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
+			animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
 			
 			if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
 				animationState.travel("Bow_Fire")
@@ -124,6 +119,10 @@ func _physics_process(delta):
 				aimIndicator.visible = false
 				state = MOVE
 				
+func activateCrosshair():
+	aimIndicator.global_position = get_global_mouse_position()
+	aimIndicator.position = mouse_loc_from_player
+	aimIndicator.visible = true
 				
 func syncArrowToPointer():
 	var mouse_pos = get_global_mouse_position()
@@ -133,22 +132,28 @@ func calculateDmg(dmgBoostStat):
 	swordHitbox.damage = dmgBoostStat
 			
 func attack_combo():
+	activateCrosshair()
 	if attackTimer.is_stopped(): 
 		attackTimer.start()
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
+		var aim_direction = (get_global_mouse_position() - global_position).normalized()
+		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", aim_direction)
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = MOVE
-
+		
 func attack_combo2():
+	activateCrosshair()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
+		var aim_direction = (get_global_mouse_position() - global_position).normalized()
+		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", aim_direction)
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -156,6 +161,8 @@ func attack_combo2():
 
 func attack_state():
 	stayInPlace()
+	var aim_direction = (get_global_mouse_position() - global_position).normalized()
+	animationTree.set("parameters/Attack/BlendSpace2D/blend_position", aim_direction)
 	animationState.travel("Attack")
 	await animationTree.animation_finished
 	
@@ -220,6 +227,7 @@ func attack_animation_finished():
 	state = ATTACK_COMBO
 	
 func attack_combo_animation_finished():
+	aimIndicator.visible = false
 	state = ATTACK_COMBO2
 	
 func bow_ready_finished():
@@ -232,6 +240,7 @@ func bow_fire_finished():
 	state = MOVE
 	
 func attack_combo2_animation_finished():
+	aimIndicator.visible = false
 	state = MOVE
 	
 func _on_hurtbox_area_entered(area):
@@ -291,6 +300,7 @@ func stayInPlace():
 
 func _on_attack_timer_timeout():
 	state = MOVE
+	aimIndicator.visible = false
 	
 func enum_to_string(value):
 	match value:

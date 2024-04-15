@@ -1,4 +1,4 @@
-[gd_scene load_steps=519 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=518 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -3498,10 +3498,6 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_8dqvn"]
-resource_name = "Crosshair"
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_j547q"]
 resource_name = "IdleDown"
 length = 1.20002
@@ -4726,7 +4722,6 @@ _data = {
 "Bow_Up": SubResource("Animation_6bn02"),
 "Bow_Upleft": SubResource("Animation_2ffbv"),
 "Bow_Upright": SubResource("Animation_fh03m"),
-"Crosshair": SubResource("Animation_8dqvn"),
 "IdleDown": SubResource("Animation_j547q"),
 "IdleDown_FrontLeft": SubResource("Animation_8xnrr"),
 "IdleDown_FrontRight": SubResource("Animation_0tol4"),
@@ -4802,7 +4797,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hs7kw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dseom"]
-graph_offset = Vector2(-886.086, 57.1755)
+graph_offset = Vector2(-647, 3)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_1vy4e")
 nodes/BlendSpace2D/position = Vector2(-449.388, 118.701)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_hs7kw")
@@ -7640,6 +7635,7 @@ shape = SubResource("CapsuleShape2D_av4qi")
 libraries = {
 "": SubResource("AnimationLibrary_nmxgk")
 }
+autoplay = "Crosshair"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 reset_on_save = false
@@ -7747,6 +7743,7 @@ vertical_alignment = 1
 modulate = Color(0, 0, 0, 1)
 
 [node name="AimIndicator" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
