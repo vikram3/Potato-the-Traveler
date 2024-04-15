@@ -115,9 +115,6 @@ func _physics_process(delta):
 				await get_tree().create_timer(0.4).timeout
 				bow_cooldown = true
 				aimIndicator.visible = false
-			elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
-				aimIndicator.visible = false
-				state = MOVE
 				
 func activateCrosshair():
 	aimIndicator.global_position = get_global_mouse_position()

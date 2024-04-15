@@ -1,7 +1,7 @@
 [gd_scene load_steps=35 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
-[ext_resource type="Script" path="res://Enemies/boss_golem.gd" id="1_qu5hb"]
+[ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
 [ext_resource type="Texture2D" uid="uid://ccrnr7jblswpx" path="res://Enemies/Laser_sheet.png" id="2_r0p6b"]
 [ext_resource type="Script" path="res://Enemies/FiniteStateMachine.gd" id="3_r8xo2"]
 [ext_resource type="Script" path="res://Enemies/Idle.gd" id="4_ani6r"]
