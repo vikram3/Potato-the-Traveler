@@ -8,7 +8,7 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export var ROLL_SPEED = 125
 @export var Friction = 500
 
-enum {
+enum PlayerState {
 	MOVE,
 	ROLL,
 	ATTACK,
@@ -20,7 +20,7 @@ enum {
 }
 
 #Starting State
-var state = MOVE
+var state = PlayerState.MOVE
 
 #Base state for rolling
 var roll_vector = Vector2.DOWN
@@ -73,49 +73,38 @@ func _physics_process(delta):
 	update_healthbar() 
 	
 	mouse_loc_from_player = get_global_mouse_position() - self.position
-	
-	debug.text = enum_to_string(state) + ' DMG: ' + str(swordHitbox.damage) + ' | Timer: ' + str(attackTimer.time_left)
+	# Assuming attackTimer.time_left is a float value representing time in seconds
+	debug.text = enum_to_string(state) + ' | Continue ATK: %.2f' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
+
 	
 	match state:
-		MOVE:
+		PlayerState.MOVE:
 			calculateDmg(baseDMG)
 			move_state(delta)
-		ROLL:
+		PlayerState.ROLL:
 			roll_state()
-		ATTACK:
+		PlayerState.ATTACK:
 			calculateDmg(baseDMG)
 			attack_state()
-		ATTACK_COMBO:
+		PlayerState.ATTACK_COMBO:
 			var comboDMG = 4
 			calculateDmg(baseDMG + comboDMG)
 			attack_combo()
-		ATTACK_COMBO2:
+		PlayerState.ATTACK_COMBO2:
 			var comboDMG2 = 10
 			calculateDmg(baseDMG + comboDMG2)
 			attack_combo2()
-		BOW_READY:
+		PlayerState.BOW_READY:
 			syncArrowToPointer()
 			animationState.travel("Bow_Ready")
-		BOW_AIM:
+		PlayerState.BOW_AIM:
 			syncArrowToPointer()
 			animationState.travel("Bow_Aim")
-		BOW_FIRE:
+		PlayerState.BOW_FIRE:
 			syncArrowToPointer()
 			activateCrosshair()
-			var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
-			animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
+			bow_fire_state()
 			
-			if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
-				animationState.travel("Bow_Fire")
-				bow_cooldown = false
-				var arrow_instance = arrow.instantiate()
-				arrow_instance.rotation = arrowProjectile.rotation
-				arrow_instance.global_position = arrowProjectile.global_position
-				add_child(arrow_instance)
-				await get_tree().create_timer(0.4).timeout
-				bow_cooldown = true
-				aimIndicator.visible = false
-				
 func activateCrosshair():
 	aimIndicator.global_position = get_global_mouse_position()
 	aimIndicator.position = mouse_loc_from_player
@@ -142,7 +131,7 @@ func attack_combo():
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
-		state = MOVE
+		state = PlayerState.MOVE
 		
 func attack_combo2():
 	activateCrosshair()
@@ -154,7 +143,7 @@ func attack_combo2():
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
-		state = MOVE
+		state = PlayerState.MOVE
 
 func attack_state():
 	stayInPlace()
@@ -162,6 +151,21 @@ func attack_state():
 	animationTree.set("parameters/Attack/BlendSpace2D/blend_position", aim_direction)
 	animationState.travel("Attack")
 	await animationTree.animation_finished
+	
+func bow_fire_state():
+	var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
+	animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
+	
+	if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
+		animationState.travel("Bow_Fire")
+		bow_cooldown = false
+		var arrow_instance = arrow.instantiate()
+		arrow_instance.rotation = arrowProjectile.rotation
+		arrow_instance.global_position = arrowProjectile.global_position
+		add_child(arrow_instance)
+		await get_tree().create_timer(0.4).timeout
+		bow_cooldown = true
+		aimIndicator.visible = false
 	
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
@@ -198,11 +202,11 @@ func move_state(delta):
 
 func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		state = ATTACK	
+		state = PlayerState.ATTACK    
 	elif Input.is_action_just_pressed("roll"):
-		state = ROLL
+		state = PlayerState.ROLL
 	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
-		state = BOW_READY
+		state = PlayerState.BOW_READY
 	
 func roll_state(): #
 	#Prevents player from rolling after getting attack and getting iframe animation.
@@ -218,27 +222,27 @@ func roll_state(): #
 	move_and_slide()
 	
 func roll_animation_finished():
-	state = MOVE
+	state = PlayerState.MOVE
 	
 func attack_animation_finished():
-	state = ATTACK_COMBO
+	state = PlayerState.ATTACK_COMBO
 	
 func attack_combo_animation_finished():
 	aimIndicator.visible = false
-	state = ATTACK_COMBO2
+	state = PlayerState.ATTACK_COMBO2
 	
 func bow_ready_finished():
-	state = BOW_AIM
+	state = PlayerState.BOW_AIM
 
 func bow_aim_finished():
-	state = BOW_FIRE
+	state = PlayerState.BOW_FIRE
 	
 func bow_fire_finished():
-	state = MOVE
+	state = PlayerState.MOVE
 	
 func attack_combo2_animation_finished():
 	aimIndicator.visible = false
-	state = MOVE
+	state = PlayerState.MOVE
 	
 func _on_hurtbox_area_entered(area):
 	takeDamage(area)
@@ -246,7 +250,7 @@ func _on_hurtbox_area_entered(area):
 	if area.has_method("projectile"):
 		area.queue_free()
 	
-	#Invincibility and hit effect	
+	#Invincibility and hit effect    
 	hurtbox.start_invincibility(.6)
 	hurtbox.create_hit_effect()
 
@@ -255,7 +259,7 @@ func _on_hurtbox_area_entered(area):
 	get_tree().current_scene.add_child(playerHurtSound)
 
 func _on_hurtbox_invincibility_started():
-	if state != ROLL: #IF check because I don't want blink animations on my iframe.
+	if state != PlayerState.ROLL: #IF check because I don't want blink animations on my iframe.
 		blinkAnimationPlayer.play("Start")
 
 func _on_hurtbox_invincibility_ended():
@@ -271,7 +275,7 @@ func update_healthbar():
 		healthbar.visible = true
 	
 	if PlayerStats.health > HALF_HEALTH:
-		healthbar.modulate = Color(0, 1, 0) #Green		
+		healthbar.modulate = Color(0, 1, 0) #Green        
 	elif PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
 		healthbar.modulate = Color(1,1,0)
 	elif PlayerStats.health <= LOW_HEALTH:
@@ -293,29 +297,29 @@ func takeDamage(area):
 	stats.health -= area.damage
 	
 func stayInPlace():
-	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.	
+	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.    
 
 func _on_attack_timer_timeout():
-	state = MOVE
+	state = PlayerState.MOVE
 	aimIndicator.visible = false
 	
 func enum_to_string(value):
 	match value:
-		MOVE:
+		PlayerState.MOVE:
 			return "MOVE"
-		ROLL:
+		PlayerState.ROLL:
 			return "ROLL"
-		ATTACK:
+		PlayerState.ATTACK:
 			return "ATTACK"
-		ATTACK_COMBO:
-			return "ATTACK_COMBO"
-		ATTACK_COMBO2:
-			return "ATTACK_COMBO2"
-		BOW_READY:
+		PlayerState.ATTACK_COMBO:
+			return "ATTACK_1"
+		PlayerState.ATTACK_COMBO2:
+			return "ATTACK_2"
+		PlayerState.BOW_READY:
 			return "BOW_READY"
-		BOW_AIM:
+		PlayerState.BOW_AIM:
 			return "BOW_AIM"
-		BOW_FIRE:
+		PlayerState.BOW_FIRE:
 			return "BOW_FIRE"
 		_:
 			return "Unknown"
