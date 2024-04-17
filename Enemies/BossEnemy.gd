@@ -9,7 +9,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var animationPlayer = $AnimationPlayer
 @onready var hurtbox = $Hurtbox
 @export var KNOCKOUT_RANGE = 100
-@export var bossHP = 50
+@export var bossHP = 500
 @onready var meleeAttackDir = $FiniteStateMachine/MeleeAttack/MeleeAOE
 @onready var damage_numbers_origin = $DamageNumbersOrigin
 
@@ -94,6 +94,9 @@ func take_damage(area):
 func _on_hurtbox_area_entered(area):
 	if health > 0:
 		take_damage(area)
+		
+	if area.has_method("projectile"):
+		queue_free()
 	
 func _on_hurtbox_invincibility_started():
 	animationPlayer.play("Start")
