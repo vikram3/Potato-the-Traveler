@@ -15,7 +15,6 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var stats = $Stats
 
 var direction : Vector2
-var DEF = 0
  
 func _ready():
 	set_physics_process(false)
@@ -43,8 +42,8 @@ func take_damage(area):
 	var is_critical = false
 	var damage_taken
 
-	if area.damage - DEF > 0:
-		damage_taken = (area.damage - DEF)
+	if area.damage - stats.DEF > 0:
+		damage_taken = (area.damage - stats.DEF)
 	else:
 		damage_taken = area.damage
 
@@ -69,8 +68,8 @@ func _on_hurtbox_area_entered(area):
 		var enemyDeathEffect = EnemyDeathEffect.instantiate()
 		get_parent().add_child(enemyDeathEffect)
 		enemyDeathEffect.global_position = global_position
-	elif stats.health <= stats.max_health / 2  and DEF == 0:  # Phase two of the fight he gets tankier
-		DEF = 5
+	elif stats.health <= stats.max_health / 2  and stats.DEF == 0:  # Phase two of the fight he gets tankier
+		stats.DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
 		
 	healthbar.health = stats.health 
