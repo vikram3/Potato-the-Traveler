@@ -29,7 +29,6 @@ func _ready():
 	state = pick_random_state([IDLE, WANDER])
 
 func _physics_process(delta):
-	update_healthbar()
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
 	match state:
@@ -92,22 +91,3 @@ func _on_hurtbox_invincibility_started():
 func _on_hurtbox_invincibility_ended():
 	animationPlayer.play("Stop")
 	
-func update_healthbar():
-	var healthbar = $HealthBar
-	var LOW_HEALTH = stats.max_health * 0.3
-	var HALF_HEALTH = stats.max_health * 0.5
-	
-	healthbar.max_value = stats.max_health
-	healthbar.value = stats.health
-	
-	if stats.health >= stats.max_health:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
-		
-	if stats.health <= HALF_HEALTH and stats.health > LOW_HEALTH:
-		#Much hp has been lost turn yellow
-		healthbar.modulate = Color(1,1,0)
-	elif stats.health <= LOW_HEALTH:
-		#Health is critical, turn red
-		healthbar.modulate = Color(1, 0, 0)

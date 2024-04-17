@@ -1,9 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=34 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
 [ext_resource type="Texture2D" uid="uid://ccrnr7jblswpx" path="res://Enemies/Laser_sheet.png" id="2_r0p6b"]
-[ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="3_7n1b6"]
 [ext_resource type="Script" path="res://Enemies/FiniteStateMachine.gd" id="3_r8xo2"]
 [ext_resource type="Script" path="res://Enemies/Idle.gd" id="4_ani6r"]
 [ext_resource type="Script" path="res://Overlap/hitbox.gd" id="4_f6wu1"]
@@ -17,14 +16,6 @@
 [ext_resource type="Script" path="res://Enemies/ArmorBuff.gd" id="10_nko3b"]
 [ext_resource type="Script" path="res://Enemies/Death.gd" id="12_fmiep"]
 [ext_resource type="Script" path="res://Overlap/hurtbox.gd" id="16_6uqi4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_58gw5"]
-shader = ExtResource("3_7n1b6")
-shader_parameter/active = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cag4"]
-shader = ExtResource("3_7n1b6")
-shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eygyy"]
 size = Vector2(256.5, 16)
@@ -90,18 +81,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_08gqa"]
@@ -411,43 +390,9 @@ tracks/1/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_528us"]
-resource_name = "start"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_euiq7"]
-resource_name = "Stop"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dx7up"]
 _data = {
 "RESET": SubResource("Animation_6psl0"),
-"Start": SubResource("Animation_528us"),
-"Stop": SubResource("Animation_euiq7"),
 "armor_buff": SubResource("Animation_08gqa"),
 "block": SubResource("Animation_ettkb"),
 "boss_slain": SubResource("Animation_hqlcb"),
@@ -472,44 +417,6 @@ height = 52.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rsni"]
 
-[sub_resource type="Animation" id="Animation_ksfqm"]
-resource_name = "Start"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_p5r0p"]
-resource_name = "Stop"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvvgn"]
-_data = {
-"Start": SubResource("Animation_ksfqm"),
-"Stop": SubResource("Animation_p5r0p")
-}
-
 [node name="Boss_Golem" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -523,7 +430,6 @@ offset_right = 9.0
 offset_bottom = -28.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_58gw5")
 texture = ExtResource("1_ckc57")
 hframes = 10
 vframes = 10
@@ -533,7 +439,6 @@ visible = false
 position = Vector2(0, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
-material = SubResource("ShaderMaterial_0cag4")
 position = Vector2(98, 17)
 texture = ExtResource("2_r0p6b")
 vframes = 15
@@ -640,7 +545,7 @@ script = ExtResource("9_i565u")
 script = ExtResource("12_fmiep")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 8
 script = ExtResource("16_6uqi4")
 
@@ -668,14 +573,7 @@ vertical_alignment = 1
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
 position = Vector2(0, -27)
 
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yvvgn")
-}
-
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 [connection signal="timeout" from="Hurtbox/Timer" to="." method="_on_timer_timeout"]

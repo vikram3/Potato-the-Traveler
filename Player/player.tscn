@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dvtrwwoxixqt2" path="res://Player/Pixivan MC/FrontSide Movement.png" id="16_yht0i"]
 [ext_resource type="Texture2D" uid="uid://8ywudpb6s7k6" path="res://Player/Pixivan MC/FrontSide Bow.png" id="17_rbfl3"]
 [ext_resource type="Texture2D" uid="uid://chhw2ojm4666c" path="res://Player/Pixivan MC/BackSide DashnRoll.png" id="21_5teel"]
-[ext_resource type="PackedScene" uid="uid://cbn77t64j8au1" path="res://healthbar_overhead.tscn" id="29_b6em7"]
+[ext_resource type="PackedScene" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 
 [sub_resource type="Animation" id="Animation_8lxps"]

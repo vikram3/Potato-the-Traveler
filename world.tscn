@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3o6yaosckeh8"]
+[gd_scene load_steps=20 format=3 uid="uid://d3o6yaosckeh8"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_26jxo"]
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvbvyl1rsoiu6" path="res://Enemies/boss_golem.tscn" id="13_s14mq"]
 [ext_resource type="PackedScene" uid="uid://0hxcd2qn0qv8" path="res://World/Environment/tree-birch-green.tscn" id="13_tl4gk"]
 [ext_resource type="Texture2D" uid="uid://bkkl6qi4h8nwh" path="res://World/Environment/Rainbow_Cake.png" id="14_5qeg5"]
+[ext_resource type="PackedScene" uid="uid://cdo7umox44b64" path="res://Enemies/bat.tscn" id="16_tmkw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iovvw"]
 size = Vector2(55, 60)
@@ -238,6 +239,9 @@ energy = 1.3
 range_z_max = 0
 texture = SubResource("GradientTexture2D_bk425")
 texture_scale = 0.5
+
+[node name="Bat" parent="." instance=ExtResource("16_tmkw8")]
+position = Vector2(87, 229)
 
 [connection signal="body_entered" from="Transition Map" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Transition Map" to="." method="_on_boss_transition_body_exited"]

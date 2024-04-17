@@ -6,12 +6,13 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var hurtbox = $Hurtbox
-@export var KNOCKOUT_RANGE = 100
 @onready var meleeAttackDir = $FiniteStateMachine/MeleeAttack/MeleeAOE
-
+@export var KNOCKOUT_RANGE = 600
 @onready var bossHealthbar = $UI/BossHealthbar
 @onready var healthbar = $Healthbar
 @onready var damage_numbers_origin = $DamageNumbersOrigin
+@onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+
 var direction : Vector2
 var DEF = 0
  
@@ -66,7 +67,7 @@ func take_damage(area):
 
 	var critical_chance = randf()
 
-	if critical_chance <= 0.5:
+	if critical_chance <= 0.10:
 		is_critical = true
 		var critical_multiplier = randf_range(1.2, 2)
 		damage_taken *= critical_multiplier
@@ -79,12 +80,10 @@ func take_damage(area):
 func _on_hurtbox_area_entered(area):
 	if health > 0:
 		take_damage(area)
-		
-	if area.has_method("projectile"):
-		queue_free()
+		velocity = area.knockback_vector * KNOCKOUT_RANGE
 	
 func _on_hurtbox_invincibility_started():
-	animationPlayer.play("Start")
+	blinkAnimationPlayer.play("Start")
 
 func _on_hurtbox_invincibility_ended():
-	animationPlayer.play("Stop")
+	blinkAnimationPlayer.play("Stop")
