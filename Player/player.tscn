@@ -31,10 +31,6 @@
 [ext_resource type="Script" path="res://player_HP_UI.gd" id="28_0jiaj"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
-radius = 4.0
-height = 8.0
-
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
 length = 0.60001
@@ -55,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -67,7 +63,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,7 +75,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -148,7 +144,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -160,7 +156,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -172,7 +168,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -241,7 +237,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -253,7 +249,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -265,7 +261,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -334,7 +330,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -346,7 +342,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -358,7 +354,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -427,7 +423,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -439,7 +435,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -451,7 +447,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -520,7 +516,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -532,7 +528,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -544,7 +540,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -613,7 +609,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -625,7 +621,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -637,7 +633,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -706,7 +702,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -718,7 +714,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -730,7 +726,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -799,7 +795,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -811,7 +807,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -823,7 +819,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -892,7 +888,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -904,7 +900,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -916,7 +912,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -985,7 +981,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -997,7 +993,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1009,7 +1005,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1078,7 +1074,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1090,7 +1086,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1102,7 +1098,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1171,7 +1167,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1183,7 +1179,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1195,7 +1191,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1264,7 +1260,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1276,7 +1272,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1288,7 +1284,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1357,7 +1353,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1369,7 +1365,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1381,7 +1377,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1450,7 +1446,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1462,7 +1458,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1474,7 +1470,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1543,7 +1539,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1555,7 +1551,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1567,7 +1563,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1636,7 +1632,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1648,7 +1644,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1660,7 +1656,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1729,7 +1725,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1741,7 +1737,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1753,7 +1749,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1822,7 +1818,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1834,7 +1830,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1846,7 +1842,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1915,7 +1911,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1927,7 +1923,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1939,7 +1935,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2008,7 +2004,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2020,7 +2016,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2032,7 +2028,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2101,7 +2097,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2113,7 +2109,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2125,7 +2121,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2194,7 +2190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxPivot:rotation")
+tracks/1/path = NodePath("Combat/HitboxPivot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2206,7 +2202,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -2218,7 +2214,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/path = NodePath("Combat/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3843,7 +3839,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3873,7 +3869,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3930,7 +3926,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3999,7 +3995,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4068,7 +4064,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4420,7 +4416,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4488,7 +4484,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4556,7 +4552,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -4624,7 +4620,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("Combat/AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -5262,32 +5258,6 @@ states/Run/position = Vector2(466, 108)
 states/Start/position = Vector2(107, 108)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_u4fkv"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_d5ns7"), "Bow_Ready", "Idle", SubResource("AnimationNodeStateMachineTransition_arlca"), "Idle", "Bow_Ready", SubResource("AnimationNodeStateMachineTransition_tgsim"), "Bow_Ready", "Bow_Aim", SubResource("AnimationNodeStateMachineTransition_8gp1h"), "Bow_Aim", "Bow_Fire", SubResource("AnimationNodeStateMachineTransition_w1hjy")]
 graph_offset = Vector2(-664, 45.566)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ulq5"]
-radius = 4.0
-height = 16.0
-
-[sub_resource type="Animation" id="Animation_dqrtk"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_87lbj"]
-resource_name = "Start"
-length = 0.2
-loop_mode = 1
-step = 0.2
-
-[sub_resource type="Animation" id="Animation_nwjam"]
-resource_name = "Stop"
-length = 0.1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_67yjy"]
-_data = {
-"RESET": SubResource("Animation_dqrtk"),
-"Start": SubResource("Animation_87lbj"),
-"Stop": SubResource("Animation_nwjam")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8ts1"]
 atlas = ExtResource("10_2146p")
@@ -7617,20 +7587,40 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ulq5"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_dqrtk"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_87lbj"]
+resource_name = "Start"
+length = 0.2
+loop_mode = 1
+step = 0.2
+
+[sub_resource type="Animation" id="Animation_nwjam"]
+resource_name = "Stop"
+length = 0.1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67yjy"]
+_data = {
+"RESET": SubResource("Animation_dqrtk"),
+"Start": SubResource("Animation_87lbj"),
+"Stop": SubResource("Animation_nwjam")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_fjjot")
-
-[node name="ShadowSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.25098)
-position = Vector2(1, -1)
-texture = ExtResource("2_6k4r1")
-
-[node name="Base Collision" type="CollisionShape2D" parent="."]
-visible = false
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_av4qi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -7662,73 +7652,65 @@ parameters/Roll/BlendSpace2D/blend_position = Vector2(-0.00043726, 0)
 parameters/Roll/TimeScale/scale = 2.0
 parameters/Run/blend_position = Vector2(0, 0)
 
-[node name="HitboxPivot" type="Marker2D" parent="."]
-position = Vector2(0, -4)
-rotation = 1.5708
-
-[node name="SwordHitbox" parent="HitboxPivot" instance=ExtResource("3_nnp8n")]
-position = Vector2(17, 0.999938)
-collision_layer = 8
-script = ExtResource("4_ghg0u")
-damage = 3
-
-[node name="CollisionShape2D" parent="HitboxPivot/SwordHitbox" index="0"]
-scale = Vector2(1.2, 1.2)
-shape = SubResource("CapsuleShape2D_bqrgj")
-disabled = true
-
-[node name="Hurtbox" parent="." instance=ExtResource("5_bhnfg")]
-collision_mask = 4
-collision_priority = 0.0
-
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
-visible = false
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_2ulq5")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -12.0
-
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="."]
-reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_67yjy")
-}
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"idle_right"
 
-[node name="Username" type="Label" parent="."]
-offset_left = -19.0
-offset_top = -37.0
-offset_right = 21.0
-offset_bottom = -14.0
-theme_override_font_sizes/font_size = 5
-text = "Clara"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="World Collision" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_av4qi")
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(1, -1)
+texture = ExtResource("2_6k4r1")
+
+[node name="Combat" type="Node2D" parent="."]
+
+[node name="HitboxPivot" type="Marker2D" parent="Combat"]
+position = Vector2(0, -4)
+rotation = 1.5708
+
+[node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
+position = Vector2(17, 0.999938)
+collision_layer = 8
+script = ExtResource("4_ghg0u")
+damage = 3
+
+[node name="CollisionShape2D" parent="Combat/HitboxPivot/SwordHitbox" index="0"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("CapsuleShape2D_bqrgj")
+disabled = true
+
+[node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
 one_shot = true
 
-[node name="debug" type="Label" parent="."]
-z_index = 1
-offset_left = -24.0
-offset_top = -46.0
-offset_right = 28.0
-offset_bottom = -35.0
-theme_override_font_sizes/font_size = 7
-text = "MOVE | Timer: "
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Hurtbox" parent="Combat" instance=ExtResource("5_bhnfg")]
+collision_mask = 4
+collision_priority = 0.0
 
-[node name="ArrowProjectile" type="Marker2D" parent="."]
+[node name="CollisionShape2D" parent="Combat/Hurtbox" index="0"]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_2ulq5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Combat"]
+volume_db = -12.0
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="Combat"]
+reset_on_save = false
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_67yjy")
+}
+
+[node name="ArrowProjectile" type="Marker2D" parent="Combat"]
 modulate = Color(0, 0, 0, 1)
 
-[node name="AimIndicator" type="Sprite2D" parent="."]
+[node name="AimIndicator" type="Sprite2D" parent="Combat"]
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
@@ -7752,11 +7734,33 @@ process_callback = 0
 wait_time = 5.0
 one_shot = true
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
-[connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[node name="Misc_UI" type="Node2D" parent="."]
+position = Vector2(-24, -46)
+
+[node name="Username" type="Label" parent="Misc_UI"]
+offset_left = 5.0
+offset_top = 9.0
+offset_right = 45.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 5
+text = "Clara"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="debug" type="Label" parent="Misc_UI"]
+z_index = 1
+offset_right = 52.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 7
+text = "MOVE | Timer: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="area_entered" from="Combat/Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="invincibility_ended" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
+[connection signal="invincibility_started" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 [connection signal="timeout" from="Health_UI/HealthBarTimer" to="Health_UI" method="_on_health_bar_timer_timeout"]
 
-[editable path="HitboxPivot/SwordHitbox"]
-[editable path="Hurtbox"]
+[editable path="Combat/HitboxPivot/SwordHitbox"]
+[editable path="Combat/Hurtbox"]

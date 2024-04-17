@@ -8,7 +8,7 @@ const PlayerHurtSound = preload("res://Player/player_hurt_sound.tscn")
 @export var ROLL_SPEED = 125
 @export var Friction = 500
 
-enum PlayerState {
+enum State {
 	MOVE,
 	ROLL,
 	ATTACK,
@@ -20,7 +20,7 @@ enum PlayerState {
 }
 
 #Starting State
-var state = PlayerState.MOVE
+var state = State.MOVE
 
 #Base state for rolling
 var roll_vector = Vector2.DOWN
@@ -32,8 +32,8 @@ var bow_equipped = true
 var bow_cooldown = true
 var arrow = preload("res://Player/arrow.tscn")
 var mouse_loc_from_player = null
-@onready var aimIndicator = $AimIndicator
-@onready var arrowProjectile = $ArrowProjectile
+@onready var aimIndicator = $Combat/AimIndicator
+@onready var arrowProjectile = $Combat/ArrowProjectile
 
 #Stat Multipliers
 var baseDMG = 0
@@ -44,15 +44,15 @@ var baseDMG = 0
 @onready var animationState = animationTree.get("parameters/playback")
 
 #Melee Attack
-@onready var swordHitbox = $HitboxPivot/SwordHitbox
-@onready var attackTimer = $AttackTimer
+@onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
+@onready var attackTimer = $Combat/AttackTimer
 
 #Hurtbox
-@onready var hurtbox = $Hurtbox
-@onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+@onready var hurtbox = $Combat/Hurtbox
+@onready var blinkAnimationPlayer = $Combat/BlinkAnimationPlayer
 
 #Debugging
-@onready var debug = $debug
+@onready var debug = $Misc_UI/debug
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
@@ -65,33 +65,32 @@ func _ready():
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
-	debug.text = enum_to_string(state) + ' | Continue ATK: %.2f' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
+	debug.text = enum_to_string(state) + ' | Combo: %.2f' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
 
-	
 	match state:
-		PlayerState.MOVE:
+		State.MOVE:
 			calculateDmg(baseDMG)
 			move_state(delta)
-		PlayerState.ROLL:
+		State.ROLL:
 			roll_state()
-		PlayerState.ATTACK:
+		State.ATTACK:
 			calculateDmg(baseDMG)
 			attack_state()
-		PlayerState.ATTACK_COMBO:
+		State.ATTACK_COMBO:
 			var comboDMG = 4
 			calculateDmg(baseDMG + comboDMG)
 			attack_combo()
-		PlayerState.ATTACK_COMBO2:
+		State.ATTACK_COMBO2:
 			var comboDMG2 = 10
 			calculateDmg(baseDMG + comboDMG2)
 			attack_combo2()
-		PlayerState.BOW_READY:
+		State.BOW_READY:
 			syncArrowToPointer()
 			animationState.travel("Bow_Ready")
-		PlayerState.BOW_AIM:
+		State.BOW_AIM:
 			syncArrowToPointer()
 			animationState.travel("Bow_Aim")
-		PlayerState.BOW_FIRE:
+		State.BOW_FIRE:
 			syncArrowToPointer()
 			activateCrosshair()
 			bow_fire_state()
@@ -122,7 +121,7 @@ func attack_combo():
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
-		state = PlayerState.MOVE
+		state = State.MOVE
 		
 func attack_combo2():
 	activateCrosshair()
@@ -134,7 +133,7 @@ func attack_combo2():
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
-		state = PlayerState.MOVE
+		state = State.MOVE
 
 func attack_state():
 	stayInPlace()
@@ -193,11 +192,11 @@ func move_state(delta):
 
 func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		state = PlayerState.ATTACK    
+		state = State.ATTACK    
 	elif Input.is_action_just_pressed("roll"):
-		state = PlayerState.ROLL
+		state = State.ROLL
 	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
-		state = PlayerState.BOW_READY
+		state = State.BOW_READY
 	
 func roll_state(): #
 	#Prevents player from rolling after getting attack and getting iframe animation.
@@ -213,27 +212,27 @@ func roll_state(): #
 	move_and_slide()
 	
 func roll_animation_finished():
-	state = PlayerState.MOVE
+	state = State.MOVE
 	
 func attack_animation_finished():
-	state = PlayerState.ATTACK_COMBO
+	state = State.ATTACK_COMBO
 	
 func attack_combo_animation_finished():
 	aimIndicator.visible = false
-	state = PlayerState.ATTACK_COMBO2
+	state = State.ATTACK_COMBO2
 	
 func bow_ready_finished():
-	state = PlayerState.BOW_AIM
+	state = State.BOW_AIM
 
 func bow_aim_finished():
-	state = PlayerState.BOW_FIRE
+	state = State.BOW_FIRE
 	
 func bow_fire_finished():
-	state = PlayerState.MOVE
+	state = State.MOVE
 	
 func attack_combo2_animation_finished():
 	aimIndicator.visible = false
-	state = PlayerState.MOVE
+	state = State.MOVE
 	
 func _on_hurtbox_area_entered(area):
 	takeDamage(area)
@@ -250,7 +249,7 @@ func _on_hurtbox_area_entered(area):
 	get_tree().current_scene.add_child(playerHurtSound)
 
 func _on_hurtbox_invincibility_started():
-	if state != PlayerState.ROLL: #IF check because I don't want blink animations on my iframe.
+	if state != State.ROLL: #IF check because I don't want blink animations on my iframe.
 		blinkAnimationPlayer.play("Start")
 
 func _on_hurtbox_invincibility_ended():
@@ -263,7 +262,7 @@ func stayInPlace():
 	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.    
 
 func _on_attack_timer_timeout():
-	state = PlayerState.MOVE
+	state = State.MOVE
 	aimIndicator.visible = false
 	
 func player():
@@ -271,21 +270,21 @@ func player():
 	
 func enum_to_string(value):
 	match value:
-		PlayerState.MOVE:
+		State.MOVE:
 			return "MOVE"
-		PlayerState.ROLL:
+		State.ROLL:
 			return "ROLL"
-		PlayerState.ATTACK:
+		State.ATTACK:
 			return "ATTACK"
-		PlayerState.ATTACK_COMBO:
+		State.ATTACK_COMBO:
 			return "ATTACK_1"
-		PlayerState.ATTACK_COMBO2:
+		State.ATTACK_COMBO2:
 			return "ATTACK_2"
-		PlayerState.BOW_READY:
+		State.BOW_READY:
 			return "BOW_READY"
-		PlayerState.BOW_AIM:
+		State.BOW_AIM:
 			return "BOW_AIM"
-		PlayerState.BOW_FIRE:
+		State.BOW_FIRE:
 			return "BOW_FIRE"
 		_:
 			return "Unknown"
