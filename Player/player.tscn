@@ -1,10 +1,11 @@
-[gd_scene load_steps=517 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=519 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
 [ext_resource type="PackedScene" uid="uid://bbh4m23t6e35d" path="res://Overlap/hitbox.tscn" id="3_nnp8n"]
 [ext_resource type="AudioStream" uid="uid://doug012gquv2c" path="res://Music and Sounds/Swipe.wav" id="4_4fl1o"]
 [ext_resource type="Script" path="res://Player/SwordHitbox.gd" id="4_ghg0u"]
+[ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="4_ivow2"]
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
 [ext_resource type="Texture2D" uid="uid://d3gw0acijlex8" path="res://Player/Pixivan MC/FrontSide Consecutive Slash.png" id="9_oo5a3"]
@@ -5257,6 +5258,10 @@ states/Start/position = Vector2(107, 108)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_u4fkv"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_d5ns7"), "Bow_Ready", "Idle", SubResource("AnimationNodeStateMachineTransition_arlca"), "Idle", "Bow_Ready", SubResource("AnimationNodeStateMachineTransition_tgsim"), "Bow_Ready", "Bow_Aim", SubResource("AnimationNodeStateMachineTransition_8gp1h"), "Bow_Aim", "Bow_Fire", SubResource("AnimationNodeStateMachineTransition_w1hjy")]
 graph_offset = Vector2(-664, 45.566)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hi7q1"]
+shader = ExtResource("4_ivow2")
+shader_parameter/active = false
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8ts1"]
 atlas = ExtResource("10_2146p")
 region = Rect2(0, 0, 64, 64)
@@ -7597,16 +7602,51 @@ height = 16.0
 
 [sub_resource type="Animation" id="Animation_dqrtk"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_87lbj"]
 resource_name = "Start"
 length = 0.2
 loop_mode = 1
-step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_nwjam"]
 resource_name = "Stop"
 length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_67yjy"]
 _data = {
@@ -7651,6 +7691,7 @@ parameters/Roll/TimeScale/scale = 2.0
 parameters/Run/blend_position = Vector2(0, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"idle_right"
