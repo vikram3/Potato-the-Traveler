@@ -37,7 +37,7 @@ var mouse_loc_from_player = null
 
 #Stat Multipliers
 var baseDMG = 0
-@onready var healthBar = $Health_UI/Healthbar
+@onready var healthBar = $Healthbar
 
 #General
 @onready var animationPlayer = $AnimationPlayer
@@ -272,6 +272,9 @@ func takeDamage(area):
 		DamageNumbers.display_number(area.damage, damage_numbers_origin.global_position, is_critical)
 	
 	healthBar.health = PlayerStats.health
+	
+	if PlayerStats.health < PlayerStats.max_health:
+		healthBar.visible = true
 	
 	
 func stayInPlace():

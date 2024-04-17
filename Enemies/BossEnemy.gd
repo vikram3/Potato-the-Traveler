@@ -20,7 +20,6 @@ var max_health = 0
  
 func _ready():
 	set_physics_process(false)
-	max_health = health
 	healthbar.init_health(health)  # Corrected function name
 	bossHealthbar.init_health(health)
 
@@ -41,7 +40,8 @@ func _physics_process(delta):
 	
 func _set_health(value):
 	health = value  # Set the health variable directly
-		
+	max_health = value
+	
 	if health < 0:
 		# Handle health reaching zero or below
 		find_child("FiniteStateMachine").change_state("Death")
