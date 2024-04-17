@@ -22,6 +22,7 @@ var max_health = null
 func _ready():
 	set_physics_process(false)
 	max_health = health
+	healthbar.max_value = max_health
 	healthbar.init_health(health)  # Corrected function name
 	bossHealthbar.init_health(health)
 
@@ -80,9 +81,10 @@ func take_damage(area):
 func _on_hurtbox_area_entered(area):
 	if health > 0:
 		take_damage(area)
-		var direction = ( position - area.owner.position ).normalized()
-		var knockback = direction * KNOCKOUT_RANGE
-		velocity = knockback
+	var direction = ( position - area.owner.position ).normalized()
+	var knockback = direction * KNOCKOUT_RANGE
+	velocity = knockback
+	move_and_slide()
 	
 func _on_hurtbox_invincibility_started():
 	blinkAnimationPlayer.play("Start")

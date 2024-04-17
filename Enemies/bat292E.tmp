@@ -134,7 +134,10 @@ _data = {
 [node name="Bat" type="CharacterBody2D"]
 collision_layer = 16
 script = ExtResource("1_wlirj")
+ACCELERATION = null
 MAX_SPEED = 25
+FRICTION = null
+WANDER_TARGET_RANGE = null
 KNOCKOUT_RANGE = 120
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
@@ -196,10 +199,6 @@ libraries = {
 }
 
 [node name="Healthbar" parent="." instance=ExtResource("11_6yh7b")]
-offset_left = -7.0
-offset_top = -24.0
-offset_right = 7.0
-offset_bottom = -22.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

@@ -1,4 +1,6 @@
 extends State
+
+signal knockback
  
 func enter():
 	super.enter()

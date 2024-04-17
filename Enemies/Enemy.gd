@@ -16,6 +16,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var playerDetectionZone = $PlayerDetection
 @onready var startPosition = get_global_transform().origin
 @onready var wanderController = $WanderController
+@onready var healthBar = $Healthbar
 
 enum {
 	IDLE,
@@ -27,6 +28,8 @@ var state = CHASE
 
 func _ready():
 	state = pick_random_state([IDLE, WANDER])
+	healthBar.max_value = stats.max_health
+	healthBar.init_health(stats.health)
 
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -74,11 +77,16 @@ func pick_random_state(state_list):
 	
 func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
+	healthBar.health = stats.health
 	var direction = ( position - area.owner.position ).normalized()
 	var knockback = direction * KNOCKOUT_RANGE
 	velocity = knockback
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
+	print(stats.health)
+	
+	if stats.health < stats.max_health:
+		healthBar.visible = true
 	
 func _on_stats_no_health():
 	queue_free()

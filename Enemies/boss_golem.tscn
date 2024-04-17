@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=40 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
@@ -411,43 +411,9 @@ tracks/1/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_528us"]
-resource_name = "start"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_euiq7"]
-resource_name = "Stop"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dx7up"]
 _data = {
 "RESET": SubResource("Animation_6psl0"),
-"Start": SubResource("Animation_528us"),
-"Stop": SubResource("Animation_euiq7"),
 "armor_buff": SubResource("Animation_08gqa"),
 "block": SubResource("Animation_ettkb"),
 "boss_slain": SubResource("Animation_hqlcb"),
@@ -511,8 +477,9 @@ _data = {
 }
 
 [node name="Boss_Golem" type="CharacterBody2D"]
-collision_layer = 16
+collision_layer = 18
 script = ExtResource("1_qu5hb")
+KNOCKOUT_RANGE = 500
 
 [node name="Healthbar" parent="." instance=ExtResource("5_jttkw")]
 visible = false

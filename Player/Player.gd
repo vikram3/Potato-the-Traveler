@@ -63,6 +63,7 @@ func _ready():
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
 	aimIndicator.visible = false
+	healthBar.max_value = PlayerStats.max_health
 	healthBar.init_health(PlayerStats.health)
 
 func _physics_process(delta):
