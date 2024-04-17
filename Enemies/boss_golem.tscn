@@ -511,8 +511,7 @@ _data = {
 }
 
 [node name="Boss_Golem" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 16
 script = ExtResource("1_qu5hb")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_jttkw")]
