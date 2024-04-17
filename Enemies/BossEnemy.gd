@@ -12,19 +12,17 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var healthbar = $Healthbar
 @onready var damage_numbers_origin = $DamageNumbersOrigin
 @onready var blinkAnimationPlayer = $BlinkAnimationPlayer
+@onready var stats = $Stats
 
 var direction : Vector2
 var DEF = 0
  
-@export var health = 50 : set = _set_health
-var max_health = null
- 
 func _ready():
 	set_physics_process(false)
-	max_health = health
-	healthbar.max_value = max_health
-	healthbar.init_health(health)  # Corrected function name
-	bossHealthbar.init_health(health)
+	healthbar.max_value = stats.health
+	bossHealthbar.max_value = stats.health
+	healthbar.init_health(stats.health)  # Corrected function name
+	bossHealthbar.init_health(stats.health)
 
 func _process(_delta):
 	if player != null:
@@ -40,22 +38,6 @@ func _process(_delta):
 func _physics_process(delta):
 	velocity = direction.normalized() * 45
 	move_and_collide(velocity * delta)
-	
-func _set_health(value):
-	health = value  # Set the health variable directly
-	
-	if health < 0:
-		# Handle health reaching zero or below
-		find_child("FiniteStateMachine").change_state("Death")
-		var enemyDeathEffect = EnemyDeathEffect.instantiate()
-		get_parent().add_child(enemyDeathEffect)
-		enemyDeathEffect.global_position = global_position
-	elif health <= max_health / 2  and DEF == 0:  # Phase two of the fight he gets tankier
-		DEF = 5
-		find_child("FiniteStateMachine").change_state("ArmorBuff") 
-		
-	healthbar.health = health 
-	bossHealthbar.health = health
  
 func take_damage(area):
 	var is_critical = false
@@ -73,14 +55,27 @@ func take_damage(area):
 		var critical_multiplier = randf_range(1.2, 2)
 		damage_taken *= critical_multiplier
 
-	health -= damage_taken
+	stats.health -= damage_taken
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
 	DamageNumbers.display_number(damage_taken, damage_numbers_origin.global_position, is_critical)
 
 func _on_hurtbox_area_entered(area):
-	if health > 0:
+	if stats.health > 0:
 		take_damage(area)
+	if stats.health < 0:
+		# Handle health reaching zero or below
+		find_child("FiniteStateMachine").change_state("Death")
+		var enemyDeathEffect = EnemyDeathEffect.instantiate()
+		get_parent().add_child(enemyDeathEffect)
+		enemyDeathEffect.global_position = global_position
+	elif stats.health <= stats.max_health / 2  and DEF == 0:  # Phase two of the fight he gets tankier
+		DEF = 5
+		find_child("FiniteStateMachine").change_state("ArmorBuff") 
+		
+	healthbar.health = stats.health 
+	bossHealthbar.health = stats.health
+	
 	var direction = ( position - area.owner.position ).normalized()
 	var knockback = direction * KNOCKOUT_RANGE
 	velocity = knockback

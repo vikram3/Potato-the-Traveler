@@ -481,6 +481,7 @@ _data = {
 collision_layer = 18
 script = ExtResource("1_qu5hb")
 KNOCKOUT_RANGE = 1000
+health = null
 
 [node name="Healthbar" parent="." instance=ExtResource("5_jttkw")]
 visible = false
