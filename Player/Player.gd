@@ -51,17 +51,10 @@ var baseDMG = 0
 @onready var hurtbox = $Hurtbox
 @onready var blinkAnimationPlayer = $BlinkAnimationPlayer
 
-#HealthUI
-@onready var LOW_HEALTH = PlayerStats.max_health * 0.25
-@onready var HALF_HEALTH = PlayerStats.max_health * 0.5
-@onready var timer = $HealthBarTimer
-@onready var healthbar = $HealthBar
-
 #Debugging
 @onready var debug = $debug
 
 func _ready():
-	timer = $HealthBarTimer
 	randomize() # Generates a new seed for every time the game is opened.
 	self.stats.connect("no_health", queue_free)
 	animationTree.active = true
@@ -70,8 +63,6 @@ func _ready():
 	aimIndicator.visible = false
 
 func _physics_process(delta):
-	update_healthbar() 
-	
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
 	debug.text = enum_to_string(state) + ' | Continue ATK: %.2f' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
@@ -264,34 +255,6 @@ func _on_hurtbox_invincibility_started():
 
 func _on_hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
-	
-func update_healthbar():
-	healthbar.max_value = PlayerStats.max_health
-	healthbar.value = PlayerStats.health
-	
-	if PlayerStats.health >= PlayerStats.max_health:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
-	
-	if PlayerStats.health > HALF_HEALTH:
-		healthbar.modulate = Color(0, 1, 0) #Green        
-	elif PlayerStats.health <= HALF_HEALTH and PlayerStats.health > LOW_HEALTH:
-		healthbar.modulate = Color(1,1,0)
-	elif PlayerStats.health <= LOW_HEALTH:
-		#Health is critical, turn red
-		healthbar.modulate = Color(1, 0, 0)
-		
-	if timer.is_stopped() == true:
-		timer.start()
-
-func _on_health_timer_timeout():
-	if PlayerStats.health != PlayerStats.max_health:
-		PlayerStats.health += 1 # Regen HP
-	healthbar.visible = false
-	
-func player():
-	pass
 
 func takeDamage(area):
 	stats.health -= area.damage
@@ -302,6 +265,9 @@ func stayInPlace():
 func _on_attack_timer_timeout():
 	state = PlayerState.MOVE
 	aimIndicator.visible = false
+	
+func player():
+	pass
 	
 func enum_to_string(value):
 	match value:

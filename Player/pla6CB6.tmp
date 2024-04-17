@@ -7733,12 +7733,11 @@ z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
 
-[node name="Health_UI" type="Node2D" parent="."]
+[node name="HealthUI" type="CanvasLayer" parent="."]
 script = ExtResource("28_0jiaj")
 
-[node name="HealthBar" type="TextureProgressBar" parent="Health_UI"]
+[node name="HealthBar" type="TextureProgressBar" parent="HealthUI"]
 modulate = Color(0, 0.984314, 0, 1)
-z_index = 1
 offset_left = -8.0
 offset_top = -34.0
 offset_right = 11.0
@@ -7747,7 +7746,7 @@ value = 100.0
 texture_under = ExtResource("10_q5vcn")
 texture_progress = ExtResource("11_b6ng5")
 
-[node name="HealthBarTimer" type="Timer" parent="Health_UI"]
+[node name="HealthBarTimer" type="Timer" parent="HealthUI"]
 process_callback = 0
 wait_time = 5.0
 one_shot = true
@@ -7756,7 +7755,7 @@ one_shot = true
 [connection signal="invincibility_ended" from="Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="Health_UI/HealthBarTimer" to="Health_UI" method="_on_health_bar_timer_timeout"]
+[connection signal="timeout" from="HealthUI/HealthBarTimer" to="HealthUI" method="_on_health_bar_timer_timeout"]
 
 [editable path="HitboxPivot/SwordHitbox"]
 [editable path="Hurtbox"]

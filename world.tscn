@@ -244,4 +244,7 @@ texture_scale = 0.5
 
 [editable path="day_and_night"]
 [editable path="World_Camera"]
+[editable path="Player"]
+[editable path="Player/HitboxPivot/SwordHitbox"]
+[editable path="Player/Hurtbox"]
 [editable path="Environment/Campfire"]
