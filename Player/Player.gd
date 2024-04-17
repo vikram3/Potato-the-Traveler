@@ -37,6 +37,7 @@ var mouse_loc_from_player = null
 
 #Stat Multipliers
 var baseDMG = 0
+@onready var healthBar = $Health_UI/Healthbar
 
 #General
 @onready var animationPlayer = $AnimationPlayer

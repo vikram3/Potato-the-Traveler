@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=36 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://Enemies/FiniteStateMachine.gd" id="3_r8xo2"]
 [ext_resource type="Script" path="res://Enemies/Idle.gd" id="4_ani6r"]
 [ext_resource type="Script" path="res://Overlap/hitbox.gd" id="4_f6wu1"]
+[ext_resource type="Texture2D" uid="uid://dn534ny7ke3eg" path="res://UI/LifeBarMiniUnder.png" id="4_w5hgn"]
 [ext_resource type="PackedScene" uid="uid://cbn77t64j8au1" path="res://healthbar_overhead.tscn" id="5_jttkw"]
 [ext_resource type="Script" path="res://Follow.gd" id="5_me4nw"]
+[ext_resource type="Texture2D" uid="uid://c55wsyq2xdjm6" path="res://UI/HPBar.png" id="5_s0sfc"]
 [ext_resource type="Script" path="res://Enemies/MeleeAttack.gd" id="6_kddo0"]
 [ext_resource type="Script" path="res://Enemies/HomingMissile.gd" id="7_uvbhh"]
 [ext_resource type="PackedScene" uid="uid://g21t8tducx7e" path="res://Enemies/bullet.tscn" id="8_qymu3"]
@@ -423,7 +425,6 @@ collision_mask = 2
 script = ExtResource("1_qu5hb")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_jttkw")]
-visible = false
 offset_left = -9.0
 offset_top = -30.0
 offset_right = 9.0
@@ -462,6 +463,38 @@ autoplay = "idle"
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="BossHPBar" type="TextureProgressBar" parent="UI"]
+visible = false
+modulate = Color(0.968627, 0, 0.317647, 1)
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -21.0
+offset_right = 61.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_w5hgn")
+texture_progress = ExtResource("5_s0sfc")
+
+[node name="BossName" type="Label" parent="UI/BossHPBar"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -17.0
+offset_right = 93.0
+offset_bottom = 6.0
+theme_override_font_sizes/font_size = 8
+text = "Stoneahoe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Defeated Text" type="Label" parent="UI"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
@@ -476,21 +509,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Boss Defeated"
-
-[node name="BossHealthbar" parent="UI" instance=ExtResource("5_jttkw")]
-visible = false
-offset_left = 39.0
-offset_top = 161.0
-offset_right = 279.0
-offset_bottom = 165.0
-size_flags_vertical = 8
-
-[node name="Name" type="Label" parent="UI/BossHealthbar"]
-layout_mode = 0
-offset_top = -24.0
-offset_right = 83.0
-offset_bottom = -1.0
-text = "Stoneahoe"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_layer = 2

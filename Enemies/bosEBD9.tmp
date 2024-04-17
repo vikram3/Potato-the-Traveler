@@ -423,7 +423,6 @@ collision_mask = 2
 script = ExtResource("1_qu5hb")
 
 [node name="Healthbar" parent="." instance=ExtResource("5_jttkw")]
-visible = false
 offset_left = -9.0
 offset_top = -30.0
 offset_right = 9.0
@@ -478,7 +477,6 @@ grow_vertical = 2
 text = "Boss Defeated"
 
 [node name="BossHealthbar" parent="UI" instance=ExtResource("5_jttkw")]
-visible = false
 offset_left = 39.0
 offset_top = 161.0
 offset_right = 279.0
@@ -486,7 +484,6 @@ offset_bottom = 165.0
 size_flags_vertical = 8
 
 [node name="Name" type="Label" parent="UI/BossHealthbar"]
-layout_mode = 0
 offset_top = -24.0
 offset_right = 83.0
 offset_bottom = -1.0
