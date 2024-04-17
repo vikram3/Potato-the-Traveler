@@ -16,10 +16,11 @@ var direction : Vector2
 var DEF = 0
  
 @export var health = 50 : set = _set_health
-var max_health = 0
+var max_health = null
  
 func _ready():
 	set_physics_process(false)
+	max_health = health
 	healthbar.init_health(health)  # Corrected function name
 	bossHealthbar.init_health(health)
 
@@ -40,7 +41,6 @@ func _physics_process(delta):
 	
 func _set_health(value):
 	health = value  # Set the health variable directly
-	max_health = value
 	
 	if health < 0:
 		# Handle health reaching zero or below
@@ -48,7 +48,7 @@ func _set_health(value):
 		var enemyDeathEffect = EnemyDeathEffect.instantiate()
 		get_parent().add_child(enemyDeathEffect)
 		enemyDeathEffect.global_position = global_position
-	elif max_health / 2 and DEF == 0:  # Phase two of the fight he gets tankier
+	elif health <= max_health / 2  and DEF == 0:  # Phase two of the fight he gets tankier
 		DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
 		
