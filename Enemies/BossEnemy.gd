@@ -11,6 +11,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @export var KNOCKOUT_RANGE = 100
 @export var bossHP = 50
 @onready var meleeAttackDir = $FiniteStateMachine/MeleeAttack/MeleeAOE
+@onready var damage_numbers_origin = $DamageNumbersOrigin
 
 var direction : Vector2
 var DEF = 0
@@ -69,12 +70,26 @@ func _physics_process(delta):
 	move_and_collide(velocity * delta)
  
 func take_damage(area):
+	var is_critical = false
+	var damage_taken
+
 	if area.damage - DEF > 0:
-		health -= area.damage - DEF
+		damage_taken = (area.damage - DEF)
 	else:
-		health -= area.damage
+		damage_taken = area.damage
+
+	var critical_chance = randf()
+
+	if critical_chance <= 0.5:
+		is_critical = true
+		var critical_multiplier = randf_range(1.2, 2)
+		damage_taken *= critical_multiplier
+
+	health -= damage_taken
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)
+	DamageNumbers.display_number(damage_taken, damage_numbers_origin.global_position, is_critical)
+
 
 func _on_hurtbox_area_entered(area):
 	if health > 0:

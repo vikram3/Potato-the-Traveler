@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 
 global="*res://global.gd"
 PlayerStats="*res://Player/player_stats.tscn"
+DamageNumbers="*res://DamageNumbers.gd"
 
 [display]
 

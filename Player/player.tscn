@@ -7685,7 +7685,7 @@ shape = SubResource("CapsuleShape2D_bqrgj")
 disabled = true
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
-wait_time = 2.0
+wait_time = 0.7
 one_shot = true
 
 [node name="Hurtbox" parent="Combat" instance=ExtResource("5_bhnfg")]
@@ -7734,6 +7734,9 @@ process_callback = 0
 wait_time = 5.0
 one_shot = true
 
+[node name="DamageNumbersOrigin" type="Node2D" parent="Health_UI"]
+position = Vector2(0, -34)
+
 [node name="Misc_UI" type="Node2D" parent="."]
 position = Vector2(-24, -46)
 
@@ -7748,6 +7751,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Label" parent="Misc_UI"]
+visible = false
 z_index = 1
 offset_right = 52.0
 offset_bottom = 11.0

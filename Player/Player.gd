@@ -50,6 +50,7 @@ var baseDMG = 0
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
 @onready var blinkAnimationPlayer = $Combat/BlinkAnimationPlayer
+@onready var damage_numbers_origin = $Health_UI/DamageNumbersOrigin
 
 #Debugging
 @onready var debug = $Misc_UI/debug
@@ -77,12 +78,12 @@ func _physics_process(delta):
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
-			var comboDMG = 4
-			calculateDmg(baseDMG + comboDMG)
+			var bonusComboDMG = 4
+			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
-			var comboDMG2 = 10
-			calculateDmg(baseDMG + comboDMG2)
+			var bonusComboDMG2 = 10
+			calculateDmg(baseDMG + bonusComboDMG2)
 			attack_combo2()
 		State.BOW_READY:
 			syncArrowToPointer()
@@ -256,7 +257,19 @@ func _on_hurtbox_invincibility_ended():
 	blinkAnimationPlayer.play("Stop")
 
 func takeDamage(area):
-	stats.health -= area.damage
+	var is_critical = false
+	var critical_chance = randf()
+
+	if critical_chance <= 0.1:
+		is_critical = true
+		var critical_multiplier = randf_range(1.2, 2) # Crit chance between these values
+		stats.health -= area.damage * critical_multiplier # Apply critical damage
+		DamageNumbers.display_number(area.damage * critical_multiplier, damage_numbers_origin.global_position, is_critical)
+	else:
+		stats.health -= area.damage
+		DamageNumbers.display_number(area.damage, damage_numbers_origin.global_position, is_critical)
+
+	
 	
 func stayInPlace():
 	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.    
