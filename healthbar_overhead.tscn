@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbn77t64j8au1"]
+[gd_scene load_steps=6 format=3 uid="uid://cgta0wje1tnfy"]
 
 [ext_resource type="Script" path="res://Enemies/HealthBar_Overhead.gd" id="1_yel0x"]
 
@@ -17,7 +17,7 @@ shadow_color = Color(0, 0, 0, 0.27451)
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sy2dm"]
-bg_color = Color(0.854902, 0.854902, 0.854902, 1)
+bg_color = Color(0.529412, 0.0588235, 0.176471, 0.52549)
 
 [node name="Healthbar" type="ProgressBar"]
 z_index = 1
@@ -43,7 +43,7 @@ value = 80.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

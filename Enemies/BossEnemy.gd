@@ -80,7 +80,9 @@ func take_damage(area):
 func _on_hurtbox_area_entered(area):
 	if health > 0:
 		take_damage(area)
-		velocity = area.knockback_vector * KNOCKOUT_RANGE
+		var direction = ( position - area.owner.position ).normalized()
+		var knockback = direction * KNOCKOUT_RANGE
+		velocity = knockback
 	
 func _on_hurtbox_invincibility_started():
 	blinkAnimationPlayer.play("Start")

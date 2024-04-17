@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Enemies/FiniteStateMachine.gd" id="3_r8xo2"]
 [ext_resource type="Script" path="res://Enemies/Idle.gd" id="4_ani6r"]
 [ext_resource type="Script" path="res://Overlap/hitbox.gd" id="4_f6wu1"]
-[ext_resource type="PackedScene" path="res://healthbar_overhead.tscn" id="5_jttkw"]
+[ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="5_jttkw"]
 [ext_resource type="Script" path="res://Follow.gd" id="5_me4nw"]
 [ext_resource type="Script" path="res://Enemies/MeleeAttack.gd" id="6_kddo0"]
 [ext_resource type="Script" path="res://Enemies/HomingMissile.gd" id="7_uvbhh"]
@@ -642,6 +642,7 @@ script = ExtResource("12_fmiep")
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
+monitorable = false
 script = ExtResource("16_6uqi4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
