@@ -7720,7 +7720,6 @@ offset_left = -10.0
 offset_top = -32.0
 offset_right = 10.0
 offset_bottom = -30.0
-script = null
 
 [node name="DamageNumbersOrigin" type="Node2D" parent="Health_UI"]
 position = Vector2(0, -34)

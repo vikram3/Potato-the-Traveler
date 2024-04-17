@@ -63,6 +63,7 @@ func _ready():
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
 	aimIndicator.visible = false
+	healthBar.init_health(PlayerStats.health)
 
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
@@ -269,7 +270,8 @@ func takeDamage(area):
 	else:
 		stats.health -= area.damage
 		DamageNumbers.display_number(area.damage, damage_numbers_origin.global_position, is_critical)
-
+	
+	healthBar.health = PlayerStats.health
 	
 	
 func stayInPlace():
