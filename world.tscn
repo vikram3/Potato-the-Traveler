@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvbvyl1rsoiu6" path="res://Enemies/boss_golem.tscn" id="13_s14mq"]
 [ext_resource type="PackedScene" uid="uid://0hxcd2qn0qv8" path="res://World/Environment/tree-birch-green.tscn" id="13_tl4gk"]
 [ext_resource type="Texture2D" uid="uid://bkkl6qi4h8nwh" path="res://World/Environment/Rainbow_Cake.png" id="14_5qeg5"]
-[ext_resource type="PackedScene" uid="uid://cdo7umox44b64" path="res://Enemies/bat.tscn" id="16_tmkw8"]
+[ext_resource type="PackedScene" uid="uid://dnvxo05xlo7re" path="res://Enemies/newEnemy.tscn" id="16_gm6ni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iovvw"]
 size = Vector2(55, 60)
@@ -240,8 +240,8 @@ range_z_max = 0
 texture = SubResource("GradientTexture2D_bk425")
 texture_scale = 0.5
 
-[node name="Bat" parent="." instance=ExtResource("16_tmkw8")]
-position = Vector2(87, 229)
+[node name="PlaceholderNewEnemy" parent="." instance=ExtResource("16_gm6ni")]
+position = Vector2(88, 235)
 
 [connection signal="body_entered" from="Transition Map" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Transition Map" to="." method="_on_boss_transition_body_exited"]

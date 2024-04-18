@@ -15,11 +15,12 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @onready var startPosition = get_global_transform().origin
 @onready var wanderController = $WanderController
 @onready var healthBar = $Healthbar
+@onready var damage_numbers_origin = $DamageNumbersOrigin
 
 enum {
 	IDLE,
 	WANDER,
-	CHASE
+	CHASE,
 }
 
 var state = CHASE
@@ -32,6 +33,7 @@ func _ready():
 func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	move_and_slide()
+		
 	match state:
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
@@ -74,15 +76,33 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 	
 func _on_hurtbox_area_entered(area):
-	stats.health -= area.damage
+	var is_critical = false
+	var damage_taken
+
+	if area.damage - stats.DEF > 0:
+		damage_taken = (area.damage - stats.DEF)
+	else:
+		damage_taken = area.damage
+
+	var critical_chance = randf()
+
+	if critical_chance <= 0.10:
+		is_critical = true
+		var critical_multiplier = randf_range(1.2, 2)
+		damage_taken *= critical_multiplier
+		
+	stats.health -= damage_taken
+	DamageNumbers.display_number(damage_taken, damage_numbers_origin.global_position, is_critical)
+	#Update Healthbar
 	healthBar.health = stats.health
+	
+	#Knockback
 	var direction = ( position - area.owner.position ).normalized()
 	var knockback = direction * stats.KNOCKOUT_SPEED
 	velocity = knockback
 	hurtbox.create_hit_effect()
-	hurtbox.start_invincibility(0.4)
-	print(stats.health)
 	
+	#Display visible Healthbar
 	if stats.health < stats.max_health:
 		healthBar.visible = true
 	

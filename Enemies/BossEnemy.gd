@@ -67,8 +67,8 @@ func _on_hurtbox_area_entered(area):
 		stats.DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
 	
-	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * stats.KNOCKOUT_SPEED
+	var newDirection = ( position - area.owner.position ).normalized()
+	var knockback = newDirection * stats.KNOCKOUT_SPEED
 	velocity = knockback
 	move_and_slide()
 	

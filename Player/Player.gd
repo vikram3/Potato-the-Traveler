@@ -65,11 +65,11 @@ func _ready():
 	aimIndicator.visible = false
 	healthBar.max_value = PlayerStats.max_health
 	healthBar.init_health(PlayerStats.health)
-
+	
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
-	debug.text = enum_to_string(state) + ' | Combo: %.2f' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
+	debug.text = enum_to_string(state) + ' |Combo: %.2fs' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
 
 	match state:
 		State.MOVE:
@@ -112,15 +112,12 @@ func calculateDmg(dmgBoostStat):
 	swordHitbox.damage = dmgBoostStat
 			
 func attack_combo():
-	activateCrosshair()
 	if attackTimer.is_stopped(): 
 		attackTimer.start()
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		var aim_direction = (get_global_mouse_position() - global_position).normalized()
-		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", aim_direction)
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
@@ -128,12 +125,9 @@ func attack_combo():
 		state = State.MOVE
 		
 func attack_combo2():
-	activateCrosshair()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		var aim_direction = (get_global_mouse_position() - global_position).normalized()
-		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", aim_direction)
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -141,11 +135,8 @@ func attack_combo2():
 
 func attack_state():
 	stayInPlace()
-	var aim_direction = (get_global_mouse_position() - global_position).normalized()
-	animationTree.set("parameters/Attack/BlendSpace2D/blend_position", aim_direction)
 	animationState.travel("Attack")
-	await animationTree.animation_finished
-	
+	attackTimer.start()
 func bow_fire_state():
 	var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
 	animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
