@@ -6,8 +6,6 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 @export var MAX_SPEED = 50
 @export var FRICTION = 200
 @export var WANDER_TARGET_RANGE = 4
-@export var KNOCKOUT_RANGE = 100
-
 @onready var hurtbox = $Hurtbox
 @onready var softCollision = $SoftCollision
 @onready var animationPlayer = $AnimationPlayer
@@ -79,7 +77,7 @@ func _on_hurtbox_area_entered(area):
 	stats.health -= area.damage
 	healthBar.health = stats.health
 	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * KNOCKOUT_RANGE
+	var knockback = direction * stats.KNOCKOUT_SPEED
 	velocity = knockback
 	hurtbox.create_hit_effect()
 	hurtbox.start_invincibility(0.4)

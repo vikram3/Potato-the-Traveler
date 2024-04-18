@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
-const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
-
 @onready var player = get_parent().find_child("Player")
 @onready var sprite = $Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var hurtbox = $Hurtbox
 @onready var meleeAttackDir = $FiniteStateMachine/MeleeAttack/MeleeAOE
-@export var KNOCKOUT_RANGE = 600
 @onready var bossHealthbar = $UI/BossHealthbar
 @onready var healthbar = $Healthbar
 @onready var damage_numbers_origin = $DamageNumbersOrigin
@@ -62,21 +59,16 @@ func take_damage(area):
 func _on_hurtbox_area_entered(area):
 	if stats.health > 0:
 		take_damage(area)
-	if stats.health < 0:
-		# Handle health reaching zero or below
+		healthbar.health = stats.health 
+		bossHealthbar.health = stats.health 
+	if stats.health < 0 and find_child("FiniteStateMachine").current_state != find_child("FiniteStateMachine").find_child("Death"):
 		find_child("FiniteStateMachine").change_state("Death")
-		var enemyDeathEffect = EnemyDeathEffect.instantiate()
-		get_parent().add_child(enemyDeathEffect)
-		enemyDeathEffect.global_position = global_position
 	elif stats.health <= stats.max_health / 2  and stats.DEF == 0:  # Phase two of the fight he gets tankier
 		stats.DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
-		
-	healthbar.health = stats.health 
-	bossHealthbar.health = stats.health
 	
 	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * KNOCKOUT_RANGE
+	var knockback = direction * stats.KNOCKOUT_SPEED
 	velocity = knockback
 	move_and_slide()
 	
