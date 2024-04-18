@@ -428,7 +428,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dhn5f"]
-radius = 71.2531
+radius = 143.349
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g73up"]
 height = 36.0
@@ -495,7 +495,6 @@ hframes = 10
 vframes = 10
 
 [node name="pivot" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="pivot"]
@@ -553,7 +552,7 @@ offset_top = -9.0
 offset_right = 113.0
 offset_bottom = 2.0
 theme_override_font_sizes/font_size = 6
-text = "Stoneahoe"
+text = "DIT Helpdesk"
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 collision_layer = 2
@@ -613,6 +612,7 @@ script = ExtResource("16_6uqi4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 visible = false
 shape = SubResource("CapsuleShape2D_u4i7s")
+disabled = true
 
 [node name="Timer" type="Timer" parent="Hurtbox"]
 
@@ -621,13 +621,12 @@ position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_2rsni")
 
 [node name="Debug" type="Label" parent="."]
-visible = false
 offset_left = -23.0
 offset_top = -42.0
 offset_right = 26.0
 offset_bottom = -19.0
 theme_override_font_sizes/font_size = 8
-text = "Stoneahoe"
+text = "Debug"
 horizontal_alignment = 1
 vertical_alignment = 1
 

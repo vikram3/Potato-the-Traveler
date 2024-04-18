@@ -32,7 +32,7 @@ func _process(_delta):
 		meleeAttackDir.position.x = 17
  
 func _physics_process(delta):
-	velocity = direction.normalized() * 45
+	velocity = direction.normalized() * 20
 	move_and_collide(velocity * delta)
  
 func take_damage(area):
@@ -66,7 +66,6 @@ func _on_hurtbox_area_entered(area):
 	elif stats.health <= stats.max_health / 2  and stats.DEF == 0:  # Phase two of the fight he gets tankier
 		stats.DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
-	
 	var newDirection = ( position - area.owner.position ).normalized()
 	var knockback = newDirection * stats.KNOCKOUT_SPEED
 	velocity = knockback
