@@ -20,7 +20,7 @@ const EnemyDeathEffect = preload("res://Effects/enemy_death_effect.tscn")
 enum {
 	IDLE,
 	WANDER,
-	CHASE
+	CHASE,
 }
 
 var state = CHASE
@@ -98,7 +98,7 @@ func _on_hurtbox_area_entered(area):
 	
 	#Knockback
 	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * PlayerStats.KNOCKOUT_BONUS
+	var knockback = direction * (stats.KNOCKOUT_SPEED + PlayerStats.KNOCKOUT_BONUS)
 	velocity = knockback
 	hurtbox.create_hit_effect()
 	
