@@ -1,7 +1,7 @@
 extends State
  
 var can_transition: bool = false
-@export var DASH_SPEED = 0.8
+@export var DASH_SPEED = 0.4
  
 func enter():
 	super.enter()
@@ -19,4 +19,4 @@ func transition():
 	if can_transition:
 		can_transition = false
  
-		get_parent().change_state("Follow")
+		get_parent().change_state("MeleeAttack")

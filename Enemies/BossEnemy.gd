@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var stats = $Stats
 
 var direction : Vector2
+@export var ACCELERATION = 30
  
 func _ready():
 	set_physics_process(false)
@@ -32,7 +33,7 @@ func _process(_delta):
 		meleeAttackDir.position.x = 17
  
 func _physics_process(delta):
-	velocity = direction.normalized() * 20
+	velocity = direction.normalized() * ACCELERATION
 	move_and_collide(velocity * delta)
  
 func take_damage(area):
