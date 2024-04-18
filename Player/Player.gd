@@ -87,7 +87,7 @@ func _physics_process(delta):
 			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
-			PlayerStats.KNOCKOUT_BONUS = 75
+			PlayerStats.KNOCKOUT_BONUS = 125
 			var bonusComboDMG2 = 10
 			calculateDmg(baseDMG + bonusComboDMG2)
 			attack_combo2()
