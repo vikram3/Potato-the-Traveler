@@ -98,7 +98,7 @@ func _on_hurtbox_area_entered(area):
 	
 	#Knockback
 	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * stats.KNOCKOUT_SPEED
+	var knockback = direction * (stats.KNOCKOUT_SPEED + PlayerStats.KNOCKOUT_BONUS)
 	velocity = knockback
 	hurtbox.create_hit_effect()
 	
