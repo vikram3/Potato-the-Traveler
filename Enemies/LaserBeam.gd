@@ -7,8 +7,8 @@ func enter():
 	super.enter()
 	animation_player.speed_scale = 1.5
 	await play_animation("laser_cast")
-	await play_animation("laser")
 	animation_player.speed_scale = 1
+	await play_animation("laser")
 	can_transition = true
  
 func play_animation(anim_name):

@@ -49,7 +49,7 @@ func take_damage(area):
 
 	if critical_chance <= 0.10:
 		is_critical = true
-		var critical_multiplier = randf_range(1.2, 2)
+		var critical_multiplier = randf_range(1.5, 2)
 		damage_taken *= critical_multiplier
 
 	stats.health -= damage_taken
