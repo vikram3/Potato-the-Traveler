@@ -118,12 +118,14 @@ func attack_combo():
 		attackTimer.start()
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		attackTimer.stop()
 		stayInPlace()
 		animationState.travel("Attack_Combo")
+		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = State.MOVE
-	elif Input.is_action_just_pressed("Roll"):
+	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 		
 func attack_combo2():
@@ -134,7 +136,7 @@ func attack_combo2():
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = State.MOVE
-	elif Input.is_action_just_pressed("Roll"):
+	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 
 func attack_state():
