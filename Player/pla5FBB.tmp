@@ -7659,6 +7659,10 @@ _data = {
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_fjjot")
+ACCELERATION = null
+MAX_SPEED = null
+ROLL_SPEED = null
+Friction = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -7678,13 +7682,13 @@ parameters/Attack/TimeScale/scale = 2.0
 parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Attack_Combo/TimeScale/scale = 2.0
 parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack_Combo2/TimeScale/scale = 1.0
+parameters/Attack_Combo2/TimeScale/scale = 2.0
 parameters/Bow_Aim/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Bow_Aim/TimeScale/scale = 2.0
 parameters/Bow_Fire/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Bow_Fire/TimeScale/scale = 2.0
 parameters/Bow_Ready/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Bow_Ready/TimeScale/scale = 2.0
+parameters/Bow_Ready/TimeScale/scale = 3.0
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Roll/BlendSpace2D/blend_position = Vector2(-0.00043726, 0)
 parameters/Roll/TimeScale/scale = 2.0

@@ -167,11 +167,12 @@ func move_state(delta):
 		#Switches to the proper animations based on our position with blend trees.
 		roll_vector = input_vector # Roll direction is in the direction I am facing.
 		swordHitbox.knockback_vector = input_vector # Sword hitbox is in the direction we are facing
+		var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", input_vector)
-		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", input_vector)
-		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", input_vector)
+		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", aim_direction)
+		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", aim_direction)
+		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", aim_direction)
 		animationTree.set("parameters/Bow_Ready/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", input_vector)
 		animationTree.set("parameters/Bow_Fire/BlendSpace2D/blend_position", input_vector)
