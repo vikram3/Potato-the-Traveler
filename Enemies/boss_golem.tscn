@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=41 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://Enemies/LaserBeam.gd" id="9_oqdmc"]
 [ext_resource type="Script" path="res://Enemies/ArmorBuff.gd" id="10_nko3b"]
 [ext_resource type="Script" path="res://Enemies/Death.gd" id="12_fmiep"]
-[ext_resource type="Script" path="res://Enemies/Wander.gd" id="15_085cs"]
 [ext_resource type="Script" path="res://Overlap/hurtbox.gd" id="16_6uqi4"]
 [ext_resource type="PackedScene" uid="uid://dk7ckqq8mq2nr" path="res://Stats.tscn" id="18_f152u"]
 
@@ -597,9 +596,6 @@ script = ExtResource("9_oqdmc")
 
 [node name="ArmorBuff" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("10_nko3b")
-
-[node name="Wander" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("15_085cs")
 
 [node name="Dash" type="Node2D" parent="FiniteStateMachine"]
 script = ExtResource("9_i565u")
