@@ -13,7 +13,7 @@ func dash():
 	var tween = create_tween()
 	if player != null:
 		tween.tween_property(owner, "position", player.position, DASH_SPEED)
-	await tween.finished
+		await tween.finished
  
 func transition():
 	if can_transition:
