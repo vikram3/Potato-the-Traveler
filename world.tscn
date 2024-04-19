@@ -37,6 +37,9 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-207, -124)
 
+[node name="Timer" parent="day_and_night" index="1"]
+wait_time = 300.0
+
 [node name="WeatherUI" parent="day_and_night" index="2"]
 layer = 2
 
