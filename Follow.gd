@@ -14,7 +14,7 @@ func exit():
 func transition():
 	var distance = owner.direction.length()
 	get_parent().change_state("MeleeAttack")
-	if distance > 100:
+	if distance > 50:
 		attackPlayerRanged()
 
 func attackPlayerRanged():

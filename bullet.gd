@@ -37,4 +37,4 @@ func _on_hurtbox_area_entered(area):
 		hurtbox.create_hit_effect()
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	queue_free()
