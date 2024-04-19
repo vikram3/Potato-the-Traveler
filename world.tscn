@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dyr164gbvcxrf" path="res://World/Environment/tree-birch-yellow.tscn" id="5_k7lfl"]
 [ext_resource type="PackedScene" uid="uid://wgf5hgrk43ew" path="res://World/Environment/grass.tscn" id="6_dcagb"]
 [ext_resource type="PackedScene" uid="uid://c7xb0raqot3km" path="res://World/Environment/tree-mother.tscn" id="6_vdsp3"]
-[ext_resource type="PackedScene" uid="uid://dux3q2gv1s8g4" path="res://UI/health_ui.tscn" id="8_khgbn"]
+[ext_resource type="PackedScene" uid="uid://dux3q2gv1s8g4" path="res://UI/Health/health_ui.tscn" id="8_khgbn"]
 [ext_resource type="TileSet" uid="uid://dehp76qcudo5q" path="res://World/Environment.tres" id="10_evtyf"]
 [ext_resource type="PackedScene" uid="uid://yengxncxsbjj" path="res://World/Environment/campfire.tscn" id="11_8mfi8"]
 [ext_resource type="AudioStream" uid="uid://lgr7fwqk321e" path="res://Music and Sounds/Whispering_Woods.mp3" id="12_llom8"]

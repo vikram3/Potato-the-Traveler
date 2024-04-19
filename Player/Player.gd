@@ -121,6 +121,7 @@ func attack_combo():
 		attackTimer.stop()
 		stayInPlace()
 		animationState.travel("Attack_Combo")
+		$Combat/ChargeAttackEffect.visible = true
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -128,10 +129,12 @@ func attack_combo():
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 		
+		
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
+		$Combat/ChargeAttackEffect.visible = false
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -139,6 +142,7 @@ func attack_combo2():
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 
+	
 func attack_state():
 	stayInPlace()
 	animationState.travel("Attack")
@@ -286,6 +290,7 @@ func stayInPlace():
 func _on_attack_timer_timeout():
 	state = State.MOVE
 	aimIndicator.visible = false
+	$Combat/ChargeAttackEffect.visible = false
 	
 func player():
 	pass

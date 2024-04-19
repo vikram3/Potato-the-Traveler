@@ -30,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom_font="res://PressStart2P.ttf"
+theme/custom_font="res://UI/Font/PressStart2P.ttf"
 
 [input]
 

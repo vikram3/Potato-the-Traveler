@@ -1,4 +1,4 @@
-[gd_scene load_steps=519 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=525 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://chhw2ojm4666c" path="res://Player/Pixivan MC/BackSide DashnRoll.png" id="21_5teel"]
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
+[ext_resource type="Texture2D" uid="uid://ba4l2phxdsu44" path="res://Effects/EnemyDeathEffect.png" id="29_tlcrb"]
 
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
@@ -7655,6 +7656,42 @@ _data = {
 "Stop": SubResource("Animation_nwjam")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwmr7"]
+atlas = ExtResource("29_tlcrb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vqxu"]
+atlas = ExtResource("29_tlcrb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erjue"]
+atlas = ExtResource("29_tlcrb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qbst"]
+atlas = ExtResource("29_tlcrb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fq5i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwmr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vqxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erjue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbst")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 3.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -7753,6 +7790,15 @@ modulate = Color(0, 0, 0, 1)
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
+
+[node name="ChargeAttackEffect" type="AnimatedSprite2D" parent="Combat"]
+visible = false
+y_sort_enabled = true
+position = Vector2(3, -7)
+sprite_frames = SubResource("SpriteFrames_fq5i7")
+animation = &"charge"
+autoplay = "charge"
+frame_progress = 0.87169
 
 [node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
 visible = false
