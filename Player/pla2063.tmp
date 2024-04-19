@@ -1,4 +1,4 @@
-[gd_scene load_steps=526 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=525 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 [ext_resource type="Texture2D" uid="uid://ba4l2phxdsu44" path="res://Effects/EnemyDeathEffect.png" id="29_tlcrb"]
-[ext_resource type="Script" path="res://Player/player_stats.gd" id="31_ea5ri"]
 
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
@@ -7829,7 +7828,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Label" parent="Misc_UI"]
-visible = false
 z_index = 1
 offset_right = 52.0
 offset_bottom = 11.0
@@ -7839,10 +7837,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource("31_ea5ri")
-max_health = null
-DEF = null
-KNOCKOUT_SPEED = null
 
 [node name="Level" type="HBoxContainer" parent="UI"]
 offset_left = 68.0

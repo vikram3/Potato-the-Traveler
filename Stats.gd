@@ -1,5 +1,7 @@
 extends Node
 
+class_name Stats
+
 @export var max_health = 100
 @export var DEF = 0
 @export var KNOCKOUT_SPEED = 0
