@@ -7724,7 +7724,7 @@ shape = SubResource("CapsuleShape2D_bqrgj")
 disabled = true
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
-wait_time = 0.7
+wait_time = 2.0
 one_shot = true
 
 [node name="Hurtbox" parent="Combat" instance=ExtResource("5_bhnfg")]

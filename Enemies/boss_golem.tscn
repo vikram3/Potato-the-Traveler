@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dvbvyl1rsoiu6"]
+[gd_scene load_steps=42 format=3 uid="uid://dvbvyl1rsoiu6"]
 
 [ext_resource type="Texture2D" uid="uid://ccpgsksdod8id" path="res://Enemies/golem_spritesheet.png" id="1_ckc57"]
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Enemies/Death.gd" id="12_fmiep"]
 [ext_resource type="Script" path="res://Overlap/hurtbox.gd" id="16_6uqi4"]
 [ext_resource type="PackedScene" uid="uid://dk7ckqq8mq2nr" path="res://Stats.tscn" id="18_f152u"]
+[ext_resource type="PackedScene" uid="uid://bhv1fd4uvlhpd" path="res://Enemies/wander_controller.tscn" id="19_08jca"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_58gw5"]
 shader = ExtResource("3_7n1b6")
@@ -639,6 +640,8 @@ libraries = {
 }
 
 [node name="Stats" parent="." instance=ExtResource("18_f152u")]
+
+[node name="WanderController" parent="." instance=ExtResource("19_08jca")]
 
 [connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]

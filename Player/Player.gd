@@ -118,13 +118,13 @@ func attack_combo():
 		attackTimer.start()
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		attackTimer.stop()
 		stayInPlace()
 		animationState.travel("Attack_Combo")
-		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = State.MOVE
+	elif Input.is_action_just_pressed("Roll"):
+		state = State.ROLL
 		
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -134,6 +134,8 @@ func attack_combo2():
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = State.MOVE
+	elif Input.is_action_just_pressed("Roll"):
+		state = State.ROLL
 
 func attack_state():
 	stayInPlace()
@@ -183,6 +185,10 @@ func move_state(delta):
 		update_state_after_input()
 	else:
 		animationState.travel("Idle")
+		var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
+		animationTree.set("parameters/Attack/BlendSpace2D/blend_position", aim_direction)
+		animationTree.set("parameters/Attack_Combo/BlendSpace2D/blend_position", aim_direction)
+		animationTree.set("parameters/Attack_Combo2/BlendSpace2D/blend_position", aim_direction)
 		#Slow us down when we are stopping movement.
 		velocity = velocity.move_toward(Vector2.ZERO, Friction * delta)
 		move_and_slide()
