@@ -8507,8 +8507,6 @@ rotation = -1.309
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
 y_sort_enabled = true
-position = Vector2(-1.55291, -5.79555)
-rotation = -3.40339
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_hauvo")
 hframes = 10
