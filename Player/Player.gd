@@ -25,7 +25,7 @@ var state = State.MOVE
 #Base state for rolling
 var roll_vector = Vector2.DOWN
 
-var stats = PlayerStats
+@onready var stats = $UI
 
 #Bow
 var bow_equipped = true
@@ -63,13 +63,14 @@ func _ready():
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
 	aimIndicator.visible = false
-	healthBar.max_value = PlayerStats.max_health
-	healthBar.init_health(PlayerStats.health)
+	#healthBar.max_value = stats.max_HP
+	healthBar.init_health(stats.HP)
 	
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
 	debug.text = enum_to_string(state) + ' |Combo: %.2fs' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
+	print(stats.HP)
 
 	match state:
 		State.MOVE:
@@ -272,15 +273,15 @@ func takeDamage(area):
 	if critical_chance <= 0.1:
 		is_critical = true
 		var critical_multiplier = randf_range(1.2, 2) # Crit chance between these values
-		stats.health -= area.damage * critical_multiplier # Apply critical damage
+		stats.HP -= area.damage * critical_multiplier # Apply critical damage
 		DamageNumbers.display_number(area.damage * critical_multiplier, damage_numbers_origin.global_position, is_critical)
 	else:
-		stats.health -= area.damage
+		stats.HP -= area.damage
 		DamageNumbers.display_number(area.damage, damage_numbers_origin.global_position, is_critical)
 	
-	healthBar.health = PlayerStats.health
+	healthBar.health = stats.HP
 	
-	if PlayerStats.health < PlayerStats.max_health:
+	if stats.HP < stats.max_HP:
 		healthBar.visible = true
 	
 	

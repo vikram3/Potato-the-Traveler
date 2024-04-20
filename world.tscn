@@ -61,77 +61,15 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="TopLeft" parent="World_Camera/Limits" index="0"]
-position = Vector2(-80, -64)
+position = Vector2(-78, -63)
 
 [node name="BottomRight" parent="World_Camera/Limits" index="1"]
-position = Vector2(368, 272)
+position = Vector2(367, 271)
 
 [node name="Player" parent="." instance=ExtResource("2_7prvd")]
 y_sort_enabled = true
 position = Vector2(153, 200)
 collision_layer = 3
-
-[node name="Level" parent="Player/UI" index="0"]
-offset_left = 36.0
-offset_top = 124.0
-offset_right = 150.0
-offset_bottom = 164.0
-
-[node name="Label" parent="Player/UI/Level" index="0"]
-theme_override_font_sizes/font_size = 8
-text = "Level: 1"
-
-[node name="ProgressBar" parent="Player/UI/Level" index="1"]
-theme_override_font_sizes/font_size = 8
-
-[node name="GainXP" parent="Player/UI" index="1"]
-offset_left = 208.0
-offset_top = 125.0
-offset_right = 272.0
-offset_bottom = 156.0
-theme_override_font_sizes/font_size = 8
-
-[node name="Stats" parent="Player/UI" index="2"]
-offset_left = 34.0
-offset_top = 31.0
-offset_right = 137.0
-offset_bottom = 189.0
-
-[node name="TotalXP" parent="Player/UI/Stats/Attribute" index="0"]
-theme_override_font_sizes/font_size = 8
-
-[node name="HP" parent="Player/UI/Stats/Attribute" index="1"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Strength" parent="Player/UI/Stats/Attribute" index="2"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Vitality" parent="Player/UI/Stats/Attribute" index="3"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Agility" parent="Player/UI/Stats/Attribute" index="4"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Defense" parent="Player/UI/Stats/Attribute" index="5"]
-theme_override_font_sizes/font_size = 8
-
-[node name="TotalXP" parent="Player/UI/Stats/Value" index="0"]
-theme_override_font_sizes/font_size = 8
-
-[node name="HP" parent="Player/UI/Stats/Value" index="1"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Strength" parent="Player/UI/Stats/Value" index="2"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Vitality" parent="Player/UI/Stats/Value" index="3"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Agility" parent="Player/UI/Stats/Value" index="4"]
-theme_override_font_sizes/font_size = 8
-
-[node name="Defense" parent="Player/UI/Stats/Value" index="5"]
-theme_override_font_sizes/font_size = 8
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")
@@ -309,7 +247,4 @@ texture_scale = 0.5
 
 [editable path="day_and_night"]
 [editable path="World_Camera"]
-[editable path="Player"]
-[editable path="Player/Combat/HitboxPivot/SwordHitbox"]
-[editable path="Player/Combat/Hurtbox"]
 [editable path="Environment/Campfire"]

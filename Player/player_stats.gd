@@ -8,7 +8,7 @@ var XP_Table_Data = {}
 var Level : int = 1:
 	set(value):
 		Level = value
-		%Label.text = str(value)
+		%Label.text = "Level: " + str(value)
  
 		rpgClass.stat_growth(self)
 		#$AnimatedSprite2D.play("level_up")
@@ -34,10 +34,16 @@ var current_xp = 0:
 		%ProgressBar.max_value = get_max_xp_at(Level)
 		%ProgressBar.value = current_xp
  
-var HP : int :
+@onready var max_HP = 100
+var HP = max_HP:
+	get:
+		return HP
 	set(value):
-		HP = PlayerStats.max_health
-		%HP.text = str(value)
+		HP = value
+		%HP.text = str(value) + "/" + str(value)
+		emit_signal("health_changed", HP)
+		if HP <= 0:
+			emit_signal("no_health")
  
 var Strength : int :
 	set(value):
@@ -77,3 +83,12 @@ func get_max_xp_at(level):
  
 func _on_gain_xp_pressed():
 	current_xp += 100
+	
+signal no_HP
+signal HP_changed(value)
+signal max_HP_changed(value)
+
+func set_max_HP(value):
+	max_health = value
+	self.health = min(health, max_health)
+	emit_signal("max_health_changed")
