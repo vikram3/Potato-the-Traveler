@@ -12,3 +12,4 @@ func enter():
 	animation_player.play("death")
 	await animation_player.animation_finished
 	animation_player.play("boss_slain")
+	Status.current_xp += 240

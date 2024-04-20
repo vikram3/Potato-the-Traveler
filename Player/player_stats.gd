@@ -4,15 +4,16 @@ const XP_DATABASE = "res://Player/Database.json"
 const MAX_LEVEL = 4
  
 var XP_Table_Data = {}
- 
+
+signal level_up
 var Level : int = 1:
 	set(value):
 		Level = value
 		%Label.text = "Level: " + str(value)
- 
 		rpgClass.stat_growth(self)
-		#$AnimatedSprite2D.play("level_up")
-		#$AudioStreamPlayer.play()
+		emit_signal("level_up")
+		$AnimatedSprite2D.play("level_up")
+		$AudioStreamPlayer.play()
  
 var rpgClass 
  
@@ -20,17 +21,19 @@ var current_xp = 0:
 	set(value):
 		current_xp = value
 		var max_xp = get_max_xp_at(Level)
- 
 		if current_xp >= max_xp and Level < MAX_LEVEL:
 			Level += 1
 			current_xp -= max_xp
 		elif Level == MAX_LEVEL:
 			current_xp = 0
- 
+			
 		var total = min( (XP_Table_Data[str(Level)]["total"] + current_xp),
 						 XP_Table_Data[str(MAX_LEVEL)]["total"] )
-		%TotalXP.text = str(total)
- 
+		%TotalXP.text = str(total) + "/" + str(get_max_xp_at(Level))
+		
+		if get_max_xp_at(Level) == -1:
+			%TotalXP.text = str(total) + "/" + "MAX"
+			
 		%ProgressBar.max_value = get_max_xp_at(Level)
 		%ProgressBar.value = current_xp
  
@@ -68,7 +71,7 @@ var Defense : int :
  
 func _ready():
 	XP_Table_Data = get_xp_data()
-	print(XP_Table_Data)
+	#print(XP_Table_Data)
  
 	rpgClass = Warrior.new()
 	rpgClass.set_base_stat(self)

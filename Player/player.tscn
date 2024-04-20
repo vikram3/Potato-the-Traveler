@@ -1,4 +1,4 @@
-[gd_scene load_steps=526 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=540 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -30,7 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 [ext_resource type="Texture2D" uid="uid://ba4l2phxdsu44" path="res://Effects/EnemyDeathEffect.png" id="29_tlcrb"]
-[ext_resource type="Script" path="res://Player/player_stats.gd" id="31_ea5ri"]
+[ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
+[ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
@@ -5260,6 +5261,98 @@ states/Start/position = Vector2(107, 108)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_u4fkv"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_d5ns7"), "Bow_Ready", "Idle", SubResource("AnimationNodeStateMachineTransition_arlca"), "Idle", "Bow_Ready", SubResource("AnimationNodeStateMachineTransition_tgsim"), "Bow_Ready", "Bow_Aim", SubResource("AnimationNodeStateMachineTransition_8gp1h"), "Bow_Aim", "Bow_Fire", SubResource("AnimationNodeStateMachineTransition_w1hjy")]
 graph_offset = Vector2(-664, 45.566)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dptxe"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttbvt"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21jpn"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pabsd"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpero"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg5fv"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4skp"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cslqt"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj6s6"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2dr"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkub5"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eytri"]
+atlas = ExtResource("32_blh2b")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwt8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dptxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttbvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21jpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pabsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpero")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg5fv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4skp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cslqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj6s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq2dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkub5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eytri")
+}],
+"loop": false,
+"name": &"level_up",
+"speed": 12.0
+}]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hi7q1"]
 shader = ExtResource("4_ivow2")
 shader_parameter/active = false
@@ -7698,6 +7791,8 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_fjjot")
 
+[node name="Status Screen" parent="." instance=ExtResource("31_gkjwp")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_nmxgk")
@@ -7727,6 +7822,13 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Roll/BlendSpace2D/blend_position = Vector2(-0.00043726, 0)
 parameters/Roll/TimeScale/scale = 2.0
 parameters/Run/blend_position = Vector2(0, 0)
+
+[node name="LevelUp" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.52588e-05, -30)
+scale = Vector2(0.65625, 0.65625)
+sprite_frames = SubResource("SpriteFrames_qwt8f")
+animation = &"level_up"
+frame = 11
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_hi7q1")
@@ -7838,140 +7940,10 @@ text = "MOVE | Timer: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UI" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("31_ea5ri")
-
-[node name="ColorRect" type="ColorRect" parent="UI"]
-offset_left = 36.0
-offset_top = 41.0
-offset_right = 307.0
-offset_bottom = 151.0
-color = Color(0.054902, 0.054902, 0.054902, 0.533333)
-
-[node name="Level" type="HBoxContainer" parent="UI"]
-offset_left = 51.0
-offset_top = 33.0
-offset_right = 219.0
-offset_bottom = 73.0
-
-[node name="Label" type="Label" parent="UI/Level"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Level: 1"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/Level"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 8
-max_value = 240.0
-
-[node name="GainXP" type="Button" parent="UI"]
-offset_left = 224.0
-offset_top = 114.0
-offset_right = 288.0
-offset_bottom = 145.0
-theme_override_font_sizes/font_size = 8
-text = "GainXP"
-
-[node name="Stats" type="HBoxContainer" parent="UI"]
-offset_left = 51.0
-offset_top = 66.0
-offset_right = 154.0
-offset_bottom = 143.0
-
-[node name="Attribute" type="VBoxContainer" parent="UI/Stats"]
-layout_mode = 2
-
-[node name="TotalXP" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "EXP"
-
-[node name="HP" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "HP"
-
-[node name="Strength" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "STR"
-
-[node name="Vitality" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "VIT"
-
-[node name="Agility" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "AGI"
-
-[node name="Defense" type="Label" parent="UI/Stats/Attribute"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "DEF"
-
-[node name="Value" type="VBoxContainer" parent="UI/Stats"]
-layout_mode = 2
-
-[node name="TotalXP" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "0/100"
-horizontal_alignment = 2
-
-[node name="HP" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "100/100"
-horizontal_alignment = 2
-
-[node name="Strength" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "1"
-horizontal_alignment = 2
-
-[node name="Vitality" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "1"
-horizontal_alignment = 2
-
-[node name="Agility" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "1"
-horizontal_alignment = 2
-
-[node name="Defense" type="Label" parent="UI/Stats/Value"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "1"
-horizontal_alignment = 2
-
 [connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Combat/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
-[connection signal="pressed" from="UI/GainXP" to="UI" method="_on_gain_xp_pressed"]
 
 [editable path="Combat/HitboxPivot/SwordHitbox"]
 [editable path="Combat/Hurtbox"]

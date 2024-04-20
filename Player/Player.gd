@@ -25,7 +25,7 @@ var state = State.MOVE
 #Base state for rolling
 var roll_vector = Vector2.DOWN
 
-@onready var stats = $UI
+@onready var stats = Status
 
 #Bow
 var bow_equipped = true
@@ -65,12 +65,12 @@ func _ready():
 	aimIndicator.visible = false
 	#healthBar.max_value = stats.max_HP
 	healthBar.init_health(stats.HP)
+	stats.connect("level_up", Callable(self, "_on_level_up"))
 	
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
 	debug.text = enum_to_string(state) + ' |Combo: %.2fs' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
-	print(stats.HP)
 	
 	if Input.is_action_just_pressed("Status"):
 		stats.visible = not stats.visible
@@ -319,3 +319,6 @@ func enum_to_string(value):
 			return "BOW_FIRE"
 		_:
 			return "Unknown"
+
+func _on_level_up():
+	$LevelUp.play("level_up")
