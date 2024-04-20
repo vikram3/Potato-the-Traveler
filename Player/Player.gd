@@ -133,7 +133,6 @@ func attack_combo():
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		stayInPlace()
 		swordFX.play("default")
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
@@ -147,7 +146,6 @@ func attack_combo():
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		stayInPlace()
 		swordFX.play("default")
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
@@ -157,7 +155,6 @@ func attack_combo2():
 		state = State.ROLL
 
 func attack_state():
-	stayInPlace()
 	swordFX.play("default")
 	animationState.travel("Attack")
 	attackTimer.start()
@@ -296,10 +293,6 @@ func takeDamage(area):
 	
 	if stats.HP < stats.max_HP:
 		healthBar.visible = true
-	
-	
-func stayInPlace():
-	velocity = Vector2.ZERO #Stops the player from sliding cause they were moving.    
 
 func _on_attack_timer_timeout():
 	state = State.MOVE
