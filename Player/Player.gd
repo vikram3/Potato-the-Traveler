@@ -142,8 +142,6 @@ func attack_combo():
 		
 		
 func attack_combo2():
-	var forward_movement = 20 # Adjust this value to control the forward movement distance
-	
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
@@ -155,7 +153,6 @@ func attack_combo2():
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 
-	
 func attack_state():
 	stayInPlace()
 	swordFX.play("default")

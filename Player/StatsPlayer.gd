@@ -58,8 +58,8 @@ var Strength : int :
 var Vitality : int :
 	set(value):
 		Vitality = value
-		HP += 10 * (Vitality/4)
-		max_HP += 10 * (Vitality/4)
+		HP += 10 * (Vitality * 1/ 4)
+		max_HP += 10 * (Vitality * 1 / 4)
 		%Vitality.text = str(value)
  
 var Agility : int :
