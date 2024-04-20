@@ -2,6 +2,7 @@ extends Resource
 class_name Warrior
  
 var HP : int
+var max_HP : int
 var Strength : int
 var Vitality : int
 var Agility : int
@@ -9,6 +10,7 @@ var Defense : int
  
 func _init():
 	HP = 90
+	max_HP = HP
 	Strength = 7
 	Vitality = 7
 	Agility = 7
@@ -16,6 +18,7 @@ func _init():
  
 func set_base_stat(target):
 	target.HP = HP
+	target.max_HP = max_HP
 	target.Strength = Strength
 	target.Vitality = Vitality
 	target.Agility = Agility

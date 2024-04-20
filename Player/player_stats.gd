@@ -34,17 +34,16 @@ var current_xp = 0:
 		%ProgressBar.max_value = get_max_xp_at(Level)
 		%ProgressBar.value = current_xp
  
-@onready var max_HP = 100
-var HP = max_HP:
-	get:
-		return HP
+var HP : int :
 	set(value):
 		HP = value
-		%HP.text = str(value) + "/" + str(value)
-		emit_signal("health_changed", HP)
-		if HP <= 0:
-			emit_signal("no_health")
- 
+		%HP.text = str(HP) + "/" + str(max_HP)
+		
+var max_HP : int :
+	set(value):
+		max_HP = value
+		%HP.text = str(HP) + "/" + str(max_HP)
+		
 var Strength : int :
 	set(value):
 		Strength = value
@@ -54,6 +53,7 @@ var Vitality : int :
 	set(value):
 		Vitality = value
 		HP += 10 * (Vitality/4)
+		max_HP += 10 * (Vitality/4)
 		%Vitality.text = str(value)
  
 var Agility : int :
@@ -83,12 +83,3 @@ func get_max_xp_at(level):
  
 func _on_gain_xp_pressed():
 	current_xp += 100
-	
-signal no_HP
-signal HP_changed(value)
-signal max_HP_changed(value)
-
-func set_max_HP(value):
-	max_health = value
-	self.health = min(health, max_health)
-	emit_signal("max_health_changed")
