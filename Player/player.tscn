@@ -5591,30 +5591,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_tdw4a"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/HitboxPivot/Sword:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0472]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/HitboxPivot/Sword:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(14, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxgk"]
 _data = {
@@ -8782,7 +8758,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Attack/TimeScale/scale = 1.5
 parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack_Combo/TimeScale/scale = 1.5
+parameters/Attack_Combo/TimeScale/scale = 2.0
 parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Attack_Combo2/TimeScale/scale = 1.0
 parameters/Bow_Aim/BlendSpace2D/blend_position = Vector2(0, 0)
@@ -8846,8 +8822,8 @@ frame_progress = 1.0
 
 [node name="Sword" type="Node2D" parent="Combat/HitboxPivot"]
 z_index = -1
-position = Vector2(14, 0)
-rotation = 1.0472
+position = Vector2(-6, 0)
+rotation = 1.8326
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
 scale = Vector2(0.7, 0.7)
@@ -8892,7 +8868,8 @@ texture = ExtResource("29_cv1rw")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"idle"
+animation = &"attack_down"
+frame = 5
 
 [node name="Health_UI" type="Node2D" parent="."]
 
