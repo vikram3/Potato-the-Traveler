@@ -7839,6 +7839,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("31_ea5ri")
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
@@ -7846,7 +7847,7 @@ offset_left = 36.0
 offset_top = 41.0
 offset_right = 307.0
 offset_bottom = 151.0
-color = Color(0.054902, 0.054902, 0.054902, 0.858824)
+color = Color(0.054902, 0.054902, 0.054902, 0.533333)
 
 [node name="Level" type="HBoxContainer" parent="UI"]
 offset_left = 51.0
@@ -7869,10 +7870,10 @@ theme_override_font_sizes/font_size = 8
 max_value = 240.0
 
 [node name="GainXP" type="Button" parent="UI"]
-offset_left = 229.0
-offset_top = 110.0
-offset_right = 293.0
-offset_bottom = 141.0
+offset_left = 224.0
+offset_top = 114.0
+offset_right = 288.0
+offset_bottom = 145.0
 theme_override_font_sizes/font_size = 8
 text = "GainXP"
 
@@ -7888,7 +7889,7 @@ layout_mode = 2
 [node name="TotalXP" type="Label" parent="UI/Stats/Attribute"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "TotalXP"
+text = "EXP"
 
 [node name="HP" type="Label" parent="UI/Stats/Attribute"]
 layout_mode = 2
@@ -7923,6 +7924,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "0/100"
 horizontal_alignment = 2
 
 [node name="HP" type="Label" parent="UI/Stats/Value"]
@@ -7930,6 +7932,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "100/100"
 horizontal_alignment = 2
 
 [node name="Strength" type="Label" parent="UI/Stats/Value"]
@@ -7937,6 +7940,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "1"
 horizontal_alignment = 2
 
 [node name="Vitality" type="Label" parent="UI/Stats/Value"]
@@ -7944,6 +7948,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "1"
 horizontal_alignment = 2
 
 [node name="Agility" type="Label" parent="UI/Stats/Value"]
@@ -7951,6 +7956,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "1"
 horizontal_alignment = 2
 
 [node name="Defense" type="Label" parent="UI/Stats/Value"]
@@ -7958,6 +7964,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "1"
 horizontal_alignment = 2
 
 [connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]

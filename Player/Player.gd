@@ -71,7 +71,10 @@ func _physics_process(delta):
 	# Assuming attackTimer.time_left is a float value representing time in seconds
 	debug.text = enum_to_string(state) + ' |Combo: %.2fs' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
 	print(stats.HP)
-
+	
+	if Input.is_action_just_pressed("Status"):
+		stats.visible = not stats.visible
+		
 	match state:
 		State.MOVE:
 			calculateDmg(baseDMG)
