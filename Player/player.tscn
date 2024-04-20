@@ -1,4 +1,4 @@
-[gd_scene load_steps=544 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=545 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 [ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
+[ext_resource type="Texture2D" uid="uid://7txgucovlnqu" path="res://Player/weapon/sword.png" id="30_yagt4"]
 [ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 
@@ -7895,6 +7896,11 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 frame = 7
 frame_progress = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
+visible = false
+position = Vector2(-11, -6.99996)
+texture = ExtResource("30_yagt4")
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0

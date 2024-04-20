@@ -58,7 +58,7 @@ var baseDMG = 0
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
-	stats.connect("level_up", Callable(self, "_on_no_hp"))
+	stats.connect("no_HP", Callable(self, "playerDead"))
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
@@ -323,5 +323,5 @@ func enum_to_string(value):
 func _on_level_up():
 	$LevelUp.play("level_up")
 
-func _on_no_hp():
+func playerDead():
 	queue_free()
