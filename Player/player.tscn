@@ -1,4 +1,4 @@
-[gd_scene load_steps=540 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=544 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://chhw2ojm4666c" path="res://Player/Pixivan MC/BackSide DashnRoll.png" id="21_5teel"]
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
-[ext_resource type="Texture2D" uid="uid://ba4l2phxdsu44" path="res://Effects/EnemyDeathEffect.png" id="29_tlcrb"]
+[ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
 [ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 
@@ -7691,6 +7691,70 @@ height = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8mdh"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnerw"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu0wc"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip2it"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr1uu"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64osp"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjvdx"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44nkr"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nr6b0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8mdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnerw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu0wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip2it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr1uu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64osp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjvdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44nkr")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ulq5"]
 radius = 4.0
 height = 16.0
@@ -7749,42 +7813,6 @@ _data = {
 "Start": SubResource("Animation_87lbj"),
 "Stop": SubResource("Animation_nwjam")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pwmr7"]
-atlas = ExtResource("29_tlcrb")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2vqxu"]
-atlas = ExtResource("29_tlcrb")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_erjue"]
-atlas = ExtResource("29_tlcrb")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3qbst"]
-atlas = ExtResource("29_tlcrb")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fq5i7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pwmr7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vqxu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_erjue")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3qbst")
-}],
-"loop": true,
-"name": &"charge",
-"speed": 3.0
-}]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -7863,6 +7891,11 @@ scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
 disabled = true
 
+[node name="FlameSlash" type="AnimatedSprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
+sprite_frames = SubResource("SpriteFrames_nr6b0")
+frame = 7
+frame_progress = 1.0
+
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
 one_shot = true
@@ -7893,15 +7926,6 @@ modulate = Color(0, 0, 0, 1)
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
-
-[node name="ChargeAttackEffect" type="AnimatedSprite2D" parent="Combat"]
-visible = false
-y_sort_enabled = true
-position = Vector2(3, -7)
-sprite_frames = SubResource("SpriteFrames_fq5i7")
-animation = &"charge"
-autoplay = "charge"
-frame_progress = 0.87169
 
 [node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
 visible = false
@@ -7940,6 +7964,7 @@ text = "MOVE | Timer: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="no_HP" from="Status Screen" to="." method="_on_status_screen_no_hp"]
 [connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Combat/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]

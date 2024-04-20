@@ -36,10 +36,13 @@ var current_xp = 0:
 			
 		%ProgressBar.max_value = get_max_xp_at(Level)
 		%ProgressBar.value = current_xp
- 
+		
+signal no_HP
 var HP : int :
 	set(value):
 		HP = value
+		if HP <= 0:
+			emit_signal("no_HP")
 		%HP.text = str(HP) + "/" + str(max_HP)
 		
 var max_HP : int :

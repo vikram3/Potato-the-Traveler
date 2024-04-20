@@ -58,12 +58,12 @@ var baseDMG = 0
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
-	self.stats.connect("no_health", queue_free)
+	stats.connect("level_up", Callable(self, "_on_no_hp"))
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
 	aimIndicator.visible = false
-	#healthBar.max_value = stats.max_HP
+	healthBar.max_value = stats.max_HP
 	healthBar.init_health(stats.HP)
 	stats.connect("level_up", Callable(self, "_on_level_up"))
 	
@@ -124,8 +124,8 @@ func attack_combo():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
+		$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 		animationState.travel("Attack_Combo")
-		$Combat/ChargeAttackEffect.visible = true
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -138,7 +138,7 @@ func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		$Combat/ChargeAttackEffect.visible = false
+		$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -149,6 +149,7 @@ func attack_combo2():
 	
 func attack_state():
 	stayInPlace()
+	$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 	animationState.travel("Attack")
 	attackTimer.start()
 func bow_fire_state():
@@ -294,7 +295,6 @@ func stayInPlace():
 func _on_attack_timer_timeout():
 	state = State.MOVE
 	aimIndicator.visible = false
-	$Combat/ChargeAttackEffect.visible = false
 	
 func player():
 	pass
@@ -322,3 +322,6 @@ func enum_to_string(value):
 
 func _on_level_up():
 	$LevelUp.play("level_up")
+
+func _on_no_hp():
+	queue_free()
