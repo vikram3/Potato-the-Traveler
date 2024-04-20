@@ -1072,7 +1072,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(5, -18), Vector2(6, -18), Vector2(8, 7), Vector2(4, 7), Vector2(-14, -8), Vector2(-13, -8)]
+"values": [Vector2(5, -18), Vector2(6, -18), Vector2(14, 0), Vector2(8, 6), Vector2(-14, -8), Vector2(-13, -8)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1081,10 +1081,10 @@ tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0.0, 1.57079, -1.57079]
+"values": [0.0, 1.0472, 1.309, -1.57079]
 }
 
 [sub_resource type="Animation" id="Animation_b7udb"]
@@ -5591,6 +5591,30 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_tdw4a"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0472]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxgk"]
 _data = {
@@ -5717,7 +5741,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_hs7kw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dseom"]
-graph_offset = Vector2(-647, 3)
+graph_offset = Vector2(-729, 62)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_1vy4e")
 nodes/BlendSpace2D/position = Vector2(-449.388, 118.701)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_hs7kw")
@@ -5821,7 +5845,7 @@ blend_point_6/node = SubResource("AnimationNodeAnimation_e3rlj")
 blend_point_6/pos = Vector2(1, -1.1)
 blend_point_7/node = SubResource("AnimationNodeAnimation_cfugh")
 blend_point_7/pos = Vector2(-1, -1.1)
-min_space = Vector2(-1, -1.11)
+min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
@@ -8801,7 +8825,7 @@ offset_bottom = -30.0
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 4.71239
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -8821,18 +8845,16 @@ frame = 7
 frame_progress = 1.0
 
 [node name="Sword" type="Node2D" parent="Combat/HitboxPivot"]
-visible = false
 z_index = -1
-position = Vector2(-1.62125e-05, -17)
-rotation = -7.06857
+position = Vector2(14, 0)
+rotation = 1.0472
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
-y_sort_enabled = true
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_hauvo")
 hframes = 10
 vframes = 5
-frame = 17
+frame = 25
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
@@ -8870,8 +8892,7 @@ texture = ExtResource("29_cv1rw")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_up"
-frame = 5
+animation = &"idle"
 
 [node name="Health_UI" type="Node2D" parent="."]
 

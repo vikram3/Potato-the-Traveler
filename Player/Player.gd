@@ -161,6 +161,7 @@ func attack_state():
 	swordFX.play("default")
 	animationState.travel("Attack")
 	attackTimer.start()
+	
 func bow_fire_state():
 	var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
 	animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
