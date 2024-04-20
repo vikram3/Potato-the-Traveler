@@ -102,12 +102,15 @@ func _physics_process(delta):
 			calculateDmg(baseDMG + bonusComboDMG2)
 			attack_combo2()
 		State.BOW_READY:
+			swordSprite.visible = false
 			syncArrowToPointer()
 			animationState.travel("Bow_Ready")
 		State.BOW_AIM:
+			swordSprite.visible = false
 			syncArrowToPointer()
 			animationState.travel("Bow_Aim")
 		State.BOW_FIRE:
+			swordSprite.visible = false
 			syncArrowToPointer()
 			activateCrosshair()
 			bow_fire_state()

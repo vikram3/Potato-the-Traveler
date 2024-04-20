@@ -5591,30 +5591,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_tdw4a"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Combat/HitboxPivot/Sword:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-6.00001, -1.99998)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Combat/HitboxPivot/Sword:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-2.87979]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxgk"]
 _data = {
@@ -8825,7 +8801,7 @@ offset_bottom = -30.0
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 1.5708
+rotation = 4.71239
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -8845,9 +8821,10 @@ frame = 7
 frame_progress = 1.0
 
 [node name="Sword" type="Node2D" parent="Combat/HitboxPivot"]
+visible = false
 z_index = -1
-position = Vector2(-6.00001, -1.99998)
-rotation = -2.87979
+position = Vector2(-1.62125e-05, -17)
+rotation = -7.06857
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
 y_sort_enabled = true
@@ -8893,7 +8870,7 @@ texture = ExtResource("29_cv1rw")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"run_upright"
+animation = &"attack_up"
 frame = 5
 
 [node name="Health_UI" type="Node2D" parent="."]
@@ -8917,7 +8894,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Label" parent="Misc_UI"]
-visible = false
 z_index = 1
 offset_right = 52.0
 offset_bottom = 11.0
