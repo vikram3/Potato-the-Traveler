@@ -128,7 +128,7 @@ func attack_combo():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+		#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
@@ -142,7 +142,7 @@ func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+		#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -153,7 +153,7 @@ func attack_combo2():
 	
 func attack_state():
 	stayInPlace()
-	$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+	#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
 	animationState.travel("Attack")
 	attackTimer.start()
 func bow_fire_state():

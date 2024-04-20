@@ -71,11 +71,11 @@ y_sort_enabled = true
 position = Vector2(153, 200)
 collision_layer = 3
 
+[node name="LevelUp" parent="Player" index="3"]
+frame_progress = 1.0
+
 [node name="CollisionShape2D" parent="Player/Combat/HitboxPivot/SwordHitbox" index="0"]
 disabled = false
-
-[node name="Sprite2D" parent="Player/Combat/HitboxPivot/SwordHitbox" index="2"]
-position = Vector2(-25.0001, -14.9999)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")

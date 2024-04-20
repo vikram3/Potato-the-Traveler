@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="4_ivow2"]
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
+[ext_resource type="Texture2D" uid="uid://23eokddcbqvs" path="res://Player/weaponv2/3.png" id="6_ytigs"]
 [ext_resource type="Texture2D" uid="uid://d3gw0acijlex8" path="res://Player/Pixivan MC/FrontSide Consecutive Slash.png" id="9_oo5a3"]
 [ext_resource type="Texture2D" uid="uid://bpkr2x0q55cyj" path="res://Player/Pixivan MC/Front ConsecutiveSlash.png" id="10_2146p"]
 [ext_resource type="Texture2D" uid="uid://cb4avkaep0ok1" path="res://Player/Pixivan MC/Side ConsecutiveSlash.png" id="11_tttdy"]
@@ -29,14 +30,13 @@
 [ext_resource type="Texture2D" uid="uid://chhw2ojm4666c" path="res://Player/Pixivan MC/BackSide DashnRoll.png" id="21_5teel"]
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
-[ext_resource type="Texture2D" uid="uid://1msfd7pnuh8e" path="res://Player/weapon/Iicon_32_33.png" id="29_jyhpy"]
 [ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
 [ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -153,7 +153,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_r6a65"]
 resource_name = "AttackDown_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -250,10 +250,10 @@ tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-20.0001, -17.9999), Vector2(-5.00007, -19), Vector2(-3.00007, -18), Vector2(-4.95911e-05, -14), Vector2(-8.99994, 16), Vector2(-9.99994, 16), Vector2(-14.9999, 16.0001), Vector2(-15.9999, 16.0001), Vector2(-14.9999, 16.0001)]
+"values": [Vector2(-20.0001, -17.9999), Vector2(-5.00007, -19), Vector2(-3.00007, -18), Vector2(-4.95911e-05, -14), Vector2(11, -2.00004), Vector2(2.00003, 8.99999), Vector2(-0.999964, 10), Vector2(-0.999968, 9)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -262,15 +262,15 @@ tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [-1.309, -0.523598, -3.66519]
+"values": [-1.309, -0.523598, -5.49778, -4.97418]
 }
 
 [sub_resource type="Animation" id="Animation_7limj"]
 resource_name = "AttackDown_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -387,7 +387,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_laggr"]
 resource_name = "AttackLeft"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -504,7 +504,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_pa0pe"]
 resource_name = "AttackLeft_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -621,7 +621,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_e7xf0"]
 resource_name = "AttackLeft_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -738,7 +738,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_sntdd"]
 resource_name = "AttackRight"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -855,7 +855,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_ml431"]
 resource_name = "Attack_Right_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -955,7 +955,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-7, -7), Vector2(-10, -7), Vector2(-7, -7), Vector2(-4, -8), Vector2(11, -7), Vector2(13, -14), Vector2(6, -20), Vector2(6, -19)]
+"values": [Vector2(-7, -7), Vector2(-10, -7), Vector2(-7, -7), Vector2(12, 7), Vector2(13, -7), Vector2(13, -14), Vector2(9, -20), Vector2(8, -19)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -964,15 +964,15 @@ tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [-1.57079, 0.0]
+"values": [-1.57079, 1.57079, 0.261799]
 }
 
 [sub_resource type="Animation" id="Animation_tmr14"]
 resource_name = "AttackRight_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1089,7 +1089,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_b7udb"]
 resource_name = "AttackUp"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1206,7 +1206,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_gne7t"]
 resource_name = "Attack_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1323,7 +1323,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_vsg5r"]
 resource_name = "AttackUp_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1440,7 +1440,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_coqnc"]
 resource_name = "Attack_Downleft"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1557,7 +1557,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_314vy"]
 resource_name = "Attack_Downleft_Combo"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1674,7 +1674,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_t76pv"]
 resource_name = "Attack_Downleft_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1791,7 +1791,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_ebnik"]
 resource_name = "AttackLeft_Downright"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1908,7 +1908,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_iqh4g"]
 resource_name = "Attack_Downright_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2025,7 +2025,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_e5edx"]
 resource_name = "Attack_Downright_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2142,7 +2142,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_cagew"]
 resource_name = "Attack_Upleft"
-length = 0.60001
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2259,7 +2259,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_0fj8i"]
 resource_name = "Attack_Upleft_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2376,7 +2376,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_e3bno"]
 resource_name = "Attack_Upleft_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2493,7 +2493,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_ucvjq"]
 resource_name = "Attack_Upright"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2610,7 +2610,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_yhtaf"]
 resource_name = "Attack_Upright_Combo"
-length = 0.90001
+length = 0.8
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2727,7 +2727,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_kyu4n"]
 resource_name = "Attack_Upright_Combo2"
-length = 0.70001
+length = 0.6
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -8286,6 +8286,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
+radius = 4.0
+height = 8.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8mdh"]
@@ -8411,10 +8415,6 @@ _data = {
 "Stop": SubResource("Animation_nwjam")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
-radius = 4.0
-height = 8.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -8429,6 +8429,7 @@ libraries = {
 autoplay = "Crosshair"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_nmxgk")
@@ -8436,11 +8437,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_jnc71")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack/TimeScale/scale = 2.0
+parameters/Attack/TimeScale/scale = 1.5
 parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Attack_Combo/TimeScale/scale = 2.0
 parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack_Combo2/TimeScale/scale = 1.0
+parameters/Attack_Combo2/TimeScale/scale = 1.4
 parameters/Bow_Aim/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Bow_Aim/TimeScale/scale = 2.0
 parameters/Bow_Fire/BlendSpace2D/blend_position = Vector2(0, 0)
@@ -8458,6 +8459,7 @@ scale = Vector2(0.65625, 0.65625)
 sprite_frames = SubResource("SpriteFrames_qwt8f")
 animation = &"level_up"
 frame = 11
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_hi7q1")
@@ -8465,11 +8467,29 @@ position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"idle_right"
 
+[node name="World Collision" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_av4qi")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(1, -1)
+texture = ExtResource("2_6k4r1")
+
+[node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
+visible = false
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 8.0
+offset_bottom = -30.0
+
 [node name="Combat" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 5.23599
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -8492,9 +8512,9 @@ position = Vector2(0.999996, -1)
 rotation = -1.309
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
+y_sort_enabled = true
 position = Vector2(-0.448317, 2.19066)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("29_jyhpy")
+texture = ExtResource("6_ytigs")
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
@@ -8527,23 +8547,6 @@ visible = false
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
-
-[node name="World Collision" type="CollisionShape2D" parent="."]
-visible = false
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_av4qi")
-
-[node name="ShadowSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.25098)
-position = Vector2(1, -1)
-texture = ExtResource("2_6k4r1")
-
-[node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
-visible = false
-offset_left = -6.0
-offset_top = -32.0
-offset_right = 8.0
-offset_bottom = -30.0
 
 [node name="Health_UI" type="Node2D" parent="."]
 
