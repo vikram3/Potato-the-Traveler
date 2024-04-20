@@ -77,20 +77,24 @@ func _physics_process(delta):
 		
 	match state:
 		State.MOVE:
+			$Combat/HitboxPivot/Sword.visible = false
 			calculateDmg(baseDMG)
 			move_state(delta)
 		State.ROLL:
 			roll_state()
 		State.ATTACK:
+			$Combat/HitboxPivot/Sword.visible = true
 			stats.KNOCKOUT_SPEED = 2000
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
+			$Combat/HitboxPivot/Sword.visible = true
 			stats.KNOCKOUT_SPEED = 25
 			var bonusComboDMG = 4
 			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
+			$Combat/HitboxPivot/Sword.visible = true
 			var bonusComboDMG2 = 10
 			calculateDmg(baseDMG + bonusComboDMG2)
 			attack_combo2()

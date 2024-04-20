@@ -29,8 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://chhw2ojm4666c" path="res://Player/Pixivan MC/BackSide DashnRoll.png" id="21_5teel"]
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
+[ext_resource type="Texture2D" uid="uid://1msfd7pnuh8e" path="res://Player/weapon/Iicon_32_33.png" id="29_jyhpy"]
 [ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
-[ext_resource type="Texture2D" uid="uid://7txgucovlnqu" path="res://Player/weapon/sword.png" id="30_yagt4"]
 [ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 
@@ -126,6 +126,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(3, -1.14441e-05), Vector2(0.999996, -1), Vector2(-3.57628e-06, -1), Vector2(-9.00005, -15), Vector2(-19.0001, -16.9999), Vector2(-20.0001, -17.9999)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.57079, -1.309]
+}
 
 [sub_resource type="Animation" id="Animation_r6a65"]
 resource_name = "AttackDown_Combo"
@@ -218,6 +242,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-20.0001, -17.9999), Vector2(-5.00007, -19), Vector2(-3.00007, -18), Vector2(-4.95911e-05, -14), Vector2(-8.99994, 16), Vector2(-9.99994, 16), Vector2(-14.9999, 16.0001), Vector2(-15.9999, 16.0001), Vector2(-14.9999, 16.0001)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1.309, -0.523598, -3.66519]
 }
 
 [sub_resource type="Animation" id="Animation_7limj"]
@@ -312,6 +360,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_down_combo2"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-19.0001, -14.9999), Vector2(-9.00005, -16), Vector2(-8.99994, 16), Vector2(-14.9999, 15.0001), Vector2(-13.9999, 17.0001), Vector2(-13.9999, 17), Vector2(-14.9999, 16.0001)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1.57079, -0.261799, 2.61799]
+}
 
 [sub_resource type="Animation" id="Animation_laggr"]
 resource_name = "AttackLeft"
@@ -404,6 +476,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_sideways"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(7.39098e-06, -3), Vector2(-0.99999, -4), Vector2(-2.99999, -4.00001), Vector2(-15, -6.00004), Vector2(-12, -5.00003)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, -1.57079]
 }
 
 [sub_resource type="Animation" id="Animation_pa0pe"]
@@ -498,6 +594,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_sideways_combo"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-12, -5.00003), Vector2(-12, -7.00003), Vector2(-9.99998, -8.00003), Vector2(-7.99998, -7.00002), Vector2(11, 18), Vector2(8.99995, 21), Vector2(6.99995, 21), Vector2(5.99994, 22), Vector2(5.99995, 21)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1.57079, 1.57079]
+}
 
 [sub_resource type="Animation" id="Animation_e7xf0"]
 resource_name = "AttackLeft_Combo2"
@@ -590,6 +710,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_sideways_combo2"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2.99995, 18), Vector2(2.00002, -8.99999), Vector2(-11, -9.00003), Vector2(-14, -8.00004), Vector2(-14, -7.00004)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1.57079, 0.0, -1.309]
 }
 
 [sub_resource type="Animation" id="Animation_sntdd"]
@@ -684,6 +828,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_sideways"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5, 1), Vector2(0, -4.76837e-07), Vector2(0, 1), Vector2(-10, -5), Vector2(-11, -7), Vector2(-9, -8)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.21649, -1.57079]
+}
 
 [sub_resource type="Animation" id="Animation_ml431"]
 resource_name = "Attack_Right_Combo"
@@ -776,6 +944,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_sideways_combo"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-7, -7), Vector2(-10, -7), Vector2(-7, -7), Vector2(-4, -8), Vector2(11, -7), Vector2(13, -14), Vector2(6, -20), Vector2(6, -19)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1.57079, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tmr14"]
@@ -870,6 +1062,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_sideways_combo2"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5, -18), Vector2(6, -18), Vector2(8, 7), Vector2(4, 7), Vector2(-14, -8), Vector2(-13, -8)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 1.57079, -1.57079]
+}
 
 [sub_resource type="Animation" id="Animation_b7udb"]
 resource_name = "AttackUp"
@@ -962,6 +1178,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(15, 13), Vector2(16, 13), Vector2(17, 13), Vector2(2.99998, -17), Vector2(-1.52588e-05, -16), Vector2(-1.62125e-05, -17)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-4.71238, -7.06857]
 }
 
 [sub_resource type="Animation" id="Animation_gne7t"]
@@ -1056,6 +1296,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_up_combo"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(8.00002, 19), Vector2(7.00002, 18), Vector2(7.00002, 20), Vector2(17, 14), Vector2(-4.00001, -14), Vector2(-7.00001, -9.99999), Vector2(-7.00001, -12), Vector2(-6.00001, -13), Vector2(-4.00001, -12)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-4.18878, -7.59217, -7.85397, -7.59217]
+}
 
 [sub_resource type="Animation" id="Animation_vsg5r"]
 resource_name = "AttackUp_Combo2"
@@ -1148,6 +1412,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_up_combo2"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-4.00001, -12), Vector2(3.99998, -15), Vector2(1.45435e-05, 15), Vector2(-0.999985, 16), Vector2(-1.99998, 16), Vector2(-1.99999, 12), Vector2(-1.99999, 13)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-7.59217, -6.80677, -3.66519]
 }
 
 [sub_resource type="Animation" id="Animation_coqnc"]
@@ -1242,6 +1530,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_downright"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5.69615, -2.13398), Vector2(3.9641, -1.13398), Vector2(3.9641, -1.13398), Vector2(7.25833, -13.4282), Vector2(10.4641, 10.1244), Vector2(7.09808, 6.29423)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-5.49778, -5.49778, -6.54498, -4.71238]
+}
 
 [sub_resource type="Animation" id="Animation_314vy"]
 resource_name = "Attack_Downleft_Combo"
@@ -1334,6 +1646,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_downright_combo"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4.56215, 6.09809), Vector2(-10.7583, -7.36607), Vector2(-9.39228, -7.73209), Vector2(-6.7942, -6.23208), Vector2(-1.69612, -9.06218), Vector2(11.0263, 2.90197), Vector2(0.964078, 6.33013)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-4.71238, -7.85397, -6.02138]
 }
 
 [sub_resource type="Animation" id="Animation_t76pv"]
@@ -1428,6 +1764,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_downright combo2"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2.16019, 16.2583), Vector2(4.52623, 14.1603), Vector2(10.5622, -4.29419), Vector2(6.96412, -4.06215), Vector2(3.00002, -5.19614), Vector2(2.00001, -3.46409)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.309, 0.785397]
+}
 
 [sub_resource type="Animation" id="Animation_ebnik"]
 resource_name = "AttackLeft_Downright"
@@ -1520,6 +1880,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_downright"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5.69615, -2.13398), Vector2(3.9641, -1.13398), Vector2(3.9641, -1.13398), Vector2(7.25833, -13.4282), Vector2(10.4641, 10.1244), Vector2(7.09808, 6.29423)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [-5.49778, -5.49778, -6.54498, -4.71238]
 }
 
 [sub_resource type="Animation" id="Animation_iqh4g"]
@@ -1614,6 +1998,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_downright_combo"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4.56215, 6.09809), Vector2(-10.7583, -7.36607), Vector2(-9.39228, -7.73209), Vector2(-6.7942, -6.23208), Vector2(12.9282, 6.3923), Vector2(9.79423, -1.0359), Vector2(5.52627, -12.4282), Vector2(4.66025, -11.9282), Vector2(4.66025, -11.9282)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [-4.71238, -7.85397, -4.71238, -4.45058, 1.0472]
+}
 
 [sub_resource type="Animation" id="Animation_e5edx"]
 resource_name = "Attack_Downright_Combo2"
@@ -1651,7 +2059,7 @@ tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabl
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -1706,6 +2114,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_downright combo2"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-0.339752, -20.5885), Vector2(-0.571802, -16.9904), Vector2(12.1603, 1.06217), Vector2(9.4282, 0.330124), Vector2(7.19615, 0.4641), Vector2(3.9641, -1.13398)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 0.785397]
 }
 
 [sub_resource type="Animation" id="Animation_cagew"]
@@ -1800,6 +2232,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(9.09808, -9.75833), Vector2(10.8301, -8.75833), Vector2(17.1244, -1.66025), Vector2(12.1603, -1.06217), Vector2(20.2224, -1.02627), Vector2(10.7942, -0.69615)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.0, 0.785397]
+}
 
 [sub_resource type="Animation" id="Animation_0fj8i"]
 resource_name = "Attack_Upleft_Combo"
@@ -1892,6 +2348,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_upright_combo"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(10.7942, -0.69615), Vector2(9.56218, -2.56218), Vector2(5.86603, -8.16025), Vector2(10.4641, -10.1244), Vector2(7.22242, 21.4904), Vector2(3.25833, 20.3564), Vector2(0.66025, 18.8564), Vector2(3.62435, 21.7224), Vector2(2.75832, 21.2224)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.785397, 0.523598, -0.261799, 0.0, 2.09439]
 }
 
 [sub_resource type="Animation" id="Animation_e3bno"]
@@ -1986,6 +2466,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_upright_combo2"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(5.8564, 21.8564), Vector2(5.5, -9.52628), Vector2(1.5359, -10.6603), Vector2(2.0359, -11.5263), Vector2(2.16988, -13.7583), Vector2(3.0359, -13.2583)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2.09439, -0.523598]
+}
 
 [sub_resource type="Animation" id="Animation_ucvjq"]
 resource_name = "Attack_Upright"
@@ -2023,7 +2527,7 @@ tracks/2/path = NodePath("Combat/HitboxPivot/SwordHitbox/CollisionShape2D:disabl
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -2078,6 +2582,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(7.33013, 2.69614), Vector2(14.8923, 1.7942), Vector2(19.3564, 1.52624), Vector2(19.7224, 0.16021), Vector2(13.5263, 1.42817), Vector2(11.6603, 0.196126)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.309, 0.785397]
 }
 
 [sub_resource type="Animation" id="Animation_yhtaf"]
@@ -2172,6 +2700,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [&"attack_upright_combo"]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(10.7942, -0.69615), Vector2(9.56218, -2.56218), Vector2(5.86603, -8.16025), Vector2(10.4641, -10.1244), Vector2(11.3661, 17.6865), Vector2(8.00003, 13.8564), Vector2(8.00003, 13.8564), Vector2(8.86605, 13.3564), Vector2(7.86605, 11.6243)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.785397, 0.523598, -0.261799, 0.0, 2.09439]
+}
 
 [sub_resource type="Animation" id="Animation_kyu4n"]
 resource_name = "Attack_Upright_Combo2"
@@ -2264,6 +2816,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"attack_upright_combo2"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(1.89226, -20.7224), Vector2(2.53593, 12.3923), Vector2(-0.0621462, 13.8923), Vector2(-0.562148, 13.0263), Vector2(-0.0621462, 13.8923), Vector2(0.437856, 14.7583)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-0.785397, 2.61799]
 }
 
 [sub_resource type="Animation" id="Animation_4wx5d"]
@@ -3850,6 +4426,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Combat/HitboxPivot/Sword:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.999996, -1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Combat/HitboxPivot/Sword:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.309]
 }
 
 [sub_resource type="Animation" id="Animation_gully"]
@@ -7686,10 +8286,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
-radius = 4.0
-height = 8.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqrgj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8mdh"]
@@ -7815,6 +8411,10 @@ _data = {
 "Stop": SubResource("Animation_nwjam")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_av4qi"]
+radius = 4.0
+height = 8.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -7865,21 +8465,11 @@ position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"idle_right"
 
-[node name="World Collision" type="CollisionShape2D" parent="."]
-visible = false
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_av4qi")
-
-[node name="ShadowSprite" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.25098)
-position = Vector2(1, -1)
-texture = ExtResource("2_6k4r1")
-
 [node name="Combat" type="Node2D" parent="."]
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 1.5708
+rotation = 5.23599
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -7897,10 +8487,14 @@ sprite_frames = SubResource("SpriteFrames_nr6b0")
 frame = 7
 frame_progress = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
-visible = false
-position = Vector2(-11, -6.99996)
-texture = ExtResource("30_yagt4")
+[node name="Sword" type="Node2D" parent="Combat/HitboxPivot"]
+position = Vector2(0.999996, -1)
+rotation = -1.309
+
+[node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
+position = Vector2(-0.448317, 2.19066)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_jyhpy")
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
@@ -7929,9 +8523,20 @@ libraries = {
 modulate = Color(0, 0, 0, 1)
 
 [node name="AimIndicator" type="Sprite2D" parent="Combat"]
+visible = false
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
+
+[node name="World Collision" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_av4qi")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.25098)
+position = Vector2(1, -1)
+texture = ExtResource("2_6k4r1")
 
 [node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
 visible = false
