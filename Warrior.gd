@@ -9,7 +9,7 @@ var Agility : int
 var Defense : int
  
 func _init():
-	HP = 20
+	HP = 90
 	max_HP = HP
 	Strength = 7
 	Vitality = 7

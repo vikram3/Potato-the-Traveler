@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
 [ext_resource type="Texture2D" uid="uid://d3gw0acijlex8" path="res://Player/Pixivan MC/FrontSide Consecutive Slash.png" id="9_oo5a3"]
 [ext_resource type="Texture2D" uid="uid://bpkr2x0q55cyj" path="res://Player/Pixivan MC/Front ConsecutiveSlash.png" id="10_2146p"]
-[ext_resource type="Texture2D" uid="uid://coj6xxd0g14mw" path="res://Player/weapon/all_swords.png" id="11_hauvo"]
+[ext_resource type="Texture2D" uid="uid://cmrj1i4eby65f" path="res://Player/weapon/iceblade2.png" id="11_bia8p"]
 [ext_resource type="Texture2D" uid="uid://cb4avkaep0ok1" path="res://Player/Pixivan MC/Side ConsecutiveSlash.png" id="11_tttdy"]
 [ext_resource type="Texture2D" uid="uid://6eb55uah0is2" path="res://Player/Pixivan MC/Front Movement.png" id="12_b453y"]
 [ext_resource type="Texture2D" uid="uid://b8vaedp5cewmg" path="res://Player/Pixivan MC/BackSIde ConsecutiveSlash.png" id="12_il6as"]
@@ -5860,7 +5860,7 @@ states/Run/node = SubResource("AnimationNodeBlendSpace2D_5vaak")
 states/Run/position = Vector2(466, 108)
 states/Start/position = Vector2(107, 108)
 transitions = ["Idle", "Run", SubResource("AnimationNodeStateMachineTransition_aiptw"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_qem6g"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_h148q"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_243dv"), "Attack", "Attack_Combo", SubResource("AnimationNodeStateMachineTransition_8yxqi"), "Attack_Combo", "Attack_Combo2", SubResource("AnimationNodeStateMachineTransition_1twrr"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_u4fkv"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_d5ns7"), "Bow_Ready", "Idle", SubResource("AnimationNodeStateMachineTransition_arlca"), "Idle", "Bow_Ready", SubResource("AnimationNodeStateMachineTransition_tgsim"), "Bow_Ready", "Bow_Aim", SubResource("AnimationNodeStateMachineTransition_8gp1h"), "Bow_Aim", "Bow_Fire", SubResource("AnimationNodeStateMachineTransition_w1hjy")]
-graph_offset = Vector2(-397, 23.566)
+graph_offset = Vector2(-664, 45.566)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dptxe"]
 atlas = ExtResource("32_blh2b")
@@ -6021,7 +6021,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ulq5"]
@@ -8429,6 +8429,7 @@ libraries = {
 autoplay = "Crosshair"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_nmxgk")
@@ -8494,7 +8495,7 @@ scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
 disabled = true
 
-[node name="Sword_FX" type="AnimatedSprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
+[node name="FlameSlash" type="AnimatedSprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
 modulate = Color(0.109804, 0.0980392, 0.0901961, 1)
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 frame = 7
@@ -8507,13 +8508,8 @@ rotation = -1.309
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/HitboxPivot/Sword"]
 y_sort_enabled = true
-position = Vector2(-1.55291, -5.79555)
-rotation = -3.40339
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_hauvo")
-hframes = 10
-vframes = 5
-frame = 17
+position = Vector2(-0.448317, 2.19066)
+texture = ExtResource("11_bia8p")
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0

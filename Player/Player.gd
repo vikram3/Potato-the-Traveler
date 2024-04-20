@@ -47,6 +47,8 @@ var baseDMG = 0
 #Melee Attack
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
+@onready var swordFX = $Combat/HitboxPivot/SwordHitbox/Sword_FX
+@onready var swordSprite = $Combat/HitboxPivot/Sword
 
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
@@ -77,18 +79,19 @@ func _physics_process(delta):
 		
 	match state:
 		State.MOVE:
-			$Combat/HitboxPivot/Sword.visible = false
+			swordSprite.visible = true
 			calculateDmg(baseDMG)
 			move_state(delta)
 		State.ROLL:
+			swordSprite.visible = false
 			roll_state()
 		State.ATTACK:
-			$Combat/HitboxPivot/Sword.visible = true
+			swordSprite.visible = true
 			stats.KNOCKOUT_SPEED = 2000
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
-			$Combat/HitboxPivot/Sword.visible = true
+			swordSprite.visible = true
 			stats.KNOCKOUT_SPEED = 25
 			var bonusComboDMG = 4
 			calculateDmg(baseDMG + bonusComboDMG)
@@ -128,7 +131,7 @@ func attack_combo():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+		swordFX.play("default")
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
@@ -139,10 +142,12 @@ func attack_combo():
 		
 		
 func attack_combo2():
+	var forward_movement = 20 # Adjust this value to control the forward movement distance
+	
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		stayInPlace()
-		#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+		swordFX.play("default")
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -153,7 +158,7 @@ func attack_combo2():
 	
 func attack_state():
 	stayInPlace()
-	#$Combat/HitboxPivot/SwordHitbox/FlameSlash.play("default")
+	swordFX.play("default")
 	animationState.travel("Attack")
 	attackTimer.start()
 func bow_fire_state():
@@ -250,7 +255,6 @@ func bow_fire_finished():
 	state = State.MOVE
 	
 func attack_combo2_animation_finished():
-	aimIndicator.visible = false
 	state = State.MOVE
 	
 func _on_hurtbox_area_entered(area):
