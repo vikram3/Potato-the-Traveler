@@ -7841,11 +7841,18 @@ vertical_alignment = 1
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("31_ea5ri")
 
+[node name="ColorRect" type="ColorRect" parent="UI"]
+offset_left = 36.0
+offset_top = 41.0
+offset_right = 307.0
+offset_bottom = 151.0
+color = Color(0.054902, 0.054902, 0.054902, 0.858824)
+
 [node name="Level" type="HBoxContainer" parent="UI"]
-offset_left = 62.0
-offset_top = 24.0
-offset_right = 230.0
-offset_bottom = 64.0
+offset_left = 51.0
+offset_top = 33.0
+offset_right = 219.0
+offset_bottom = 73.0
 
 [node name="Label" type="Label" parent="UI/Level"]
 unique_name_in_owner = true
@@ -7862,10 +7869,10 @@ theme_override_font_sizes/font_size = 8
 max_value = 240.0
 
 [node name="GainXP" type="Button" parent="UI"]
-offset_left = 237.0
-offset_top = 108.0
-offset_right = 301.0
-offset_bottom = 139.0
+offset_left = 229.0
+offset_top = 110.0
+offset_right = 293.0
+offset_bottom = 141.0
 theme_override_font_sizes/font_size = 8
 text = "GainXP"
 
