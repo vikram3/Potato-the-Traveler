@@ -9420,9 +9420,8 @@ script = ExtResource("1_fjjot")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_sideways_combo2"
-frame = 6
-flip_h = true
+animation = &"attack_sideways"
+frame = 5
 
 [node name="Status Screen" parent="." instance=ExtResource("31_gkjwp")]
 
@@ -9490,7 +9489,6 @@ position = Vector2(4, -17)
 [node name="SwordSprite" type="Sprite2D" parent="Combat/Sword"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_gqnm0")
-flip_h = true
 hframes = 9
 vframes = 20
 frame = 81
@@ -9517,11 +9515,10 @@ rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 animation = &"3rd"
 frame = 11
-speed_scale = 3.0
+speed_scale = 2.5
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 3.14159
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -9560,6 +9557,9 @@ libraries = {
 [node name="ArrowProjectile" type="Marker2D" parent="Combat"]
 modulate = Color(0, 0, 0, 1)
 
+[node name="SwordWaveProjectile" type="Marker2D" parent="Combat"]
+modulate = Color(0, 0, 0, 1)
+
 [node name="AimIndicator" type="Sprite2D" parent="Combat"]
 visible = false
 z_index = 1
@@ -9595,6 +9595,7 @@ text = "MOVE | Timer: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="swordWavingActive" from="." to="." method="_on_sword_waving_active"]
 [connection signal="no_HP" from="Status Screen" to="." method="_on_status_screen_no_hp"]
 [connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Combat/Hurtbox" to="." method="_on_hurtbox_area_entered"]

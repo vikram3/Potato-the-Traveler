@@ -21,6 +21,7 @@ enum State {
 
 #Starting State
 var state = State.MOVE
+var activateSwordWave = false
 
 #Base state for rolling
 var roll_vector = Vector2.DOWN
@@ -33,7 +34,11 @@ var bow_cooldown = true
 var arrow = preload("res://Player/arrow.tscn")
 var mouse_loc_from_player = null
 @onready var aimIndicator = $Combat/AimIndicator
+
+#Sword Wave
+var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var arrowProjectile = $Combat/ArrowProjectile
+@onready var swordWaveProjectile = $Combat/SwordWaveProjectile
 
 #Stat Multipliers
 var baseDMG = 0
@@ -75,6 +80,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("Status"):
 		stats.visible = not stats.visible
+		
+	if Input.is_action_just_pressed("Sword Wave (Activate)"):
+		activateSwordWave = not activateSwordWave
+		print("Sword Wave Activated: " + str(activateSwordWave))
 		
 	match state:
 		State.MOVE:
@@ -129,11 +138,11 @@ func calculateDmg(dmgBoostStat):
 func attack_combo():
 	if attackTimer.is_stopped(): 
 		attackTimer.start()
-
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		$Combat/Sword/SwordSprite/Sword_FX2.play("2nd")
 		animationState.travel("Attack_Combo")
+		swordWave()
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -141,12 +150,12 @@ func attack_combo():
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 		
-		
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
 		$Combat/Sword/SwordSprite/Sword_FX3.play("3rd")
 		animationState.travel("Attack_Combo2")
+		swordWave()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
 		state = State.MOVE
@@ -212,8 +221,8 @@ func move_state(delta):
 		update_state_after_input()
 
 func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
-	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		state = State.ATTACK    
+	if Input.is_action_just_pressed("attack"):
+		state = State.ATTACK
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
@@ -252,7 +261,13 @@ func bow_fire_finished():
 	state = State.MOVE
 	
 func attack_combo2_animation_finished():
-	state = State.MOVE
+	if activateSwordWave:
+		emit_signal("swordWavingActive")
+		state = State.ATTACK_COMBO
+	else:
+		state = State.MOVE
+		
+	print("activateSwordWave:", activateSwordWave)
 	
 func _on_hurtbox_area_entered(area):
 	takeDamage(area)
@@ -326,3 +341,23 @@ func _on_level_up():
 
 func playerDead():
 	queue_free()
+	
+signal swordWavingActive
+
+var isPerformingSwordWave = false
+
+func swordWave():
+	if activateSwordWave and not isPerformingSwordWave:
+		isPerformingSwordWave = true
+		var mouse_pos = get_global_mouse_position()
+		swordWaveProjectile.look_at(mouse_pos)
+		var sword_wave_instance = swordWaveSlash.instantiate()
+		sword_wave_instance.rotation = swordWaveProjectile.rotation
+		sword_wave_instance.global_position = swordWaveProjectile.global_position
+		add_child(sword_wave_instance)
+		# Wait for 0.2 seconds before resetting isPerformingSwordWave
+		await get_tree().create_timer(0.3).timeout
+		isPerformingSwordWave = false
+			
+func _on_sword_waving_active():
+	activateSwordWave = true
