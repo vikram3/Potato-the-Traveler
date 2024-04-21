@@ -3111,10 +3111,10 @@ tracks/7/path = NodePath("Combat/Sword:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-7, -12), Vector2(-17, -5), Vector2(-7, 3), Vector2(16, 4), Vector2(16, 3)]
+"values": [Vector2(-9, -21), Vector2(3, 7), Vector2(2, 8), Vector2(14, 5), Vector2(14, 5), Vector2(14, 4)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -3126,7 +3126,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [-1.309, 4.97418, 3.14159]
+"values": [-0.523598, -2.09439, -2.87979]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -3498,10 +3498,10 @@ tracks/7/path = NodePath("Combat/Sword:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(13, -19), Vector2(14, 3), Vector2(8, 7), Vector2(6, 5), Vector2(4, 5), Vector2(4, 3)]
+"values": [Vector2(9, -24), Vector2(3, 7), Vector2(4, 7), Vector2(-12, 6), Vector2(-11, 4), Vector2(-11, 4)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -3510,10 +3510,10 @@ tracks/8/path = NodePath("Combat/Sword:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0.785397, 1.57079]
+"values": [0.261799, 1.83259, 2.87979]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -9420,8 +9420,9 @@ script = ExtResource("1_fjjot")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_down"
-frame = 3
+animation = &"attack_sideways_combo2"
+frame = 6
+flip_h = true
 
 [node name="Status Screen" parent="." instance=ExtResource("31_gkjwp")]
 
@@ -9520,7 +9521,7 @@ speed_scale = 3.0
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 1.5708
+rotation = 3.14159
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -9531,6 +9532,7 @@ damage = 3
 [node name="CollisionShape2D" parent="Combat/HitboxPivot/SwordHitbox" index="0"]
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
+disabled = true
 
 [node name="AttackTimer" type="Timer" parent="Combat"]
 wait_time = 2.0
