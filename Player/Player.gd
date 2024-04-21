@@ -81,8 +81,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Status"):
 		stats.visible = not stats.visible
 		
-	if Input.is_action_just_pressed("Sword Wave (Activate)"):
+	if Input.is_action_just_pressed("Sword Wave (Activate)") and state == State.MOVE:
 		activateSwordWave = not activateSwordWave
+		MAX_SPEED = 100
 		print("Sword Wave Activated: " + str(activateSwordWave))
 		
 	match state:
@@ -99,12 +100,14 @@ func _physics_process(delta):
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
+			velocity = Vector2.ZERO
 			swordSprite.visible = true
 			stats.KNOCKOUT_SPEED = 25
 			var bonusComboDMG = 4
 			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
+			velocity = Vector2.ZERO
 			swordSprite.visible = true
 			var bonusComboDMG2 = 10
 			calculateDmg(baseDMG + bonusComboDMG2)
@@ -142,10 +145,12 @@ func attack_combo():
 		attackTimer.stop()
 		$Combat/Sword/SwordSprite/Sword_FX2.play("2nd")
 		animationState.travel("Attack_Combo")
+		await animationTree.animation_finished
 		swordWave()
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
-		state = State.MOVE
+		if !activateSwordWave:
+			state = State.MOVE
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 		
@@ -154,6 +159,7 @@ func attack_combo2():
 		attackTimer.stop()
 		$Combat/Sword/SwordSprite/Sword_FX3.play("3rd")
 		animationState.travel("Attack_Combo2")
+		await animationTree.animation_finished
 		swordWave()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		state = State.MOVE
@@ -162,6 +168,7 @@ func attack_combo2():
 
 func attack_state():
 	$Combat/Sword/SwordSprite/Sword_FX.play("1st")
+	velocity = Vector2.ZERO
 	animationState.travel("Attack")
 	attackTimer.start()
 	
@@ -220,7 +227,10 @@ func move_state(delta):
 
 func update_state_after_input(): # Updates the state machine with the proper state after detecting input.
 	if Input.is_action_just_pressed("attack"):
-		state = State.ATTACK
+		if activateSwordWave:
+			state = State.ATTACK_COMBO
+		else:
+			state = State.ATTACK
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
 	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
@@ -267,6 +277,7 @@ func attack_combo2_animation_finished():
 		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
 		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.0)
 		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 1.3)
+		MAX_SPEED = 80
 		
 	print("activateSwordWave:", activateSwordWave)
 	
@@ -363,7 +374,7 @@ func swordWave():
 		sword_wave_instance.global_position = swordWaveProjectile.global_position
 		add_child(sword_wave_instance)
 		# Wait for a short duration before resetting isPerformingSwordWave
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.2).timeout
 		isPerformingSwordWave = false
 
 func _on_sword_waving_active():
