@@ -29,7 +29,7 @@ var current_xp = 0:
 			
 		var total = min( (XP_Table_Data[str(Level)]["total"] + current_xp),
 						 XP_Table_Data[str(MAX_LEVEL)]["total"] )
-		%TotalXP.text = str(total) + "/" + str(get_max_xp_at(Level))
+		%TotalXP.text = str(current_xp) + "/" + str(get_max_xp_at(Level))
 		
 		if get_max_xp_at(Level) == -1:
 			%TotalXP.text = str(total) + "/" + "MAX"
@@ -58,8 +58,8 @@ var Strength : int :
 var Vitality : int :
 	set(value):
 		Vitality = value
-		HP += 10 * (Vitality * 1/ 4)
-		max_HP += 10 * (Vitality * 1 / 4)
+		HP += 10 * (Vitality/4)
+		max_HP += 10 * (Vitality/4)
 		%Vitality.text = str(value)
  
 var Agility : int :

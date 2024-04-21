@@ -9315,7 +9315,7 @@ texture = ExtResource("8_gqnm0")
 flip_h = true
 hframes = 9
 vframes = 20
-frame = 82
+frame = 130
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
