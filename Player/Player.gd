@@ -39,6 +39,7 @@ var mouse_loc_from_player = null
 var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var arrowProjectile = $Combat/ArrowProjectile
 @onready var swordWaveProjectile = $Combat/SwordWaveProjectile
+@onready var swordWaveCooldown = $Combat/SwordWaveProjectile/swordWaveCooldown
 
 #Stat Multipliers
 var baseDMG = 0
@@ -84,6 +85,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Sword Wave (Activate)") and state == State.MOVE:
 		activateSwordWave = not activateSwordWave
 		MAX_SPEED = 100
+		swordWaveCooldown.start()
+		velocity = Vector2.ZERO
 		print("Sword Wave Activated: " + str(activateSwordWave))
 		
 	match state:
@@ -170,6 +173,7 @@ func attack_state():
 	$Combat/Sword/SwordSprite/Sword_FX.play("1st")
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
+	await animationTree.animation_finished
 	attackTimer.start()
 	
 func bow_fire_state():
@@ -379,3 +383,8 @@ func swordWave():
 
 func _on_sword_waving_active():
 	activateSwordWave = true
+
+func _on_sword_wave_cooldown_timeout():
+	activateSwordWave = false
+	state = State.MOVE
+	print("sword wave is now on cooldown")
