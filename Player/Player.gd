@@ -48,7 +48,7 @@ var baseDMG = 0
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
 @onready var swordFX = $Combat/HitboxPivot/SwordHitbox/Sword_FX
-@onready var swordSprite = $Combat/HitboxPivot/Sword
+@onready var swordSprite = $Combat/Sword/SwordSprite
 
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
