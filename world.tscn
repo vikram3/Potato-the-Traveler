@@ -222,7 +222,7 @@ position = Vector2(-2.5, -118)
 shape = SubResource("RectangleShape2D_iovvw")
 
 [node name="Boss_Golem" parent="." instance=ExtResource("13_s14mq")]
-position = Vector2(-378, 64)
+position = Vector2(-10, 60)
 
 [node name="Lantern_Stairs_1" type="PointLight2D" parent="."]
 visible = false

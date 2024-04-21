@@ -145,7 +145,6 @@ func attack_combo():
 		swordWave()
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
-		await animationTree.animation_finished
 		state = State.MOVE
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
@@ -157,7 +156,6 @@ func attack_combo2():
 		animationState.travel("Attack_Combo2")
 		swordWave()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
-		await animationTree.animation_finished
 		state = State.MOVE
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
@@ -266,6 +264,9 @@ func attack_combo2_animation_finished():
 		state = State.ATTACK_COMBO
 	else:
 		state = State.MOVE
+		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
+		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.0)
+		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 1.3)
 		
 	print("activateSwordWave:", activateSwordWave)
 	
@@ -349,15 +350,21 @@ var isPerformingSwordWave = false
 func swordWave():
 	if activateSwordWave and not isPerformingSwordWave:
 		isPerformingSwordWave = true
-		var mouse_pos = get_global_mouse_position()
-		swordWaveProjectile.look_at(mouse_pos)
+		# Calculate the direction the character is facing
+		var aim_direction = roll_vector
+		# Set the rotation of the sword wave projectile to match the character's facing direction
+		swordWaveProjectile.rotation = atan2(aim_direction.y, aim_direction.x)
+		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
+		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.5)
+		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 2.5)
+		# Instantiate and position the sword wave instance
 		var sword_wave_instance = swordWaveSlash.instantiate()
 		sword_wave_instance.rotation = swordWaveProjectile.rotation
 		sword_wave_instance.global_position = swordWaveProjectile.global_position
 		add_child(sword_wave_instance)
-		# Wait for 0.2 seconds before resetting isPerformingSwordWave
+		# Wait for a short duration before resetting isPerformingSwordWave
 		await get_tree().create_timer(0.3).timeout
 		isPerformingSwordWave = false
-			
+
 func _on_sword_waving_active():
 	activateSwordWave = true

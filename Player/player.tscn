@@ -8610,7 +8610,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_pnyry"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jx3ug"]
-graph_offset = Vector2(-803.552, 61.0962)
+graph_offset = Vector2(-452.909, 33.7273)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_adn10")
 nodes/BlendSpace2D/position = Vector2(-168.714, 154.78)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_pnyry")
@@ -9420,8 +9420,7 @@ script = ExtResource("1_fjjot")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_sideways"
-frame = 5
+animation = &"attack_down"
 
 [node name="Status Screen" parent="." instance=ExtResource("31_gkjwp")]
 
@@ -9489,6 +9488,7 @@ position = Vector2(4, -17)
 [node name="SwordSprite" type="Sprite2D" parent="Combat/Sword"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_gqnm0")
+flip_h = true
 hframes = 9
 vframes = 20
 frame = 81
@@ -9519,6 +9519,7 @@ speed_scale = 2.5
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
