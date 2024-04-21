@@ -8,9 +8,9 @@
 [ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="4_ivow2"]
 [ext_resource type="PackedScene" uid="uid://bvite1qic5j1a" path="res://Overlap/hurtbox.tscn" id="5_bhnfg"]
 [ext_resource type="AudioStream" uid="uid://cyl68booq45wm" path="res://Music and Sounds/Evade.wav" id="5_fd2kj"]
+[ext_resource type="Texture2D" uid="uid://cgp0yakt4eb63" path="res://Player/weapon/weaponsv2.png" id="8_gqnm0"]
 [ext_resource type="Texture2D" uid="uid://d3gw0acijlex8" path="res://Player/Pixivan MC/FrontSide Consecutive Slash.png" id="9_oo5a3"]
 [ext_resource type="Texture2D" uid="uid://bpkr2x0q55cyj" path="res://Player/Pixivan MC/Front ConsecutiveSlash.png" id="10_2146p"]
-[ext_resource type="Texture2D" uid="uid://coj6xxd0g14mw" path="res://Player/weapon/all_swords.png" id="11_hauvo"]
 [ext_resource type="Texture2D" uid="uid://cb4avkaep0ok1" path="res://Player/Pixivan MC/Side ConsecutiveSlash.png" id="11_tttdy"]
 [ext_resource type="Texture2D" uid="uid://6eb55uah0is2" path="res://Player/Pixivan MC/Front Movement.png" id="12_b453y"]
 [ext_resource type="Texture2D" uid="uid://b8vaedp5cewmg" path="res://Player/Pixivan MC/BackSIde ConsecutiveSlash.png" id="12_il6as"]
@@ -262,10 +262,10 @@ tracks/7/path = NodePath("Combat/Sword:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-4, -2), Vector2(-3, -4), Vector2(-1, -7), Vector2(-10, 0), Vector2(13, 3), Vector2(12, 1)]
+"values": [Vector2(17, -3), Vector2(18, -2), Vector2(18, 2.38419e-07), Vector2(-16, -14), Vector2(-17, -18), Vector2(-17, -17)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -274,10 +274,10 @@ tracks/8/path = NodePath("Combat/Sword:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [-1.309, -1.57079, -3.14159]
+"values": [-3.40339, -0.523598]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -652,7 +652,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(14, 4), Vector2(11, 5), Vector2(3, 9), Vector2(-18, -7), Vector2(-3, -30), Vector2(-2, -30), Vector2(-2, -28)]
+"values": [Vector2(14, 4), Vector2(11, 5), Vector2(3, 9), Vector2(-18, -7), Vector2(-10, -10), Vector2(-10, -11), Vector2(-10, -10)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -664,7 +664,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [1.57079, 2.09439, 3.66519, 5.23598]
+"values": [1.57079, 2.09439, 3.66519, 3.40339]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -6081,7 +6081,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [0.0]
 }
 tracks/1/type = "value"
@@ -6093,7 +6093,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [Vector2(4, -17)]
 }
 
@@ -9262,11 +9262,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_jnc71")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack/TimeScale/scale = 1.5
+parameters/Attack/TimeScale/scale = 2.0
 parameters/Attack_Combo/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Attack_Combo/TimeScale/scale = 2.0
 parameters/Attack_Combo2/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/Attack_Combo2/TimeScale/scale = 1.0
+parameters/Attack_Combo2/TimeScale/scale = 1.3
 parameters/Bow_Aim/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Bow_Aim/TimeScale/scale = 2.0
 parameters/Bow_Fire/BlendSpace2D/blend_position = Vector2(0, 0)
@@ -9311,15 +9311,16 @@ position = Vector2(4, -17)
 scale = Vector2(1, 1)
 
 [node name="SwordSprite" type="Sprite2D" parent="Combat/Sword"]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("11_hauvo")
-hframes = 10
-vframes = 5
-frame = 17
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_gqnm0")
+flip_h = true
+hframes = 9
+vframes = 20
+frame = 82
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 4.71239
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
@@ -9330,8 +9331,10 @@ damage = 3
 [node name="CollisionShape2D" parent="Combat/HitboxPivot/SwordHitbox" index="0"]
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
+disabled = true
 
 [node name="Sword_FX" type="AnimatedSprite2D" parent="Combat/HitboxPivot/SwordHitbox"]
+visible = false
 modulate = Color(0.109804, 0.0980392, 0.0901961, 1)
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 frame = 7
@@ -9373,7 +9376,8 @@ texture = ExtResource("29_cv1rw")
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_up"
+animation = &"attack_down_combo"
+frame = 8
 
 [node name="Health_UI" type="Node2D" parent="."]
 
