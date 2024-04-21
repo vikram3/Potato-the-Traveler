@@ -47,7 +47,6 @@ var baseDMG = 0
 #Melee Attack
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
-@onready var swordFX = $Combat/HitboxPivot/SwordHitbox/Sword_FX
 @onready var swordSprite = $Combat/Sword/SwordSprite
 
 #Hurtbox
@@ -133,7 +132,7 @@ func attack_combo():
 
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		swordFX.play("default")
+		$Combat/Sword/SwordSprite/Sword_FX2.play("2nd")
 		animationState.travel("Attack_Combo")
 		attackTimer.start()
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
@@ -146,7 +145,7 @@ func attack_combo():
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		swordFX.play("default")
+		$Combat/Sword/SwordSprite/Sword_FX3.play("3rd")
 		animationState.travel("Attack_Combo2")
 	elif Input.is_action_just_pressed("Move_Right") or Input.is_action_just_pressed("Move_Left") or Input.is_action_just_pressed("Move_Down") or Input.is_action_just_pressed("Move_Up") or Input.is_action_pressed("Move_Down") or Input.is_action_pressed("Move_Right") or Input.is_action_pressed("Move_Left") or Input.is_action_pressed("Move_Up"):
 		await animationTree.animation_finished
@@ -155,7 +154,7 @@ func attack_combo2():
 		state = State.ROLL
 
 func attack_state():
-	swordFX.play("default")
+	$Combat/Sword/SwordSprite/Sword_FX.play("1st")
 	animationState.travel("Attack")
 	attackTimer.start()
 	
