@@ -1,4 +1,4 @@
-[gd_scene load_steps=578 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=579 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -34,7 +34,8 @@
 [ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
 [ext_resource type="Texture2D" uid="uid://br7ec2mf71h1u" path="res://Effects/Sword FX/Wide Area Attack Motion Blur.png" id="31_gibrd"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
-[ext_resource type="AudioStream" uid="uid://cqggtqsqcugk5" path="res://Music and Sounds/potatoscream.mp3" id="34_k53jg"]
+[ext_resource type="AudioStream" uid="uid://cereuq4i6jmah" path="res://Music and Sounds/Skill FX/04_Fire_explosion_04_medium.wav" id="34_4410k"]
+[ext_resource type="AudioStream" uid="uid://c7yhdcbx7s00" path="res://Music and Sounds/Skill FX/sword wave enter.wav" id="34_t6gvr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hi7q1"]
 shader = ExtResource("4_ivow2")
@@ -9601,7 +9602,7 @@ MAX_SPEED = 80
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_down"
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -9665,7 +9666,6 @@ position = Vector2(4, -17)
 [node name="SwordSprite" type="Sprite2D" parent="Combat/Sword"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_gqnm0")
-flip_h = true
 hframes = 9
 vframes = 20
 frame = 81
@@ -9699,7 +9699,6 @@ speed_scale = 2.5
 [node name="Sword_FX4" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
 sprite_frames = SubResource("SpriteFrames_sku4v")
 frame = 4
-frame_progress = 1.0
 speed_scale = 2.5
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
@@ -9731,7 +9730,7 @@ position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_2ulq5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Combat"]
-volume_db = -12.0
+volume_db = -20.0
 
 [node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="Combat"]
 reset_on_save = false
@@ -9751,10 +9750,12 @@ wait_time = 5.0
 one_shot = true
 
 [node name="swordWaveStance" type="AudioStreamPlayer" parent="Combat/SwordWaveProjectile"]
-stream = ExtResource("34_k53jg")
+stream = ExtResource("34_t6gvr")
+volume_db = -10.0
 
 [node name="swordWaveSound" type="AudioStreamPlayer" parent="Combat/SwordWaveProjectile"]
-stream = ExtResource("34_k53jg")
+stream = ExtResource("34_4410k")
+volume_db = -10.0
 max_polyphony = 100
 
 [node name="AimIndicator" type="Sprite2D" parent="Combat"]

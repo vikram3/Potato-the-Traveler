@@ -90,13 +90,14 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Status"):
 		stats.visible = not stats.visible
 		
-	if Input.is_action_just_pressed("Sword Wave (Activate)") and state == State.MOVE:
+	if Input.is_action_just_pressed("Sword Wave (Activate)") and state == State.MOVE and swordWaveCooldown.is_stopped():
 		activateSwordWave = not activateSwordWave
 		MAX_SPEED = 100
 		swordWaveCooldown.start()
 		stayInPlace()
 		swordWaveStance.play()
 		print("Sword Wave Activated: " + str(activateSwordWave))
+		$Combat/AudioStreamPlayer.volume_db = -80
 		
 	match state:
 		State.MOVE:
@@ -369,7 +370,7 @@ func swordWave():
 		swordWaveSound.play()
 		add_child(sword_wave_instance)
 		# Wait for a short duration before resetting isPerformingSwordWave
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.2).timeout
 		isPerformingSwordWave = false
 
 func _on_sword_waving_active():
@@ -379,6 +380,7 @@ func _on_sword_wave_cooldown_timeout():
 	activateSwordWave = false
 	state = State.MOVE
 	print("sword wave is now on cooldown")
+	$Combat/AudioStreamPlayer.volume_db = -15
 
 func _on_check_time(_day, hour, minute):
 	#military time
