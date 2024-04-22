@@ -51,7 +51,7 @@ var baseDMG = 0
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
-@onready var checkTime = get_parent().find_child("DayNightCycleScene").get_child(1)
+@onready var checkTime = get_parent().find_child("DayNightCycle").get_child(1)
 @onready var light_source = $Misc/Light_Source
 @onready var levelUpSound = $Misc/LevelUp
 
@@ -59,10 +59,9 @@ var baseDMG = 0
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
 @onready var swordSprite = $Combat/Sword/SwordSprite
-@onready var slashFX1 = $Combat/Sword/SwordSprite/Sword_FX1
+@onready var slashFX1 = $Combat/Sword/SwordSprite/Sword_FX
 @onready var slashFX2 = $Combat/Sword/SwordSprite/Sword_FX2
 @onready var slashFX3 = $Combat/Sword/SwordSprite/Sword_FX3
-
 
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
@@ -95,7 +94,7 @@ func _physics_process(delta):
 		activateSwordWave = not activateSwordWave
 		MAX_SPEED = 100
 		swordWaveCooldown.start()
-		velocity = stayInPlace()
+		stayInPlace()
 		swordWaveStance.play()
 		print("Sword Wave Activated: " + str(activateSwordWave))
 		
@@ -191,7 +190,7 @@ func bow_fire_state():
 	
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
-	var input_vector = stayInPlace()
+	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
 	input_vector.y = Input.get_action_strength("Move_Down") - Input.get_action_strength("Move_Up")
 	

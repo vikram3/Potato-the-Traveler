@@ -9557,8 +9557,7 @@ MAX_SPEED = 80
 material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
-animation = &"attack_sideways"
-flip_h = true
+animation = &"idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -9590,7 +9589,7 @@ parameters/Roll/BlendSpace2D/blend_position = Vector2(-0.00043726, 0)
 parameters/Roll/TimeScale/scale = 2.0
 parameters/Run/blend_position = Vector2(-0.358596, 0.178095)
 
-[node name="World Collision" type="CollisionShape2D" parent="."]
+[node name="Base Collision" type="CollisionShape2D" parent="."]
 visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_av4qi")
@@ -9616,7 +9615,6 @@ position = Vector2(4, -17)
 [node name="SwordSprite" type="Sprite2D" parent="Combat/Sword"]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("8_gqnm0")
-flip_h = true
 hframes = 9
 vframes = 20
 frame = 81
@@ -9647,7 +9645,7 @@ speed_scale = 2.5
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
-rotation = 3.14159
+rotation = 1.5708
 
 [node name="SwordHitbox" parent="Combat/HitboxPivot" instance=ExtResource("3_nnp8n")]
 position = Vector2(17, 0.999938)
