@@ -16,7 +16,8 @@ enum State {
 	ATTACK_COMBO2,
 	BOW_READY,
 	BOW_AIM,
-	BOW_FIRE
+	BOW_FIRE,
+	SWORD_STANCE
 }
 
 #Starting State
@@ -71,6 +72,8 @@ var baseDMG = 0
 #Debugging
 @onready var debug = $Misc/debug
 
+signal swordStanceActive
+
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
 	stats.connect("no_HP", Callable(self, "playerDead"))
@@ -94,10 +97,9 @@ func _physics_process(delta):
 		activateSwordWave = not activateSwordWave
 		MAX_SPEED = 100
 		swordWaveCooldown.start()
-		stayInPlace()
 		swordWaveStance.play()
-		print("Sword Wave Activated: " + str(activateSwordWave))
 		$Combat/AudioStreamPlayer.volume_db = -80
+		emit_signal("swordStanceActive")
 		
 	match state:
 		State.MOVE:
@@ -407,5 +409,19 @@ func enum_to_string(value):
 			return "BOW_AIM"
 		State.BOW_FIRE:
 			return "BOW_FIRE"
+		State.SWORD_STANCE:
+			return "SWORD_STANCE"
 		_:
 			return "Unknown"
+			
+func _on_sword_stance_active():
+	stayInPlace()
+	print("Sword Wave Activated: " + str(activateSwordWave))
+	state = State.SWORD_STANCE
+	animationTree.active = false
+	animationPlayer.stop()
+	slashFX3.play("3rd")
+	animationPlayer.play("swordStance", 1)
+	await animationPlayer.animation_finished
+	animationTree.active = true
+	state = State.MOVE

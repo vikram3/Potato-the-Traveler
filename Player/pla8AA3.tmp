@@ -8434,6 +8434,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_yaptj"]
 resource_name = "swordStance"
+length = 1.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -9673,7 +9674,6 @@ vframes = 20
 frame = 81
 
 [node name="Sword_FX" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
-visible = false
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 animation = &"1st"
@@ -9691,18 +9691,18 @@ frame = 11
 speed_scale = 3.0
 
 [node name="Sword_FX3" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
+visible = false
 position = Vector2(-6.66667, 5.33333)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 animation = &"3rd"
 frame = 11
-frame_progress = 1.0
-speed_scale = 2.0
+speed_scale = 2.5
 
 [node name="Sword_FX4" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
 sprite_frames = SubResource("SpriteFrames_sku4v")
 frame = 4
-speed_scale = 2.0
+speed_scale = 2.5
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
@@ -9749,7 +9749,7 @@ modulate = Color(0, 0, 0, 1)
 modulate = Color(0, 0, 0, 1)
 
 [node name="swordWaveCooldown" type="Timer" parent="Combat/SwordWaveProjectile"]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 
 [node name="swordWaveStance" type="AudioStreamPlayer" parent="Combat/SwordWaveProjectile"]
