@@ -62,7 +62,7 @@ var baseDMG = 0
 
 #Debugging
 @onready var debug = $Misc/debug
-@onready var checkTime = get_parent().get_child(0).get_child(1)
+@onready var checkTime = get_parent().find_child("DayNightCycleScene").get_child(1)
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
@@ -394,7 +394,7 @@ func _on_sword_wave_cooldown_timeout():
 func _on_check_time(_day, hour, minute):
 	#military time
 	var light_source = $Misc/Light_Source
-	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 3):
+	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
 		light_source.visible = true
 	else:
 		light_source.visible = false

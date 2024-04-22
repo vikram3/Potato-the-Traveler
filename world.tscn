@@ -32,25 +32,6 @@ fill_from = Vector2(0.5, 0.5)
 y_sort_enabled = true
 script = ExtResource("1_26jxo")
 
-[node name="DayNightCycleScene" parent="." instance=ExtResource("16_82871")]
-
-[node name="CanvasModulate" parent="DayNightCycleScene" index="1"]
-color = Color(0.168627, 0.180392, 0.333333, 1)
-
-[node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
-position = Vector2(153, 200)
-zoom = Vector2(0.75, 0.75)
-limit_smoothed = true
-rotation_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
-[node name="TopLeft" parent="World_Camera/Limits" index="0"]
-position = Vector2(-78, -63)
-
-[node name="BottomRight" parent="World_Camera/Limits" index="1"]
-position = Vector2(367, 271)
-
 [node name="Player" parent="." instance=ExtResource("2_7prvd")]
 y_sort_enabled = true
 position = Vector2(153, 200)
@@ -70,10 +51,29 @@ rotation = 1.5708
 position = Vector2(25, 39)
 color = Color(0.917647, 0.619608, 0.435294, 0.670588)
 shadow_color = Color(0.0117647, 0.203922, 0.27451, 0)
-texture_scale = 1.4
+texture_scale = 1.3
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")
+
+[node name="DayNightCycleScene" parent="." instance=ExtResource("16_82871")]
+
+[node name="CanvasModulate" parent="DayNightCycleScene" index="1"]
+color = Color(0.168627, 0.180392, 0.333333, 1)
+
+[node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
+position = Vector2(153, 200)
+zoom = Vector2(0.75, 0.75)
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="TopLeft" parent="World_Camera/Limits" index="0"]
+position = Vector2(-78, -63)
+
+[node name="BottomRight" parent="World_Camera/Limits" index="1"]
+position = Vector2(367, 271)
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
@@ -250,9 +250,9 @@ texture_scale = 0.5
 [connection signal="body_entered" from="Transition Map" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Transition Map" to="." method="_on_boss_transition_body_exited"]
 
-[editable path="DayNightCycleScene"]
-[editable path="World_Camera"]
 [editable path="Player"]
 [editable path="Player/Combat/HitboxPivot/SwordHitbox"]
 [editable path="Player/Combat/Hurtbox"]
+[editable path="DayNightCycleScene"]
+[editable path="World_Camera"]
 [editable path="Environment/Campfire"]

@@ -9545,8 +9545,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_m7mi1"]
 gradient = SubResource("Gradient_uusiu")
 fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.948718, 0.42735)
+fill_from = Vector2(0.512821, 0.491453)
+fill_to = Vector2(1, 0.504274)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
