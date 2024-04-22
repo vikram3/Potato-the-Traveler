@@ -139,7 +139,7 @@ func _physics_process(delta):
 			bow_fire_state()
 	
 func attack_state():
-	slashFX1.play("1st")
+	$Combat/Sword/SwordSprite/Sword_FX4.play("default")
 	stayInPlace()
 	animationState.travel("Attack")
 	await animationTree.animation_finished
@@ -150,7 +150,7 @@ func attack_combo():
 		attackTimer.start()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		slashFX2.play("2nd")
+		$Combat/Sword/SwordSprite/Sword_FX4.play("default")
 		animationState.travel("Attack_Combo")
 		await animationTree.animation_finished
 		swordWave()
@@ -164,7 +164,7 @@ func attack_combo():
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		slashFX3.play("3rd")
+		$Combat/Sword/SwordSprite/Sword_FX4.play("default")
 		animationState.travel("Attack_Combo2")
 		await animationTree.animation_finished
 		swordWave()
