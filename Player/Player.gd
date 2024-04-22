@@ -61,18 +61,19 @@ var baseDMG = 0
 @onready var damage_numbers_origin = $Health_UI/DamageNumbersOrigin
 
 #Debugging
-@onready var debug = $Misc_UI/debug
+@onready var debug = $Misc/debug
+@onready var checkTime = get_parent().get_child(0).get_child(1)
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
 	stats.connect("no_HP", Callable(self, "playerDead"))
+	stats.connect("level_up", Callable(self, "_on_level_up"))
 	animationTree.active = true
 	swordHitbox.knockback_vector = roll_vector
 	baseDMG += swordHitbox.damage
 	aimIndicator.visible = false
 	healthBar.max_value = stats.max_HP
 	healthBar.init_health(stats.HP)
-	stats.connect("level_up", Callable(self, "_on_level_up"))
 	
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
@@ -87,6 +88,7 @@ func _physics_process(delta):
 		MAX_SPEED = 100
 		swordWaveCooldown.start()
 		velocity = Vector2.ZERO
+		$Combat/SwordWaveProjectile/swordWaveStance.play()
 		print("Sword Wave Activated: " + str(activateSwordWave))
 		
 	match state:
@@ -372,13 +374,13 @@ func swordWave():
 		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
 		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.5)
 		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 2.5)
-		# Instantiate and position the sword wave instance
 		var sword_wave_instance = swordWaveSlash.instantiate()
 		sword_wave_instance.rotation = swordWaveProjectile.rotation
 		sword_wave_instance.global_position = swordWaveProjectile.global_position
+		$Combat/SwordWaveProjectile/swordWaveSound.play()
 		add_child(sword_wave_instance)
 		# Wait for a short duration before resetting isPerformingSwordWave
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.3).timeout
 		isPerformingSwordWave = false
 
 func _on_sword_waving_active():
@@ -388,3 +390,11 @@ func _on_sword_wave_cooldown_timeout():
 	activateSwordWave = false
 	state = State.MOVE
 	print("sword wave is now on cooldown")
+
+func _on_check_time(_day, hour, minute):
+	#military time
+	var light_source = $Misc/Light_Source
+	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 3):
+		light_source.visible = true
+	else:
+		light_source.visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=569 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=572 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://br7ec2mf71h1u" path="res://Effects/Sword FX/Wide Area Attack Motion Blur.png" id="31_gibrd"]
 [ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="31_gkjwp"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
+[ext_resource type="AudioStream" uid="uid://cqggtqsqcugk5" path="res://Music and Sounds/potatoscream.mp3" id="34_k53jg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hi7q1"]
 shader = ExtResource("4_ivow2")
@@ -9537,6 +9538,16 @@ _data = {
 "Stop": SubResource("Animation_nwjam")
 }
 
+[sub_resource type="Gradient" id="Gradient_uusiu"]
+offsets = PackedFloat32Array(0, 0.67)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m7mi1"]
+gradient = SubResource("Gradient_uusiu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.948718, 0.42735)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -9693,6 +9704,13 @@ modulate = Color(0, 0, 0, 1)
 wait_time = 5.0
 one_shot = true
 
+[node name="swordWaveStance" type="AudioStreamPlayer" parent="Combat/SwordWaveProjectile"]
+stream = ExtResource("34_k53jg")
+
+[node name="swordWaveSound" type="AudioStreamPlayer" parent="Combat/SwordWaveProjectile"]
+stream = ExtResource("34_k53jg")
+max_polyphony = 100
+
 [node name="AimIndicator" type="Sprite2D" parent="Combat"]
 visible = false
 z_index = 1
@@ -9704,10 +9722,10 @@ texture = ExtResource("29_cv1rw")
 [node name="DamageNumbersOrigin" type="Node2D" parent="Health_UI"]
 position = Vector2(0, -34)
 
-[node name="Misc_UI" type="Node2D" parent="."]
+[node name="Misc" type="Node2D" parent="."]
 position = Vector2(-24, -46)
 
-[node name="Username" type="Label" parent="Misc_UI"]
+[node name="Username" type="Label" parent="Misc"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 48.0
@@ -9719,7 +9737,7 @@ text = "Doghater"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="debug" type="Label" parent="Misc_UI"]
+[node name="debug" type="Label" parent="Misc"]
 z_index = 1
 offset_right = 52.0
 offset_bottom = 11.0
@@ -9727,6 +9745,14 @@ theme_override_font_sizes/font_size = 7
 text = "MOVE | Timer: "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Light_Source" type="PointLight2D" parent="Misc"]
+y_sort_enabled = true
+position = Vector2(28, 39)
+color = Color(0.862745, 0.568627, 0.27451, 1)
+energy = 1.3
+texture = SubResource("GradientTexture2D_m7mi1")
+texture_scale = 0.5
 
 [connection signal="swordWavingActive" from="." to="." method="_on_sword_waving_active"]
 [connection signal="no_HP" from="Status Screen" to="." method="_on_status_screen_no_hp"]

@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
 [ext_resource type="PackedScene" uid="uid://b1lifm57p7pvt" path="res://Player/player.tscn" id="2_7prvd"]
 [ext_resource type="PackedScene" uid="uid://dr31cgvo6r8ds" path="res://World/Environment/bush.tscn" id="2_qhdct"]
-[ext_resource type="PackedScene" uid="uid://eqt46gfqf6" path="res://World/Environment/day_and_night.tscn" id="2_rh7a7"]
 [ext_resource type="PackedScene" uid="uid://dyr164gbvcxrf" path="res://World/Environment/tree-birch-yellow.tscn" id="5_k7lfl"]
 [ext_resource type="PackedScene" uid="uid://wgf5hgrk43ew" path="res://World/Environment/grass.tscn" id="6_dcagb"]
 [ext_resource type="PackedScene" uid="uid://c7xb0raqot3km" path="res://World/Environment/tree-mother.tscn" id="6_vdsp3"]
@@ -15,16 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://dvbvyl1rsoiu6" path="res://Enemies/boss_golem.tscn" id="13_s14mq"]
 [ext_resource type="PackedScene" uid="uid://0hxcd2qn0qv8" path="res://World/Environment/tree-birch-green.tscn" id="13_tl4gk"]
 [ext_resource type="Texture2D" uid="uid://bkkl6qi4h8nwh" path="res://World/Environment/Rainbow_Cake.png" id="14_5qeg5"]
+[ext_resource type="PackedScene" uid="uid://cjn8wqs6tgy71" path="res://World/Weather/weather/daynightcycle_scene.tscn" id="16_82871"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iovvw"]
 size = Vector2(55, 60)
 
-[sub_resource type="Gradient" id="Gradient_cnlfn"]
+[sub_resource type="Gradient" id="Gradient_bqnag"]
 offsets = PackedFloat32Array(0, 0.67)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bk425"]
-gradient = SubResource("Gradient_cnlfn")
+gradient = SubResource("Gradient_bqnag")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -32,25 +32,10 @@ fill_from = Vector2(0.5, 0.5)
 y_sort_enabled = true
 script = ExtResource("1_26jxo")
 
-[node name="day_and_night" parent="." instance=ExtResource("2_rh7a7")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-207, -124)
+[node name="DayNightCycleScene" parent="." instance=ExtResource("16_82871")]
 
-[node name="Timer" parent="day_and_night" index="1"]
-wait_time = 300.0
-
-[node name="WeatherUI" parent="day_and_night" index="2"]
-layer = 2
-
-[node name="Sun" parent="day_and_night/WeatherUI" index="0"]
-position = Vector2(308, 12)
-
-[node name="Moon" parent="day_and_night/WeatherUI" index="1"]
-position = Vector2(309, 11)
-
-[node name="DirectionalLight2D" parent="day_and_night" index="3"]
-energy = 0.7
+[node name="CanvasModulate" parent="DayNightCycleScene" index="1"]
+color = Color(0.168627, 0.180392, 0.333333, 1)
 
 [node name="World_Camera" parent="." instance=ExtResource("1_i1ktu")]
 position = Vector2(153, 200)
@@ -70,6 +55,22 @@ position = Vector2(367, 271)
 y_sort_enabled = true
 position = Vector2(153, 200)
 collision_layer = 3
+
+[node name="PlayerSprite" parent="Player" index="0"]
+animation = &"idle"
+flip_h = false
+
+[node name="SwordSprite" parent="Player/Combat/Sword" index="0"]
+flip_h = false
+
+[node name="HitboxPivot" parent="Player/Combat" index="1"]
+rotation = 1.5708
+
+[node name="Light_Source" parent="Player/Misc" index="2"]
+position = Vector2(25, 39)
+color = Color(0.917647, 0.619608, 0.435294, 0.670588)
+shadow_color = Color(0.0117647, 0.203922, 0.27451, 0)
+texture_scale = 1.4
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../World_Camera")
@@ -193,6 +194,7 @@ position = Vector2(352, 125)
 position = Vector2(302, 191)
 
 [node name="Campfire" parent="Environment" instance=ExtResource("11_8mfi8")]
+visible = false
 position = Vector2(151, 38)
 
 [node name="PointLight2D3" parent="Environment/Campfire" index="2"]
@@ -200,6 +202,7 @@ position = Vector2(0, 16)
 range_z_max = 0
 
 [node name="RainbowCake" type="Sprite2D" parent="Environment"]
+visible = false
 position = Vector2(178, 45)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_5qeg5")
@@ -243,9 +246,13 @@ range_z_max = 0
 texture = SubResource("GradientTexture2D_bk425")
 texture_scale = 0.5
 
+[connection signal="time_tick" from="DayNightCycleScene/CanvasModulate" to="Player" method="_on_check_time"]
 [connection signal="body_entered" from="Transition Map" to="." method="_on_boss_transition_body_entered"]
 [connection signal="body_exited" from="Transition Map" to="." method="_on_boss_transition_body_exited"]
 
-[editable path="day_and_night"]
+[editable path="DayNightCycleScene"]
 [editable path="World_Camera"]
+[editable path="Player"]
+[editable path="Player/Combat/HitboxPivot/SwordHitbox"]
+[editable path="Player/Combat/Hurtbox"]
 [editable path="Environment/Campfire"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjn8wqs6tgy71"]
+
+[ext_resource type="Script" path="res://World/Weather/weather/daynightcycle_scene.gd" id="1_2vpqm"]
+[ext_resource type="PackedScene" uid="uid://bg27ojx5244u6" path="res://World/Weather/weather/sound_machine.tscn" id="2_tcd40"]
+[ext_resource type="Script" path="res://World/Weather/weather/daynightcycle.gd" id="3_m7ybu"]
+[ext_resource type="Texture2D" uid="uid://bjpu582ft20gs" path="res://World/Weather/weather/daynightcycle-gradient-texture.tres" id="8_q68bt"]
+[ext_resource type="PackedScene" uid="uid://ceolcwatpaicu" path="res://World/Weather/weather/daynightcycle_ui.tscn" id="9_6s66b"]
+
+[node name="DayNightCycleScene" type="Node2D"]
+script = ExtResource("1_2vpqm")
+
+[node name="SoundMachine" parent="." instance=ExtResource("2_tcd40")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+script = ExtResource("3_m7ybu")
+gradient_texture = ExtResource("8_q68bt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DayNightCycleUI" parent="CanvasLayer" instance=ExtResource("9_6s66b")]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 7.0
+offset_bottom = 6.0
