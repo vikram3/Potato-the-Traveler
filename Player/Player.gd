@@ -88,7 +88,7 @@ func _ready():
 func _physics_process(delta):
 	mouse_loc_from_player = get_global_mouse_position() - self.position
 	# Assuming attackTimer.time_left is a float value representing time in seconds
-	debug.text = enum_to_string(state) + ' |Combo: %.2fs' % attackTimer.time_left + ' STR: ' + str(swordHitbox.damage)
+	debug.text = enum_to_string(state) + ' SwordWave: %.2fs' % swordWaveCooldown.time_left + ' STR: ' + str(swordHitbox.damage)
 	
 	if Input.is_action_just_pressed("Status"):
 		stats.visible = not stats.visible
@@ -384,7 +384,7 @@ func _on_sword_wave_cooldown_timeout():
 	print("sword wave is now on cooldown")
 	$Combat/AudioStreamPlayer.volume_db = -15
 
-func _on_check_time(_day, hour, minute):
+func _on_check_time(_day, hour, _minute):
 	#military time
 	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
 		light_source.visible = true

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c7yhdcbx7s00"
-path="res://.godot/imported/sword wave enter.wav-aa6bca9f27b88ff347875c59c5523dac.sample"
+path="res://.godot/imported/swordStance.wav-e83a7d5172274980ae1f04c7450bdded.sample"
 
 [deps]
 
-source_file="res://Music and Sounds/Skill FX/sword wave enter.wav"
-dest_files=["res://.godot/imported/sword wave enter.wav-aa6bca9f27b88ff347875c59c5523dac.sample"]
+source_file="res://Music and Sounds/Skill FX/swordStance.wav"
+dest_files=["res://.godot/imported/swordStance.wav-e83a7d5172274980ae1f04c7450bdded.sample"]
 
 [params]
 
