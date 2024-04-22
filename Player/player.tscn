@@ -9608,6 +9608,12 @@ offset_bottom = -30.0
 
 [node name="Combat" type="Node2D" parent="."]
 
+[node name="Equipment" type="Node2D" parent="Combat"]
+
+[node name="TODO Armor" type="Sprite2D" parent="Combat/Equipment"]
+position = Vector2(1, -6)
+scale = Vector2(0.6875, 0.6875)
+
 [node name="Sword" type="Node2D" parent="Combat"]
 z_index = -1
 position = Vector2(4, -17)
@@ -9734,6 +9740,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Light_Source" type="PointLight2D" parent="Misc"]
+visible = false
 y_sort_enabled = true
 position = Vector2(28, 39)
 color = Color(0.862745, 0.568627, 0.27451, 1)

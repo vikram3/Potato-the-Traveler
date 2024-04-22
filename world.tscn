@@ -38,14 +38,16 @@ position = Vector2(-78, -63)
 [node name="BottomRight" parent="World_Camera/Limits" index="1"]
 position = Vector2(367, 271)
 
-[node name="PlayerUI" type="CanvasLayer" parent="."]
+[node name="User Interface" type="Node2D" parent="."]
 
-[node name="HealthUI" parent="PlayerUI" instance=ExtResource("8_khgbn")]
+[node name="PlayerUI" type="CanvasLayer" parent="User Interface"]
+
+[node name="HealthUI" parent="User Interface/PlayerUI" instance=ExtResource("8_khgbn")]
 z_index = 1
 offset_top = 5.0
 offset_bottom = 45.0
 
-[node name="Username" type="Label" parent="PlayerUI"]
+[node name="Username" type="Label" parent="User Interface/PlayerUI"]
 visible = false
 offset_left = 1.0
 offset_top = 2.0
@@ -56,27 +58,14 @@ text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Status Screen" parent="." instance=ExtResource("2_q354b")]
+[node name="Status Screen" parent="User Interface" instance=ExtResource("2_q354b")]
 
 [node name="DayNightCycle" parent="." instance=ExtResource("16_82871")]
-
-[node name="CanvasModulate" parent="DayNightCycle" index="1"]
-color = Color(0.168627, 0.180392, 0.333333, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_7prvd")]
 y_sort_enabled = true
 position = Vector2(153, 200)
 collision_layer = 3
-
-[node name="PlayerSprite" parent="Player" index="0"]
-animation = &"idle"
-flip_h = false
-
-[node name="SwordSprite" parent="Player/Combat/Sword" index="0"]
-flip_h = false
-
-[node name="HitboxPivot" parent="Player/Combat" index="1"]
-rotation = 1.5708
 
 [node name="Light_Source" parent="Player/Misc" index="2"]
 position = Vector2(25, 39)
