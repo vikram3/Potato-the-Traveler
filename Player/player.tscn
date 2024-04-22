@@ -1,4 +1,4 @@
-[gd_scene load_steps=579 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=601 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="29_b6em7"]
 [ext_resource type="Texture2D" uid="uid://cwm208se5als4" path="res://Player/Pixivan MC/crosshair.png" id="29_cv1rw"]
 [ext_resource type="Texture2D" uid="uid://ceu0br3nrywpf" path="res://Effects/flameslash effect.png" id="29_nvg0i"]
+[ext_resource type="Texture2D" uid="uid://bsjpqcvr7vk7h" path="res://Effects/Sword FX/Burst_1_128.png" id="30_liyf5"]
 [ext_resource type="Texture2D" uid="uid://br7ec2mf71h1u" path="res://Effects/Sword FX/Wide Area Attack Motion Blur.png" id="31_gibrd"]
 [ext_resource type="Texture2D" uid="uid://44ock017fba4" path="res://Effects/LevelUp.png" id="32_blh2b"]
 [ext_resource type="AudioStream" uid="uid://c7yhdcbx7s00" path="res://Music and Sounds/Skill FX/swordStance.wav" id="33_yreqn"]
@@ -2371,7 +2372,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_8lxps"]
 resource_name = "AttackDown"
-length = 0.5
+length = 2.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -8434,6 +8435,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_yaptj"]
 resource_name = "swordStance"
+length = 1.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -8487,74 +8489,74 @@ tracks/3/use_blend = true
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerSprite:frame")
+tracks/4/path = NodePath("PlayerSprite:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerSprite:flip_h")
+tracks/5/path = NodePath("PlayerSprite:animation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [&"attack_downright_combo"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerSprite:animation")
+tracks/6/path = NodePath("Combat/Sword:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"attack_downright_combo"]
+"values": [Vector2(12, 3), Vector2(10, 3), Vector2(8, 5), Vector2(-13, -5), Vector2(-9, -9), Vector2(-7, -9), Vector2(-7, -8)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Combat/Sword:position")
+tracks/7/path = NodePath("Combat/Sword:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(12, 3), Vector2(10, 3), Vector2(8, 5), Vector2(-13, -5), Vector2(-9, -9)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Combat/Sword:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1.57079, 3.14159]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Combat/Sword/SwordSprite:flip_h")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Combat/Sword/SwordSprite:flip_h")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PlayerSprite:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nmxgk"]
@@ -9152,6 +9154,154 @@ graph_offset = Vector2(-457, 73.566)
 radius = 4.0
 height = 8.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gky7"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8yfc"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftm57"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vafbc"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p3ae"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5dk"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qthtv"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3v2v"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvnas"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mhd0"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd6qf"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqw20"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xpq"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p707"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj8d2"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhmwp"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v24o"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wui3"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(256, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1gve"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(384, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmv7e"]
+atlas = ExtResource("30_liyf5")
+region = Rect2(512, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lk66c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gky7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8yfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftm57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vafbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p3ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qthtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3v2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvnas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mhd0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wd6qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqw20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p707")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj8d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhmwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v24o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wui3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1gve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmv7e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pdn7o"]
 atlas = ExtResource("31_gibrd")
 region = Rect2(0, 0, 42, 40)
@@ -9603,7 +9753,7 @@ material = SubResource("ShaderMaterial_hi7q1")
 position = Vector2(1, -9)
 sprite_frames = SubResource("SpriteFrames_6nvx4")
 animation = &"attack_downright_combo"
-frame = 6
+frame = 8
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -9647,13 +9797,33 @@ position = Vector2(1, -1)
 texture = ExtResource("2_6k4r1")
 
 [node name="Healthbar" parent="." instance=ExtResource("29_b6em7")]
-visible = false
 offset_left = -6.0
-offset_top = -32.0
+offset_top = -34.0
 offset_right = 8.0
-offset_bottom = -30.0
+offset_bottom = -32.0
 
 [node name="Combat" type="Node2D" parent="."]
+
+[node name="SwordStanceFX" type="AnimatedSprite2D" parent="Combat"]
+z_index = -1
+position = Vector2(0, -3)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_lk66c")
+frame = 19
+frame_progress = 1.0
+
+[node name="SwordStanceLabel" type="Label" parent="Combat/SwordStanceFX"]
+visible = false
+offset_left = -29.2308
+offset_top = -38.4615
+offset_right = 31.7692
+offset_bottom = -15.4615
+theme_override_colors/font_color = Color(0.788235, 0.113725, 0.423529, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 5
+text = "Sword Stance Activated"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Equipment" type="Node2D" parent="Combat"]
 
@@ -9788,6 +9958,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="debug" type="Label" parent="Misc"]
+visible = false
 z_index = 1
 offset_left = -30.0
 offset_right = 95.0

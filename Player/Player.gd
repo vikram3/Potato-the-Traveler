@@ -43,6 +43,8 @@ var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var swordWaveCooldown = $Combat/SwordWaveProjectile/swordWaveCooldown
 @onready var swordWaveStance = $Combat/SwordWaveProjectile/swordWaveStance
 @onready var swordWaveSound = $Combat/SwordWaveProjectile/swordWaveSound
+@onready var swordStanceFX = $Combat/SwordStanceFX
+@onready var swordStanceLabel = $Combat/SwordStanceFX/SwordStanceLabel
 
 #Stat Multipliers
 var baseDMG = 0
@@ -418,10 +420,13 @@ func _on_sword_stance_active():
 	stayInPlace()
 	print("Sword Wave Activated: " + str(activateSwordWave))
 	state = State.SWORD_STANCE
+	swordStanceLabel.visible = true
 	animationTree.active = false
 	animationPlayer.stop()
 	slashFX3.play("3rd")
 	animationPlayer.play("swordStance", 1)
+	swordStanceFX.play("default")
 	await animationPlayer.animation_finished
 	animationTree.active = true
+	swordStanceLabel.visible = false
 	state = State.MOVE
