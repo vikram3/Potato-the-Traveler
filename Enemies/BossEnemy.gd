@@ -67,10 +67,10 @@ func _on_hurtbox_area_entered(area):
 	elif stats.health <= stats.max_health / 2  and stats.DEF == 0:  # Phase two of the fight he gets tankier
 		stats.DEF = 5
 		find_child("FiniteStateMachine").change_state("ArmorBuff") 
-	var newDirection = ( position - area.owner.position ).normalized()
-	var knockback = newDirection * stats.KNOCKOUT_SPEED
+	#Knockback
+	var direction = ( position - area.owner.position ).normalized()
+	var knockback = direction * Status.KNOCKOUT_SPEED
 	velocity = knockback
-	move_and_slide()
 	
 func _on_hurtbox_invincibility_started():
 	blinkAnimationPlayer.play("Start")

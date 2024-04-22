@@ -98,8 +98,9 @@ func _on_hurtbox_area_entered(area):
 	
 	#Knockback
 	var direction = ( position - area.owner.position ).normalized()
-	var knockback = direction * stats.KNOCKOUT_SPEED
+	var knockback = direction * Status.KNOCKOUT_SPEED
 	velocity = knockback
+	print(Status.KNOCKOUT_SPEED)
 	hurtbox.create_hit_effect()
 	
 	#Display visible Healthbar

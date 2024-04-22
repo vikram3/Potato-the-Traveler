@@ -108,18 +108,19 @@ func _physics_process(delta):
 			roll_state()
 		State.ATTACK:
 			swordSprite.visible = true
-			stats.KNOCKOUT_SPEED = 2000
+			Status.KNOCKOUT_SPEED = 50
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
 			stayInPlace()
 			swordSprite.visible = true
-			stats.KNOCKOUT_SPEED = 25
+			Status.KNOCKOUT_SPEED = 75
 			var bonusComboDMG = 4
 			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
 			stayInPlace()
+			Status.KNOCKOUT_SPEED = 150
 			swordSprite.visible = true
 			var bonusComboDMG2 = 10
 			calculateDmg(baseDMG + bonusComboDMG2)
