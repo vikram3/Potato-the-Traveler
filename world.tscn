@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3o6yaosckeh8"]
+[gd_scene load_steps=20 format=3 uid="uid://d3o6yaosckeh8"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_26jxo"]
 [ext_resource type="PackedScene" uid="uid://bomv4ffuydgtf" path="res://World/Camera/camera_2d.tscn" id="1_i1ktu"]
 [ext_resource type="PackedScene" uid="uid://b1lifm57p7pvt" path="res://Player/player.tscn" id="2_7prvd"]
+[ext_resource type="PackedScene" uid="uid://diqmmlave2cdd" path="res://status.tscn" id="2_q354b"]
 [ext_resource type="PackedScene" uid="uid://dr31cgvo6r8ds" path="res://World/Environment/bush.tscn" id="2_qhdct"]
 [ext_resource type="PackedScene" uid="uid://dyr164gbvcxrf" path="res://World/Environment/tree-birch-yellow.tscn" id="5_k7lfl"]
 [ext_resource type="PackedScene" uid="uid://wgf5hgrk43ew" path="res://World/Environment/grass.tscn" id="6_dcagb"]
@@ -32,6 +33,8 @@ fill_from = Vector2(0.5, 0.5)
 y_sort_enabled = true
 script = ExtResource("1_26jxo")
 
+[node name="Status Screen" parent="." instance=ExtResource("2_q354b")]
+
 [node name="Player" parent="." instance=ExtResource("2_7prvd")]
 y_sort_enabled = true
 position = Vector2(153, 200)
@@ -57,6 +60,7 @@ texture_scale = 1.3
 remote_path = NodePath("../../World_Camera")
 
 [node name="DayNightCycleScene" parent="." instance=ExtResource("16_82871")]
+visible = false
 
 [node name="CanvasModulate" parent="DayNightCycleScene" index="1"]
 color = Color(0.168627, 0.180392, 0.333333, 1)

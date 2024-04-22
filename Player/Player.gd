@@ -29,17 +29,19 @@ var roll_vector = Vector2.DOWN
 @onready var stats = Status
 
 #Bow
+@onready var aimIndicator = $Combat/AimIndicator
+var arrow = preload("res://Player/arrow.tscn")
 var bow_equipped = true
 var bow_cooldown = true
-var arrow = preload("res://Player/arrow.tscn")
 var mouse_loc_from_player = null
-@onready var aimIndicator = $Combat/AimIndicator
 
 #Sword Wave
 var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var arrowProjectile = $Combat/ArrowProjectile
 @onready var swordWaveProjectile = $Combat/SwordWaveProjectile
 @onready var swordWaveCooldown = $Combat/SwordWaveProjectile/swordWaveCooldown
+@onready var swordWaveStance = $Combat/SwordWaveProjectile/swordWaveStance
+@onready var swordWaveSound = $Combat/SwordWaveProjectile/swordWaveSound
 
 #Stat Multipliers
 var baseDMG = 0
@@ -49,11 +51,18 @@ var baseDMG = 0
 @onready var animationPlayer = $AnimationPlayer
 @onready var animationTree = $AnimationTree
 @onready var animationState = animationTree.get("parameters/playback")
+@onready var checkTime = get_parent().find_child("DayNightCycleScene").get_child(1)
+@onready var light_source = $Misc/Light_Source
+@onready var levelUpSound = $Misc/LevelUp
 
 #Melee Attack
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
 @onready var swordSprite = $Combat/Sword/SwordSprite
+@onready var slashFX1 = $Combat/Sword/SwordSprite/Sword_FX1
+@onready var slashFX2 = $Combat/Sword/SwordSprite/Sword_FX2
+@onready var slashFX3 = $Combat/Sword/SwordSprite/Sword_FX3
+
 
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
@@ -62,7 +71,6 @@ var baseDMG = 0
 
 #Debugging
 @onready var debug = $Misc/debug
-@onready var checkTime = get_parent().find_child("DayNightCycleScene").get_child(1)
 
 func _ready():
 	randomize() # Generates a new seed for every time the game is opened.
@@ -87,8 +95,8 @@ func _physics_process(delta):
 		activateSwordWave = not activateSwordWave
 		MAX_SPEED = 100
 		swordWaveCooldown.start()
-		velocity = Vector2.ZERO
-		$Combat/SwordWaveProjectile/swordWaveStance.play()
+		velocity = stayInPlace()
+		swordWaveStance.play()
 		print("Sword Wave Activated: " + str(activateSwordWave))
 		
 	match state:
@@ -105,14 +113,14 @@ func _physics_process(delta):
 			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
-			velocity = Vector2.ZERO
+			stayInPlace()
 			swordSprite.visible = true
 			stats.KNOCKOUT_SPEED = 25
 			var bonusComboDMG = 4
 			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
-			velocity = Vector2.ZERO
+			stayInPlace()
 			swordSprite.visible = true
 			var bonusComboDMG2 = 10
 			calculateDmg(baseDMG + bonusComboDMG2)
@@ -130,25 +138,20 @@ func _physics_process(delta):
 			syncArrowToPointer()
 			activateCrosshair()
 			bow_fire_state()
-			
-func activateCrosshair():
-	aimIndicator.global_position = get_global_mouse_position()
-	aimIndicator.position = mouse_loc_from_player
-	aimIndicator.visible = true
-				
-func syncArrowToPointer():
-	var mouse_pos = get_global_mouse_position()
-	arrowProjectile.look_at(mouse_pos)
-
-func calculateDmg(dmgBoostStat):
-	swordHitbox.damage = dmgBoostStat
+	
+func attack_state():
+	slashFX1.play("1st")
+	stayInPlace()
+	animationState.travel("Attack")
+	await animationTree.animation_finished
+	attackTimer.start()
 			
 func attack_combo():
 	if attackTimer.is_stopped(): 
 		attackTimer.start()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		$Combat/Sword/SwordSprite/Sword_FX2.play("2nd")
+		slashFX2.play("2nd")
 		animationState.travel("Attack_Combo")
 		await animationTree.animation_finished
 		swordWave()
@@ -162,7 +165,7 @@ func attack_combo():
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		$Combat/Sword/SwordSprite/Sword_FX3.play("3rd")
+		slashFX3.play("3rd")
 		animationState.travel("Attack_Combo2")
 		await animationTree.animation_finished
 		swordWave()
@@ -170,13 +173,6 @@ func attack_combo2():
 		state = State.MOVE
 	elif Input.is_action_just_pressed("roll"):
 		state = State.ROLL
-
-func attack_state():
-	$Combat/Sword/SwordSprite/Sword_FX.play("1st")
-	velocity = Vector2.ZERO
-	animationState.travel("Attack")
-	await animationTree.animation_finished
-	attackTimer.start()
 	
 func bow_fire_state():
 	var aim_direction = (get_global_mouse_position() - global_position).normalized() # Make player face the mouse
@@ -195,7 +191,7 @@ func bow_fire_state():
 	
 func move_state(delta):
 	#This smooths out movements when player is moving in two directions at once.
-	var input_vector = Vector2.ZERO
+	var input_vector = stayInPlace()
 	input_vector.x = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
 	input_vector.y = Input.get_action_strength("Move_Down") - Input.get_action_strength("Move_Up")
 	
@@ -262,7 +258,6 @@ func attack_animation_finished():
 	state = State.ATTACK_COMBO
 	
 func attack_combo_animation_finished():
-	aimIndicator.visible = false
 	state = State.ATTACK_COMBO2
 	
 func bow_ready_finished():
@@ -280,7 +275,7 @@ func attack_combo2_animation_finished():
 		state = State.ATTACK_COMBO
 	else:
 		state = State.MOVE
-		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
+		#Set the players stats back to default
 		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.0)
 		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 1.3)
 		MAX_SPEED = 80
@@ -332,7 +327,66 @@ func _on_attack_timer_timeout():
 	
 func player():
 	pass
+
+func _on_level_up():
+	levelUpSound.play("level_up")
+
+func playerDead():
+	queue_free()
 	
+func activateCrosshair():
+	aimIndicator.global_position = get_global_mouse_position()
+	aimIndicator.position = mouse_loc_from_player
+	aimIndicator.visible = true
+				
+func syncArrowToPointer():
+	var mouse_pos = get_global_mouse_position()
+	arrowProjectile.look_at(mouse_pos)
+
+func stayInPlace():
+	velocity = Vector2.ZERO
+	
+func calculateDmg(dmgBoostStat):
+	swordHitbox.damage = dmgBoostStat
+	
+signal swordWavingActive
+
+var isPerformingSwordWave = false
+
+func swordWave():
+	if activateSwordWave and not isPerformingSwordWave:
+		isPerformingSwordWave = true
+		# Calculate the direction the character is facing
+		var aim_direction = roll_vector
+		# Set the rotation of the sword wave projectile to match the character's facing direction
+		swordWaveProjectile.rotation = atan2(aim_direction.y, aim_direction.x)
+		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
+		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.5)
+		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 2.5)
+		var sword_wave_instance = swordWaveSlash.instantiate()
+		sword_wave_instance.rotation = swordWaveProjectile.rotation
+		sword_wave_instance.global_position = swordWaveProjectile.global_position
+		swordWaveSound.play()
+		add_child(sword_wave_instance)
+		# Wait for a short duration before resetting isPerformingSwordWave
+		await get_tree().create_timer(0.3).timeout
+		isPerformingSwordWave = false
+
+func _on_sword_waving_active():
+	activateSwordWave = true
+
+func _on_sword_wave_cooldown_timeout():
+	activateSwordWave = false
+	state = State.MOVE
+	print("sword wave is now on cooldown")
+
+func _on_check_time(_day, hour, minute):
+	#military time
+	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
+		light_source.visible = true
+	else:
+		light_source.visible = false
+
 func enum_to_string(value):
 	match value:
 		State.MOVE:
@@ -353,48 +407,3 @@ func enum_to_string(value):
 			return "BOW_FIRE"
 		_:
 			return "Unknown"
-
-func _on_level_up():
-	$LevelUp.play("level_up")
-
-func playerDead():
-	queue_free()
-	
-signal swordWavingActive
-
-var isPerformingSwordWave = false
-
-func swordWave():
-	if activateSwordWave and not isPerformingSwordWave:
-		isPerformingSwordWave = true
-		# Calculate the direction the character is facing
-		var aim_direction = roll_vector
-		# Set the rotation of the sword wave projectile to match the character's facing direction
-		swordWaveProjectile.rotation = atan2(aim_direction.y, aim_direction.x)
-		#Set the scale of the animation tree for attack_combo and attack_combo2 to 2.3
-		animationTree.set("parameters/Attack_Combo/TimeScale/scale", 2.5)
-		animationTree.set("parameters/Attack_Combo2/TimeScale/scale", 2.5)
-		var sword_wave_instance = swordWaveSlash.instantiate()
-		sword_wave_instance.rotation = swordWaveProjectile.rotation
-		sword_wave_instance.global_position = swordWaveProjectile.global_position
-		$Combat/SwordWaveProjectile/swordWaveSound.play()
-		add_child(sword_wave_instance)
-		# Wait for a short duration before resetting isPerformingSwordWave
-		await get_tree().create_timer(0.3).timeout
-		isPerformingSwordWave = false
-
-func _on_sword_waving_active():
-	activateSwordWave = true
-
-func _on_sword_wave_cooldown_timeout():
-	activateSwordWave = false
-	state = State.MOVE
-	print("sword wave is now on cooldown")
-
-func _on_check_time(_day, hour, minute):
-	#military time
-	var light_source = $Misc/Light_Source
-	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
-		light_source.visible = true
-	else:
-		light_source.visible = false
