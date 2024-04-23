@@ -62,9 +62,7 @@ var baseDMG = 0
 @onready var swordHitbox = $Combat/HitboxPivot/SwordHitbox
 @onready var attackTimer = $Combat/AttackTimer
 @onready var swordSprite = $Combat/Sword/SwordSprite
-@onready var slashFX1 = $Combat/Sword/SwordSprite/Sword_FX
-@onready var slashFX2 = $Combat/Sword/SwordSprite/Sword_FX2
-@onready var slashFX3 = $Combat/Sword/SwordSprite/Sword_FX3
+@onready var slashFX = $Combat/Sword/SwordSprite/Slash_FX
 
 #Hurtbox
 @onready var hurtbox = $Combat/Hurtbox
@@ -145,7 +143,7 @@ func _physics_process(delta):
 			bow_fire_state()
 	
 func attack_state():
-	$Combat/Sword/SwordSprite/Sword_FX4.play("default")
+	slashFX.play("slash_animation")
 	stayInPlace()
 	animationState.travel("Attack")
 	await animationTree.animation_finished
@@ -156,7 +154,7 @@ func attack_combo():
 		attackTimer.start()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		$Combat/Sword/SwordSprite/Sword_FX4.play("default")
+		slashFX.play("slash_animation")
 		animationState.travel("Attack_Combo")
 		await animationTree.animation_finished
 		swordWave()
@@ -170,7 +168,7 @@ func attack_combo():
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		attackTimer.stop()
-		$Combat/Sword/SwordSprite/Sword_FX4.play("default")
+		slashFX.play("slash_animation")
 		animationState.travel("Attack_Combo2")
 		await animationTree.animation_finished
 		swordWave()
@@ -423,9 +421,8 @@ func _on_sword_stance_active():
 	swordStanceLabel.visible = true
 	animationTree.active = false
 	animationPlayer.stop()
-	slashFX3.play("3rd")
+	swordStanceFX.play("enter_sword_stance")
 	animationPlayer.play("swordStance", 1)
-	swordStanceFX.play("default")
 	await animationPlayer.animation_finished
 	animationTree.active = true
 	swordStanceLabel.visible = false

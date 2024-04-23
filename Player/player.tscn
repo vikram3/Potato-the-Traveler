@@ -1,4 +1,4 @@
-[gd_scene load_steps=601 format=3 uid="uid://b1lifm57p7pvt"]
+[gd_scene load_steps=583 format=3 uid="uid://b1lifm57p7pvt"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_fjjot"]
 [ext_resource type="Texture2D" uid="uid://de44kldeeq4b" path="res://Shadows/SmallShadow.png" id="2_6k4r1"]
@@ -9302,82 +9302,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pdn7o"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(0, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_da5a5"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(42, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h5g74"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(84, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tli7x"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(294, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rm3ch"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(336, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxm7y"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(378, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0wfk8"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(420, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_44nkr"]
-atlas = ExtResource("29_nvg0i")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8gauw"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(0, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibe74"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(42, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjfxk"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(84, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbddb"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(126, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hh7b7"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(168, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtpis"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(210, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dwuax"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(252, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pvc0p"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(294, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ihy54"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(336, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n11de"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(378, 0, 42, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ucuhd"]
-atlas = ExtResource("31_gibrd")
-region = Rect2(420, 0, 42, 40)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrsd1"]
 atlas = ExtResource("31_gibrd")
 region = Rect2(0, 0, 42, 40)
@@ -9422,78 +9346,12 @@ region = Rect2(378, 0, 42, 40)
 atlas = ExtResource("31_gibrd")
 region = Rect2(420, 0, 42, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_44nkr"]
+atlas = ExtResource("29_nvg0i")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nr6b0"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pdn7o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_da5a5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h5g74")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tli7x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rm3ch")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxm7y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0wfk8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_44nkr")
-}],
-"loop": true,
-"name": &"1st",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8gauw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ibe74")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qjfxk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pbddb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hh7b7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dtpis")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dwuax")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pvc0p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ihy54")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n11de")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ucuhd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_44nkr")
-}],
-"loop": false,
-"name": &"2nd",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hrsd1")
@@ -9532,7 +9390,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_44nkr")
 }],
 "loop": false,
-"name": &"3rd",
+"name": &"enter_sword_stance",
 "speed": 5.0
 }]
 
@@ -9575,7 +9433,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v1tgh")
 }],
 "loop": false,
-"name": &"default",
+"name": &"slash_animation",
 "speed": 5.0
 }]
 
@@ -9843,36 +9701,18 @@ hframes = 9
 vframes = 20
 frame = 81
 
-[node name="Sword_FX" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
-visible = false
-scale = Vector2(0.4, 0.4)
-sprite_frames = SubResource("SpriteFrames_nr6b0")
-animation = &"1st"
-autoplay = "1st"
-speed_scale = 0.5
-
-[node name="Sword_FX2" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
-visible = false
-position = Vector2(-6.66667, 5.33333)
-rotation = 3.14159
-scale = Vector2(0.8, 0.8)
-sprite_frames = SubResource("SpriteFrames_nr6b0")
-animation = &"2nd"
-frame = 11
-speed_scale = 3.0
-
-[node name="Sword_FX3" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
+[node name="Sword_Stance_FX" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
 position = Vector2(-6.66667, 5.33333)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nr6b0")
-animation = &"3rd"
-frame = 11
-frame_progress = 1.0
+animation = &"enter_sword_stance"
+frame = 9
+frame_progress = 0.397944
 speed_scale = 2.0
 
-[node name="Sword_FX4" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
+[node name="Slash_FX" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
 sprite_frames = SubResource("SpriteFrames_sku4v")
-frame = 4
+animation = &"slash_animation"
 speed_scale = 2.0
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
