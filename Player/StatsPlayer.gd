@@ -1,6 +1,6 @@
 extends Stats
 
-const XP_DATABASE = "res://Player/Database.json"
+const XP_DATABASE = "res://Player/LevelDatabase.json"
 const MAX_LEVEL = 4
  
 var XP_Table_Data = {}

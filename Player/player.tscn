@@ -9431,6 +9431,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v1tgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44nkr")
 }],
 "loop": false,
 "name": &"slash_animation",
@@ -9706,13 +9709,13 @@ position = Vector2(-6.66667, 5.33333)
 rotation = 3.14159
 sprite_frames = SubResource("SpriteFrames_nr6b0")
 animation = &"enter_sword_stance"
-frame = 9
-frame_progress = 0.397944
+frame = 11
 speed_scale = 2.0
 
 [node name="Slash_FX" type="AnimatedSprite2D" parent="Combat/Sword/SwordSprite"]
 sprite_frames = SubResource("SpriteFrames_sku4v")
 animation = &"slash_animation"
+frame = 5
 speed_scale = 2.0
 
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]

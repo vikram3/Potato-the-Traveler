@@ -43,7 +43,8 @@ var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var swordWaveCooldown = $Combat/SwordWaveProjectile/swordWaveCooldown
 @onready var swordWaveStance = $Combat/SwordWaveProjectile/swordWaveStance
 @onready var swordWaveSound = $Combat/SwordWaveProjectile/swordWaveSound
-@onready var swordStanceFX = $Combat/SwordStanceFX
+@onready var swordStanceAuraFX = $Combat/SwordStanceFX
+@onready var swordStanceAnimation = $Combat/Sword/SwordSprite/Sword_Stance_FX
 @onready var swordStanceLabel = $Combat/SwordStanceFX/SwordStanceLabel
 
 #Stat Multipliers
@@ -103,30 +104,14 @@ func _physics_process(delta):
 		
 	match state:
 		State.MOVE:
-			swordSprite.visible = true
-			calculateDmg(baseDMG)
 			move_state(delta)
 		State.ROLL:
-			swordSprite.visible = false
 			roll_state()
 		State.ATTACK:
-			swordSprite.visible = true
-			Status.KNOCKOUT_SPEED = 50
-			calculateDmg(baseDMG)
 			attack_state()
 		State.ATTACK_COMBO:
-			stayInPlace()
-			swordSprite.visible = true
-			Status.KNOCKOUT_SPEED = 75
-			var bonusComboDMG = 4
-			calculateDmg(baseDMG + bonusComboDMG)
 			attack_combo()
 		State.ATTACK_COMBO2:
-			stayInPlace()
-			Status.KNOCKOUT_SPEED = 150
-			swordSprite.visible = true
-			var bonusComboDMG2 = 10
-			calculateDmg(baseDMG + bonusComboDMG2)
 			attack_combo2()
 		State.BOW_READY:
 			swordSprite.visible = false
@@ -137,12 +122,12 @@ func _physics_process(delta):
 			syncArrowToPointer()
 			animationState.travel("Bow_Aim")
 		State.BOW_FIRE:
-			swordSprite.visible = false
-			syncArrowToPointer()
-			activateCrosshair()
 			bow_fire_state()
 	
 func attack_state():
+	swordSprite.visible = true
+	Status.KNOCKOUT_SPEED = 50
+	calculateDmg(baseDMG)
 	slashFX.play("slash_animation")
 	stayInPlace()
 	animationState.travel("Attack")
@@ -153,6 +138,11 @@ func attack_combo():
 	if attackTimer.is_stopped(): 
 		attackTimer.start()
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		stayInPlace()
+		swordSprite.visible = true
+		Status.KNOCKOUT_SPEED = 75
+		var bonusComboDMG = 4
+		calculateDmg(baseDMG + bonusComboDMG)
 		attackTimer.stop()
 		slashFX.play("slash_animation")
 		animationState.travel("Attack_Combo")
@@ -167,6 +157,11 @@ func attack_combo():
 		
 func attack_combo2():
 	if Input.is_action_just_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		stayInPlace()
+		swordSprite.visible = true
+		Status.KNOCKOUT_SPEED = 150
+		var bonusComboDMG2 = 10
+		calculateDmg(baseDMG + bonusComboDMG2)
 		attackTimer.stop()
 		slashFX.play("slash_animation")
 		animationState.travel("Attack_Combo2")
@@ -182,6 +177,9 @@ func bow_fire_state():
 	animationTree.set("parameters/Bow_Aim/BlendSpace2D/blend_position", aim_direction)
 	
 	if bow_equipped and bow_cooldown and Input.is_action_just_released("bow_attack"):
+		swordSprite.visible = false
+		syncArrowToPointer()
+		activateCrosshair()
 		animationState.travel("Bow_Fire")
 		bow_cooldown = false
 		var arrow_instance = arrow.instantiate()
@@ -193,6 +191,8 @@ func bow_fire_state():
 		aimIndicator.visible = false
 	
 func move_state(delta):
+	swordSprite.visible = true
+	calculateDmg(baseDMG)
 	#This smooths out movements when player is moving in two directions at once.
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
@@ -241,16 +241,12 @@ func update_state_after_input(): # Updates the state machine with the proper sta
 	elif Input.is_action_pressed("bow_attack") and bow_equipped and bow_cooldown:
 		state = State.BOW_READY
 	
-func roll_state(): #
+func roll_state(): 
+	swordSprite.visible = false
 	#Prevents player from rolling after getting attack and getting iframe animation.
 	blinkAnimationPlayer.play("Stop")
-	
-	#Roll Iframe Length
 	hurtbox.start_invincibility(.6)
-
-	#Set the velocity to include our roll speed.
 	velocity = roll_vector * ROLL_SPEED
-	
 	animationState.travel("Roll")
 	move_and_slide()
 	
@@ -390,7 +386,22 @@ func _on_check_time(_day, hour, _minute):
 		light_source.visible = true
 	else:
 		light_source.visible = false
-
+			
+func _on_sword_stance_active():
+	stayInPlace()
+	print("Sword Wave Activated: " + str(activateSwordWave))
+	state = State.SWORD_STANCE
+	swordStanceLabel.visible = true
+	animationTree.active = false
+	animationPlayer.stop()
+	swordStanceAuraFX.play("default")
+	swordStanceAnimation.play("enter_sword_stance")
+	animationPlayer.play("swordStance", 1)
+	await animationPlayer.animation_finished
+	animationTree.active = true
+	swordStanceLabel.visible = false
+	state = State.MOVE
+	
 func enum_to_string(value):
 	match value:
 		State.MOVE:
@@ -413,17 +424,3 @@ func enum_to_string(value):
 			return "SWORD_STANCE"
 		_:
 			return "Unknown"
-			
-func _on_sword_stance_active():
-	stayInPlace()
-	print("Sword Wave Activated: " + str(activateSwordWave))
-	state = State.SWORD_STANCE
-	swordStanceLabel.visible = true
-	animationTree.active = false
-	animationPlayer.stop()
-	swordStanceFX.play("enter_sword_stance")
-	animationPlayer.play("swordStance", 1)
-	await animationPlayer.animation_finished
-	animationTree.active = true
-	swordStanceLabel.visible = false
-	state = State.MOVE
