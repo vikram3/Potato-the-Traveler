@@ -9718,6 +9718,10 @@ animation = &"slash_animation"
 frame = 5
 speed_scale = 2.0
 
+[node name="AttackTimer" type="Timer" parent="Combat"]
+wait_time = 2.0
+one_shot = true
+
 [node name="HitboxPivot" type="Marker2D" parent="Combat"]
 position = Vector2(0, -4)
 rotation = 2.61799
@@ -9732,32 +9736,6 @@ damage = 3
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CapsuleShape2D_bqrgj")
 disabled = true
-
-[node name="AttackTimer" type="Timer" parent="Combat"]
-wait_time = 2.0
-one_shot = true
-
-[node name="Hurtbox" parent="Combat" instance=ExtResource("5_bhnfg")]
-collision_mask = 4
-collision_priority = 0.0
-
-[node name="CollisionShape2D" parent="Combat/Hurtbox" index="0"]
-visible = false
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_2ulq5")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Combat"]
-volume_db = -20.0
-
-[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="Combat"]
-reset_on_save = false
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_67yjy")
-}
-
-[node name="ArrowProjectile" type="Marker2D" parent="Combat"]
-modulate = Color(0, 0, 0, 1)
 
 [node name="SwordWaveProjectile" type="Marker2D" parent="Combat"]
 modulate = Color(0, 0, 0, 1)
@@ -9775,11 +9753,33 @@ stream = ExtResource("34_sscdg")
 volume_db = -10.0
 max_polyphony = 100
 
+[node name="ArrowProjectile" type="Marker2D" parent="Combat"]
+modulate = Color(0, 0, 0, 1)
+
 [node name="AimIndicator" type="Sprite2D" parent="Combat"]
 visible = false
 z_index = 1
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("29_cv1rw")
+
+[node name="Hurtbox" parent="Combat" instance=ExtResource("5_bhnfg")]
+collision_mask = 4
+collision_priority = 0.0
+
+[node name="CollisionShape2D" parent="Combat/Hurtbox" index="0"]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_2ulq5")
+
+[node name="BlinkAnimationPlayer" type="AnimationPlayer" parent="Combat"]
+reset_on_save = false
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_67yjy")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Combat"]
+volume_db = -20.0
 
 [node name="Health_UI" type="Node2D" parent="."]
 
@@ -9832,10 +9832,10 @@ frame_progress = 1.0
 [connection signal="swordStanceActive" from="." to="." method="_on_sword_stance_active"]
 [connection signal="swordWavingActive" from="." to="." method="_on_sword_waving_active"]
 [connection signal="timeout" from="Combat/AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="Combat/SwordWaveProjectile/swordWaveCooldown" to="." method="_on_sword_wave_cooldown_timeout"]
 [connection signal="area_entered" from="Combat/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="invincibility_ended" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_ended"]
 [connection signal="invincibility_started" from="Combat/Hurtbox" to="." method="_on_hurtbox_invincibility_started"]
-[connection signal="timeout" from="Combat/SwordWaveProjectile/swordWaveCooldown" to="." method="_on_sword_wave_cooldown_timeout"]
 
 [editable path="Combat/HitboxPivot/SwordHitbox"]
 [editable path="Combat/Hurtbox"]
