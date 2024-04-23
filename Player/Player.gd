@@ -379,13 +379,6 @@ func _on_sword_wave_cooldown_timeout():
 	state = State.MOVE
 	print("sword wave is now on cooldown")
 	$Combat/AudioStreamPlayer.volume_db = -15
-
-func _on_check_time(_day, hour, _minute):
-	#military time
-	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
-		light_source.visible = true
-	else:
-		light_source.visible = false
 			
 func _on_sword_stance_active():
 	stayInPlace()
@@ -401,6 +394,13 @@ func _on_sword_stance_active():
 	animationTree.active = true
 	swordStanceLabel.visible = false
 	state = State.MOVE
+	
+func _on_check_time(_day, hour, _minute):
+	#military time
+	if (hour >= 19 and hour <= 23) or (hour >= 0 and hour < 5):
+		light_source.visible = true
+	else:
+		light_source.visible = false
 	
 func enum_to_string(value):
 	match value:
