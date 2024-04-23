@@ -43,9 +43,10 @@ var swordWaveSlash = preload("res://Player/swordWaveProjectile.tscn")
 @onready var swordWaveCooldown = $Combat/SwordWaveProjectile/swordWaveCooldown
 @onready var swordWaveStance = $Combat/SwordWaveProjectile/swordWaveStance
 @onready var swordWaveSound = $Combat/SwordWaveProjectile/swordWaveSound
-@onready var swordStanceAuraFX = $Combat/SwordStanceFX
+@onready var swordStanceAuraFX = $Combat/SwordStanceAura
 @onready var swordStanceAnimation = $Combat/Sword/SwordSprite/Sword_Stance_FX
-@onready var swordStanceLabel = $Combat/SwordStanceFX/SwordStanceLabel
+@onready var swordStanceLabel = $Combat/SwordStanceAura/SwordStanceLabel
+@onready var swordGlow = $Combat/Sword/SwordSprite/Sword_Glowing
 
 #Stat Multipliers
 var baseDMG = 0
@@ -96,10 +97,9 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Sword Wave (Activate)") and state == State.MOVE and swordWaveCooldown.is_stopped():
 		activateSwordWave = not activateSwordWave
-		MAX_SPEED = 100
+		MAX_SPEED = 110
 		swordWaveCooldown.start()
 		swordWaveStance.play()
-		$Combat/AudioStreamPlayer.volume_db = -80
 		emit_signal("swordStanceActive")
 		
 	match state:
@@ -378,7 +378,9 @@ func _on_sword_wave_cooldown_timeout():
 	activateSwordWave = false
 	state = State.MOVE
 	print("sword wave is now on cooldown")
-	$Combat/AudioStreamPlayer.volume_db = -15
+	swordGlow.stop()
+	swordGlow.visible = false
+	
 			
 func _on_sword_stance_active():
 	stayInPlace()
@@ -387,9 +389,11 @@ func _on_sword_stance_active():
 	swordStanceLabel.visible = true
 	animationTree.active = false
 	animationPlayer.stop()
-	swordStanceAuraFX.play("default")
+	swordStanceAuraFX.play("aura")
+	swordGlow.visible = true
+	swordGlow.play("glow")
 	swordStanceAnimation.play("enter_sword_stance")
-	animationPlayer.play("swordStance", 1)
+	animationPlayer.play("swordStance")
 	await animationPlayer.animation_finished
 	animationTree.active = true
 	swordStanceLabel.visible = false
