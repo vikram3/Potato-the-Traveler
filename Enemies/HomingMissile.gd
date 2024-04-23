@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 @export var bullet_node: PackedScene
 var can_transition: bool = false

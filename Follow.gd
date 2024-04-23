@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
 
 signal knockback
  

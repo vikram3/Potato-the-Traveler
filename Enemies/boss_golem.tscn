@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemies/BossEnemy.gd" id="1_qu5hb"]
 [ext_resource type="Texture2D" uid="uid://ccrnr7jblswpx" path="res://Enemies/Laser_sheet.png" id="2_r0p6b"]
 [ext_resource type="Shader" path="res://Player/WhiteColor.gdshader" id="3_7n1b6"]
-[ext_resource type="Script" path="res://Enemies/FiniteStateMachine.gd" id="3_r8xo2"]
+[ext_resource type="Script" path="res://Enemies/EnemyStateMachine.gd" id="3_r8xo2"]
 [ext_resource type="Script" path="res://Enemies/Idle.gd" id="4_ani6r"]
 [ext_resource type="Script" path="res://Overlap/hitbox.gd" id="4_f6wu1"]
 [ext_resource type="PackedScene" uid="uid://cgta0wje1tnfy" path="res://healthbar_overhead.tscn" id="5_jttkw"]

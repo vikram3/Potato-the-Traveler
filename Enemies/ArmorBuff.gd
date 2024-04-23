@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 var can_transition : bool = false
  

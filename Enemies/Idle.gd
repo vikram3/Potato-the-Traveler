@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 @onready var collision = $"../../PlayerDetection/CollisionShape2D"
 @onready var progress_bar = owner.find_child("BossHealthbar")

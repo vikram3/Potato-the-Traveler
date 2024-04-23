@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 @onready var stats = owner.get_parent().find_child("Stats")
 

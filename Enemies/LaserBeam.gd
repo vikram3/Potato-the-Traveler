@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 @onready var pivot = $"../../pivot"
 var can_transition: bool = false

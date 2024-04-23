@@ -1,5 +1,5 @@
 extends Node2D
-class_name State
+class_name EnemyState
  
 @onready var debug = owner.find_child("Debug")
 @onready var player = owner.get_parent().find_child("Player")

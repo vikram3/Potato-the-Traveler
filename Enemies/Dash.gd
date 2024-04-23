@@ -1,4 +1,4 @@
-extends State
+extends EnemyState
  
 var can_transition: bool = false
 @export var DASH_SPEED = 0.4
